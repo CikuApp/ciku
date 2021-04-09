@@ -3,12 +3,16 @@ import { RecoilRoot } from "recoil";
 
 import Nav from "components/Nav/Nav";
 import RecipePage from "components/RecipePage/RecipePage";
+import LocationPage from "components/LocationPage/LocationPage";
 
 function App() {
   return (
     <RecoilRoot>
       <Nav />
-      <RecipePage recipeObject={sampleRecipeObject} />
+      <Suspense fallback={<div>loading</div>}>
+        {/* <LocationPage /> */}
+        <RecipePage recipeObject={sampleRecipeObject} />
+      </Suspense>
       {/* <SearchBar />
       <Suspense fallback={<div>loading...</div>}>
         <SearchResults />

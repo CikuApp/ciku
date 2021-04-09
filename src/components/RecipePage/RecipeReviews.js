@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import StarRating from "components/RecipePage/StarRating";
+import StarRating from "components/StarRating/StarRating";
 
 function RecipeReviews({ recipeReviews }) {
   const getRatingComment = (rating) => {

@@ -1,22 +1,13 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
 
-import { searchParamsResults } from "recoil/searchParams";
+import SearchResultsWrapper from "components/SearchResultsPage/SearchResultsWrapper";
 
-function SearchResults() {
-  const results = useRecoilValue(searchParamsResults);
+function SearchResultsPage() {
   return (
     <div>
-      <p>
-        You searched for
-        <ul>
-          {results.map((item) => {
-            return <li>{item}</li>;
-          })}
-        </ul>
-      </p>
+      <SearchResultsWrapper />
     </div>
   );
 }
 
-export default SearchResults;
+export default SearchResultsPage;
