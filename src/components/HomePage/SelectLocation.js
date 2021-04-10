@@ -12,7 +12,7 @@ function SelectLocation() {
 
   return (
     <form>
-      <label for="location">Select A State</label>
+      <label htmlFor="location">Select A State</label>
       <select
         name="location"
         id="location"

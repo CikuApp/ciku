@@ -1,11 +1,12 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 
-import { searchParamsResults } from "recoil/searchParams";
+import searchResults from "recoil/searchResults";
 import RecipeCard from "components/RecipeCard/RecipeCard";
 
-function SearchResultsWrapper() {
-  const recipeResults = useRecoilValue(searchParamsResults);
+function RecipeResultsWrapper() {
+  const recipeResults = useRecoilValue(searchResults);
+
   return (
     <section>
       {recipeResults.map((recipeObject) => {
@@ -15,4 +16,4 @@ function SearchResultsWrapper() {
   );
 }
 
-export default SearchResultsWrapper;
+export default RecipeResultsWrapper;

@@ -8,13 +8,13 @@ import { useRecoilValue, useRecoilState } from "recoil";
 function SearchResultsFilter() {
   return (
     <section>
-      <label for="ingredients">Ingredients</label>
+      <label htmlFor="ingredients">Ingredients</label>
       <select name="ingredients" id="ingredients"></select>
-      <label for="dish-type">Dish Type</label>
+      <label htmlFor="dish-type">Dish Type</label>
       <select name="dish-type" id="dish-type"></select>
-      <label for="cuisine">Cuisine</label>
+      <label htmlFor="cuisine">Cuisine</label>
       <select name="cuisine" id="cuisine"></select>
-      <label for="dietary-concerns">Dietary Concerns</label>
+      <label htmlFor="dietary-concerns">Dietary Concerns</label>
       <select name="dietary-concerns" id="dietary-concerns"></select>
     </section>
   );

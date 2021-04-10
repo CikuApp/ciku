@@ -1,5 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { useRecoilValue } from "recoil";
+import { useParams } from "react-router-dom";
+
+import searchResults from "recoil/searchResults";
 
 import RecipeInfo from "components/RecipePage/RecipeInfo";
 import RecipeIngredients from "components/RecipePage/RecipeIngredients";
@@ -10,38 +13,31 @@ import AddIngredientsButton from "components/RecipePage/AddIngredientsButton";
 import UserReview from "components/RecipePage/UserReview";
 import RecipeReviews from "components/RecipePage/RecipeReviews";
 
-function RecipePage({ recipeObject }) {
+function RecipePage() {
+  let { recipeId } = useParams();
+  const selectedRecipe = useRecoilValue(searchResults).find(
+    (recipe) => recipe.id === +recipeId
+  );
+
   return (
     <div>
       <RecipeInfo
-        recipeId={recipeObject.id}
-        recipeName={recipeObject.name}
-        recipeRating={recipeObject.rating}
-        recipeScore={recipeObject.score}
-        recipeIamge={recipeObject.image}
-        recipeTime={recipeObject.time}
+        recipeId={selectedRecipe.id}
+        recipeName={selectedRecipe.name}
+        recipeRating={selectedRecipe.rating}
+        recipeScore={selectedRecipe.score}
+        recipeIamge={selectedRecipe.image}
+        recipeTime={selectedRecipe.time}
       />
-      <SaveRecipeButton recipeId={recipeObject.id} />
+      <SaveRecipeButton recipeId={selectedRecipe.id} />
       <ShareRecipeButton />
-      <RecipeIngredients recipeIngredients={recipeObject.ingredients} />
-      <AddIngredientsButton recipeIngredients={recipeObject.ingredients} />
-      <RecipeDirections recipeDirections={recipeObject.directions} />
-      <UserReview recipeId={recipeObject.id} />
-      <RecipeReviews recipeReviews={recipeObject.reviews} />
+      <RecipeIngredients recipeIngredients={selectedRecipe.ingredients} />
+      <AddIngredientsButton recipeIngredients={selectedRecipe.ingredients} />
+      <RecipeDirections recipeDirections={selectedRecipe.directions} />
+      <UserReview recipeId={selectedRecipe.id} />
+      <RecipeReviews recipeReviews={selectedRecipe.reviews} />
     </div>
   );
 }
 
 export default RecipePage;
-
-RecipePage.propTypes = {
-  recipeId: PropTypes.number,
-  recipeName: PropTypes.string,
-  recipeRating: PropTypes.number,
-  recipeScore: PropTypes.number,
-  recipeImage: PropTypes.string,
-  recipeIngredients: PropTypes.array,
-  recipeTime: PropTypes.object,
-  recipeDirections: PropTypes.array,
-  recipeReviews: PropTypes.array,
-};

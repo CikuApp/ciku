@@ -1,8 +1,8 @@
 import { selector } from "recoil";
-import searchParamsAtom from "./atom";
+import searchParamsAtom from "recoil/searchParams/atom";
 import locationAtom from "recoil/location";
 
-const searchParamsResults = selector({
+const searchResults = selector({
   key: "searchParamsResults",
   get: async ({ get }) => {
     const data = await DBQuery({
@@ -22,7 +22,7 @@ async function DBQuery(data) {
   return sampleRecipesData;
 }
 
-export default searchParamsResults;
+export default searchResults;
 
 const sampleRecipesData = [
   {
@@ -76,7 +76,7 @@ const sampleRecipesData = [
     ],
   },
   {
-    id: 0,
+    id: 1,
     name: "Produce 2 Recipe Name",
     rating: 5,
     score: 80,
