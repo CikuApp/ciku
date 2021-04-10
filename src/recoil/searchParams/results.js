@@ -1,10 +1,14 @@
 import { selector } from "recoil";
 import searchParamsAtom from "./atom";
+import locationAtom from "recoil/location";
 
 const searchParamsResults = selector({
   key: "searchParamsResults",
   get: async ({ get }) => {
-    const data = await DBQuery({ searchParams: get(searchParamsAtom) });
+    const data = await DBQuery({
+      searchParams: get(searchParamsAtom),
+      location: get(locationAtom),
+    });
     return data;
   },
 });

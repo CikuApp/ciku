@@ -2,21 +2,24 @@ import React, { Suspense } from "react";
 import { RecoilRoot } from "recoil";
 
 import Nav from "components/Nav/Nav";
+import HomePage from "components/HomePage/HomePage";
 import RecipePage from "components/RecipePage/RecipePage";
 import LocationPage from "components/LocationPage/LocationPage";
+import SearchResultsPage from "components/SearchResultsPage/SearchResultsPage";
+import ShoppingListPage from "components/ShoppingListPage/ShoppingListPage";
 
 function App() {
   return (
     <RecoilRoot>
       <Nav />
+      {/* <SearchBar /> */}
       <Suspense fallback={<div>loading</div>}>
         {/* <LocationPage /> */}
         <RecipePage recipeObject={sampleRecipeObject} />
+        {/* <SearchResultsPage /> */}
+        {/* <HomePage /> */}
+        <ShoppingListPage />
       </Suspense>
-      {/* <SearchBar />
-      <Suspense fallback={<div>loading...</div>}>
-        <SearchResults />
-      </Suspense> */}
     </RecoilRoot>
   );
 }

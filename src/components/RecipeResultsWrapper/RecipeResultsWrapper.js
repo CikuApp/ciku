@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
 import { searchParamsResults } from "recoil/searchParams";
 import RecipeCard from "components/RecipeCard/RecipeCard";

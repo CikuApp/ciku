@@ -1,9 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useRecoilValue, useRecoilState } from "recoil";
 
 import locationAtom, { locationImage } from "recoil/location";
 import ProduceWrapper from "components/LocationPage/ProduceWrapper";
+import FindRecipesButton from "components/FindRecipesButton/FindRecipesButton";
 
 function LocationPage() {
   const location = useRecoilValue(locationAtom);
@@ -21,6 +21,7 @@ function LocationPage() {
         </p>
       </section>
       <ProduceWrapper />
+      <FindRecipesButton />
     </div>
   );
 }

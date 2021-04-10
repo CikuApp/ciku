@@ -1,11 +1,13 @@
 import React from "react";
 
-import SearchResultsWrapper from "components/SearchResultsPage/SearchResultsWrapper";
+import SearchResultsFilter from "components/SearchResultsPage/SearchResultsFilter";
+import RecipeResultsWrapper from "components/RecipeResultsWrapper/RecipeResultsWrapper";
 
 function SearchResultsPage() {
   return (
     <div>
-      <SearchResultsWrapper />
+      <SearchResultsFilter />
+      <RecipeResultsWrapper />
     </div>
   );
 }

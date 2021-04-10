@@ -2,7 +2,7 @@ import { selector } from "recoil";
 import locationAtom from "./atom";
 
 const locationProduce = selector({
-  key: "loationProduce",
+  key: "locationProduce",
   get: async ({ get }) => {
     const data = await DBQuery(get(locationAtom));
     return data;
