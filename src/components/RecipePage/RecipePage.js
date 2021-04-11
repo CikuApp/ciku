@@ -9,7 +9,6 @@ import RecipeIngredients from "components/RecipePage/RecipeIngredients";
 import RecipeDirections from "components/RecipePage/RecipeDirections";
 import SaveRecipeButton from "components/RecipePage/SaveRecipeButton";
 import ShareRecipeButton from "components/RecipePage/ShareRecipeButton";
-import AddIngredientsButton from "components/RecipePage/AddIngredientsButton";
 import UserReview from "components/RecipePage/UserReview";
 import RecipeReviews from "components/RecipePage/RecipeReviews";
 
@@ -35,7 +34,6 @@ function RecipePage() {
       </div>
       <div className="my-16">
         <RecipeIngredients recipeIngredients={selectedRecipe.ingredients} />
-        <AddIngredientsButton recipeIngredients={selectedRecipe.ingredients} />
       </div>
       <RecipeDirections recipeDirections={selectedRecipe.directions} />
       <UserReview recipeId={selectedRecipe.id} />

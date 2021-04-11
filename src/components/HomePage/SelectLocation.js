@@ -22,7 +22,7 @@ function SelectLocation() {
   };
 
   if (isRedirected) {
-    return <Redirect to={`locations/${selectedLocation}`} />;
+    return <Redirect push to={`locations/${selectedLocation}`} />;
   } else {
     return (
       <form onSubmit={handleSubmit}>

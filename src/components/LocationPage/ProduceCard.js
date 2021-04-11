@@ -10,7 +10,7 @@ function ProduceCard({ produceObject }) {
   const [searchParams, setSearchParams] = useRecoilState(searchParamsAtom);
 
   const isInSearchParams = () => {
-    return searchParams.contains(produceObject.name) ? true : false;
+    return searchParams.includes(produceObject.name) ? true : false;
   };
 
   const handleClick = () => {
@@ -24,7 +24,7 @@ function ProduceCard({ produceObject }) {
   };
 
   return (
-    <div className="w-96 h-12 my-4 flex-shrink-0 flex items-center border border-gray-500">
+    <div className="w-72 h-12 my-4 flex-shrink-0 flex items-center border border-gray-500">
       <input
         type="checkbox"
         defaultChecked={isInSearchParams}

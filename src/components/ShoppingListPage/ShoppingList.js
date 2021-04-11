@@ -5,7 +5,7 @@ import { userShoppingList } from "recoil/user";
 
 import { Text } from "components/Presentation";
 
-function ShoppingList({}) {
+function ShoppingList() {
   const shoppingList = useRecoilValue(userShoppingList);
   return (
     <div>
@@ -13,14 +13,9 @@ function ShoppingList({}) {
       <ul className="my-8">
         {shoppingList.map((item) => {
           return (
-            <li key={item.name} className="flex my-4">
-              <input
-                type="checkbox"
-                id={item.name}
-                name={item.name}
-                className="mr-4"
-              />
-              <label htmlFor={item.name}>{item.name}</label>
+            <li key={item} className="flex my-4">
+              <input type="checkbox" id={item} name={item} className="mr-4" />
+              {item}
             </li>
           );
         })}

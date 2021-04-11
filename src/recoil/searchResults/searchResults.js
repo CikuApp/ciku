@@ -15,9 +15,9 @@ const searchResults = selector({
 
 // Fake DB call
 async function DBQuery(data) {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 2000);
-  });
+  // await new Promise((resolve) => {
+  //   setTimeout(resolve, 2000);
+  // });
 
   return sampleRecipesData;
 }
