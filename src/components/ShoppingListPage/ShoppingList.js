@@ -1,12 +1,12 @@
 import React from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
 
-import shoppingListAtom from "recoil/shoppingList";
+import { userShoppingList } from "recoil/user";
 
 import { Text } from "components/Presentation";
 
 function ShoppingList({}) {
-  const shoppingList = useRecoilValue(shoppingListAtom);
+  const shoppingList = useRecoilValue(userShoppingList);
   return (
     <div>
       <Text type="h2">Shopping List ({shoppingList.length})</Text>
