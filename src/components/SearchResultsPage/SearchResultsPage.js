@@ -3,12 +3,16 @@ import React from "react";
 import SearchResultsFilter from "components/SearchResultsPage/SearchResultsFilter";
 import RecipeResultsWrapper from "components/RecipeResultsWrapper/RecipeResultsWrapper";
 
+import { PageContainer } from "components/Presentation";
+
 function SearchResultsPage() {
   return (
-    <div>
+    <main>
       <SearchResultsFilter />
-      <RecipeResultsWrapper />
-    </div>
+      <PageContainer>
+        <RecipeResultsWrapper />
+      </PageContainer>
+    </main>
   );
 }
 

@@ -8,9 +8,9 @@ function RecipeResultsWrapper() {
   const recipeResults = useRecoilValue(searchResults);
 
   return (
-    <section>
+    <section className="flex flex-wrap justify-between">
       {recipeResults.map((recipeObject) => {
-        return <RecipeCard recipeObject={recipeObject} />;
+        return <RecipeCard key={recipeObject.id} recipeObject={recipeObject} />;
       })}
     </section>
   );

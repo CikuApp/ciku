@@ -9,6 +9,8 @@ import SearchResultsPage from "components/SearchResultsPage/SearchResultsPage";
 import ShoppingListPage from "components/ShoppingListPage/ShoppingListPage";
 import RecipePage from "components/RecipePage/RecipePage";
 
+import { PageContainer } from "components/Presentation";
+
 // * Figure out how we're implementing the search bar
 
 function App() {
@@ -19,19 +21,28 @@ function App() {
       <Suspense fallback={<div>loading</div>}>
         <Switch>
           <Route exact path="/">
-            <HomePage />
+            <PageContainer>
+              <HomePage />
+            </PageContainer>
           </Route>
-          <Route exact path="/location">
+          <Route path="/locations/:locationName">
             <LocationPage />
           </Route>
+          {/* <Route path="/locations">
+            <LocationPage />
+          </Route> */}
           <Route path="/recipes/:recipeId">
-            <RecipePage />
+            <PageContainer>
+              <RecipePage />
+            </PageContainer>
           </Route>
           <Route path="/recipes">
             <SearchResultsPage />
           </Route>
           <Route exact path="/shopping-list">
-            <ShoppingListPage />
+            <PageContainer>
+              <ShoppingListPage />
+            </PageContainer>
           </Route>
         </Switch>
       </Suspense>

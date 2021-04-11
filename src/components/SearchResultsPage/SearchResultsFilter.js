@@ -7,15 +7,41 @@ import { useRecoilValue, useRecoilState } from "recoil";
 
 function SearchResultsFilter() {
   return (
-    <section>
-      <label htmlFor="ingredients">Ingredients</label>
-      <select name="ingredients" id="ingredients"></select>
-      <label htmlFor="dish-type">Dish Type</label>
-      <select name="dish-type" id="dish-type"></select>
-      <label htmlFor="cuisine">Cuisine</label>
-      <select name="cuisine" id="cuisine"></select>
-      <label htmlFor="dietary-concerns">Dietary Concerns</label>
-      <select name="dietary-concerns" id="dietary-concerns"></select>
+    <section className="h-12 w-full bg-gray-200">
+      <div className="w-8/12 h-full mx-auto flex items-center">
+        <label htmlFor="ingredients"></label>
+        <select
+          name="ingredients"
+          id="ingredients"
+          className="w-48 py-2 pl-0 pr-4 appearance-none bg-transparent"
+        >
+          <option value="">Ingredients</option>
+        </select>
+        <label htmlFor="dish-type"></label>
+        <select
+          name="dish-type"
+          id="dish-type"
+          className="w-48 py-2 px-4 appearance-none bg-transparent"
+        >
+          <option value="">Dish Type</option>
+        </select>
+        <label htmlFor="cuisine"></label>
+        <select
+          name="cuisine"
+          id="cuisine"
+          className="w-48 py-2 px-4 appearance-none bg-transparent"
+        >
+          <option value="">Cuisine</option>
+        </select>
+        <label htmlFor="dietary-concerns"></label>
+        <select
+          name="dietary-concerns"
+          id="dietary-concerns"
+          className="w-48 py-2 px-4 appearance-none bg-transparent"
+        >
+          <option value="">Dietary Concerns</option>
+        </select>
+      </div>
     </section>
   );
 }

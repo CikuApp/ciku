@@ -4,6 +4,8 @@ import { useRecoilState } from "recoil";
 
 import shoppingListAtom from "recoil/shoppingList";
 
+import { Button } from "components/Presentation";
+
 function AddIngredientsButton({ recipeIngredients }) {
   const [shoppingList, setShoppingList] = useRecoilState(shoppingListAtom);
 
@@ -11,7 +13,11 @@ function AddIngredientsButton({ recipeIngredients }) {
     setShoppingList((prevState) => [...prevState, ...recipeIngredients]);
   };
 
-  return <button onClick={handleSave}>Add Ingredients to Shopping List</button>;
+  return (
+    <Button type="secondary" size="sm" onClick={handleSave}>
+      Add Ingredients to Shopping List
+    </Button>
+  );
 }
 
 export default AddIngredientsButton;

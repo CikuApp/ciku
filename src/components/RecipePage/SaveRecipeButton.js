@@ -4,6 +4,8 @@ import { useRecoilState } from "recoil";
 
 import savedRecipesAtom from "recoil/savedRecipes";
 
+import { Button } from "components/Presentation";
+
 function SaveRecipeButton({ recipeId }) {
   const [savedRecipes, setSavedRecipes] = useRecoilState(savedRecipesAtom);
 
@@ -11,7 +13,11 @@ function SaveRecipeButton({ recipeId }) {
     setSavedRecipes((prevState) => [...prevState, recipeId]);
   };
 
-  return <button onClick={handleSave}>Save Recipe</button>;
+  return (
+    <Button size="sm" type="secondary" onClick={handleSave}>
+      Save Recipe
+    </Button>
+  );
 }
 
 export default SaveRecipeButton;

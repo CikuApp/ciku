@@ -29,10 +29,14 @@ function RecipePage() {
         recipeIamge={selectedRecipe.image}
         recipeTime={selectedRecipe.time}
       />
-      <SaveRecipeButton recipeId={selectedRecipe.id} />
-      <ShareRecipeButton />
-      <RecipeIngredients recipeIngredients={selectedRecipe.ingredients} />
-      <AddIngredientsButton recipeIngredients={selectedRecipe.ingredients} />
+      <div className="w-6/12 flex justify-between">
+        <SaveRecipeButton recipeId={selectedRecipe.id} />
+        <ShareRecipeButton recipeId={selectedRecipe.id} />
+      </div>
+      <div className="my-16">
+        <RecipeIngredients recipeIngredients={selectedRecipe.ingredients} />
+        <AddIngredientsButton recipeIngredients={selectedRecipe.ingredients} />
+      </div>
       <RecipeDirections recipeDirections={selectedRecipe.directions} />
       <UserReview recipeId={selectedRecipe.id} />
       <RecipeReviews recipeReviews={selectedRecipe.reviews} />

@@ -4,6 +4,8 @@ import { useRecoilValue, useRecoilState } from "recoil";
 
 import searchParamsAtom from "recoil/searchParams";
 
+import { Text } from "components/Presentation";
+
 function ProduceCard({ produceObject }) {
   const [searchParams, setSearchParams] = useRecoilState(searchParamsAtom);
 
@@ -12,7 +14,7 @@ function ProduceCard({ produceObject }) {
   };
 
   const handleClick = () => {
-    if (searchParams.contains(produceObject.name)) {
+    if (searchParams.includes(produceObject.name)) {
       setSearchParams((prevState) => {
         return [...prevState.filter((item) => item !== produceObject.name)];
       });
@@ -22,14 +24,19 @@ function ProduceCard({ produceObject }) {
   };
 
   return (
-    <div>
+    <div className="w-96 h-12 my-4 flex-shrink-0 flex items-center border border-gray-500">
       <input
         type="checkbox"
         defaultChecked={isInSearchParams}
         onClick={handleClick}
+        className="mx-4"
       />
-      <img src={produceObject.image} alt={produceObject.name} />
-      <p>{produceObject.name}</p>
+      <img
+        src={produceObject.image}
+        alt=""
+        className="h-full w-12 mr-4 bg-gray-100"
+      />
+      <Text type="h5">{produceObject.name}</Text>
     </div>
   );
 }

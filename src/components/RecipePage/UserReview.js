@@ -5,11 +5,19 @@ import { useRecoilValue, useRecoilState } from "recoil";
 import userAtom from "recoil/user";
 import WriteReviewButton from "./WriteReviewButton";
 
+import { Icon } from "components/Presentation";
+
 function UserReview({ recipeId }) {
   const user = useRecoilValue(userAtom);
   return (
-    <section>
-      <img src={user.icon} alt={user.name} />
+    <section className="my-16 flex">
+      <Icon
+        size="md"
+        shape="circle"
+        className="mr-8"
+        src={user.icon}
+        alt={user.name}
+      />
       <WriteReviewButton />
     </section>
   );

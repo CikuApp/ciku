@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 
 import StarRating from "components/StarRating/StarRating";
 
+import { Icon, Text } from "components/Presentation";
+
+import defaultIcon from "assets/images/user.png";
+
 function RecipeReviews({ recipeReviews }) {
   const getRatingComment = (rating) => {
     if (rating === 5) {
@@ -12,14 +16,27 @@ function RecipeReviews({ recipeReviews }) {
 
   return (
     <article>
+      <Text type="h2">Reviews ({recipeReviews.length})</Text>
       {recipeReviews.map((reviewObject) => {
         return (
-          <section>
-            <img src={reviewObject.icon} alt={reviewObject.name}></img>
-            <h3>{reviewObject.name}</h3>
-            <StarRating numberRating={reviewObject.rating} />
-            <p>{getRatingComment(reviewObject.rating)}</p>
-            <p>{reviewObject.review}</p>
+          <section key={reviewObject.id} className="my-16">
+            <div className="flex items-center">
+              <Icon
+                src={defaultIcon}
+                alt={reviewObject.name}
+                size="sm"
+                shape="circle"
+                className="mr-4"
+              />
+              <Text type="h3">{reviewObject.name}</Text>
+            </div>
+            <div className="flex my-4">
+              <StarRating numberRating={reviewObject.rating} />
+              <Text type="h5" className="font-bold">
+                {getRatingComment(reviewObject.rating)}
+              </Text>
+            </div>
+            <Text>{reviewObject.review}</Text>
           </section>
         );
       })}
