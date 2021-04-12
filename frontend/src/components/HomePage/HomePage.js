@@ -12,7 +12,7 @@ function HomePage() {
     <div className="w-full">
       <section className="flex mb-20">
         <img src="" alt="" className="w-6/12 h-96 bg-gray-100" />
-        <div className="flex flex-col justify-center ml-8">
+        <div className="w-6/12 flex flex-col justify-center ml-8">
           <Text type="h1">Learn to eat more sustainably.</Text>
           <Text type="p" className="my-8">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

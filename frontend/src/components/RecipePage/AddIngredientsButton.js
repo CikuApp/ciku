@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useRecoilState } from "recoil";
 
-import shoppingListAtom from "recoil/shoppingList";
+import { userShoppingList } from "recoil/user";
 
 import { Button } from "components/Presentation";
 
 function AddIngredientsButton({ recipeIngredients }) {
-  const [shoppingList, setShoppingList] = useRecoilState(shoppingListAtom);
+  const [shoppingList, setShoppingList] = useRecoilState(userShoppingList);
 
   const handleSave = () => {
     setShoppingList((prevState) => [...prevState, ...recipeIngredients]);

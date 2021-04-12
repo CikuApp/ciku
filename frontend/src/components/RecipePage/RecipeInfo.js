@@ -13,10 +13,7 @@ function RecipeInfo({
   recipeTime,
 }) {
   const getTotalTime = (timeObject) => {
-    return `${timeObject.reduce(
-      (prev, curr) => prev.time + curr.time,
-      0
-    )} mins`;
+    return `${timeObject.reduce((prev, curr) => prev + curr.time, 0)} mins`;
   };
 
   return (
@@ -35,7 +32,7 @@ function RecipeInfo({
         {recipeTime.map((timeObject) => {
           return (
             <li>
-              {timeObject.method}: {timeObject.time} {timeObject.units}
+              {timeObject.method}: {timeObject.time} {timeObject.unit}
             </li>
           );
         })}

@@ -11,9 +11,9 @@ const locationProduce = selector({
 
 // Fake DB call
 async function DBQuery(location) {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 2000);
-  });
+  // await new Promise((resolve) => {
+  //   setTimeout(resolve, 1000);
+  // });
 
   const sampleProduceArray = [
     {
