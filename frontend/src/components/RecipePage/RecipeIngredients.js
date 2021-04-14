@@ -46,16 +46,14 @@ function RecipeIngredients({ recipeIngredients }) {
       <ul className="my-8" ref={ingredientsListRef}>
         {recipeIngredients.map((ingredient) => {
           return (
-            <li className="flex items-center my-4" key={ingredient.name}>
+            <li className="flex items-center my-4" key={ingredient}>
               <Checkbox
-                value={ingredient.name}
-                checked={inShoppingList(ingredient.name)}
-                handleClick={() => handleClick(ingredient.name)}
+                value={ingredient}
+                checked={inShoppingList(ingredient)}
+                handleClick={() => handleClick(ingredient)}
                 className="mr-8"
               />
-              <Text type="h4">
-                {ingredient.quantity} {ingredient.name}
-              </Text>
+              <Text type="h4">{ingredient}</Text>
             </li>
           );
         })}

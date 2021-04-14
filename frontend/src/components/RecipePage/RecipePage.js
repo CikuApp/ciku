@@ -17,17 +17,19 @@ function RecipePage() {
   const selectedRecipe = useRecoilValue(searchResults).find(
     (recipe) => recipe.id === +recipeId
   );
-  console.log(selectedRecipe);
+
+  // const recipeIngredients = jsonStringToArray(selectedRecipe.ingredients);
+  // const recipeDirections = jsonStringToArray(selectedRecipe.steps);
 
   return (
     <div>
       <RecipeInfo
         recipeId={selectedRecipe.id}
         recipeName={selectedRecipe.name}
-        recipeRating={selectedRecipe.rating}
-        recipeScore={selectedRecipe.score}
-        recipeIamge={selectedRecipe.image}
-        recipeTime={selectedRecipe.time}
+        // recipeRating={selectedRecipe.rating}
+        // recipeScore={selectedRecipe.score}
+        // recipeImage={selectedRecipe.image}
+        recipeTime={selectedRecipe.minutes}
       />
       <div className="w-6/12 flex justify-between">
         <SaveRecipeButton recipe={selectedRecipe} />
@@ -38,7 +40,7 @@ function RecipePage() {
       </div>
       <RecipeDirections recipeDirections={selectedRecipe.directions} />
       <UserReview recipeId={selectedRecipe.id} />
-      <RecipeReviews recipeReviews={selectedRecipe.reviews} />
+      {/* <RecipeReviews recipeReviews={selectedRecipe.reviews} /> */}
     </div>
   );
 }
