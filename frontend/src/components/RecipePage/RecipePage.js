@@ -17,6 +17,7 @@ function RecipePage() {
   const selectedRecipe = useRecoilValue(searchResults).find(
     (recipe) => recipe.id === +recipeId
   );
+  console.log(selectedRecipe);
 
   return (
     <div>
@@ -29,8 +30,8 @@ function RecipePage() {
         recipeTime={selectedRecipe.time}
       />
       <div className="w-6/12 flex justify-between">
-        <SaveRecipeButton recipeId={selectedRecipe.id} />
-        <ShareRecipeButton recipeId={selectedRecipe.id} />
+        <SaveRecipeButton recipe={selectedRecipe} />
+        <ShareRecipeButton recipe={selectedRecipe} />
       </div>
       <div className="my-16">
         <RecipeIngredients recipeIngredients={selectedRecipe.ingredients} />

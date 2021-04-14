@@ -2,21 +2,22 @@ import React, { useRef } from "react";
 import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { IoCheckmarkSharp } from "react-icons/io5";
 
 import { userShoppingList } from "recoil/user";
 
-import { Text, Button } from "components/Presentation";
+import { Text, Button, Checkbox } from "components/Presentation";
 
 function RecipeIngredients({ recipeIngredients }) {
   const [shoppingList, setShoppingList] = useRecoilState(userShoppingList);
   const ingredientsListRef = useRef(null);
 
-  const handleClick = (e) => {
+  const handleClick = (ingredientName) => {
     setShoppingList((prevState) => {
-      if (prevState.includes(e.target.value)) {
-        return prevState.filter((item) => item !== e.target.value);
+      if (prevState.includes(ingredientName)) {
+        return prevState.filter((item) => item !== ingredientName);
       } else {
-        return [...prevState, e.target.value];
+        return [...prevState, ingredientName];
       }
     });
   };
@@ -45,21 +46,25 @@ function RecipeIngredients({ recipeIngredients }) {
       <ul className="my-8" ref={ingredientsListRef}>
         {recipeIngredients.map((ingredient) => {
           return (
-            <li className="my-4" key={ingredient.name}>
-              <input
-                type="checkbox"
-                className="mr-4"
-                onClick={handleClick}
+            <li className="flex items-center my-4" key={ingredient.name}>
+              <Checkbox
                 value={ingredient.name}
-                defaultChecked={inShoppingList(ingredient.name)}
+                checked={inShoppingList(ingredient.name)}
+                handleClick={() => handleClick(ingredient.name)}
+                className="mr-8"
               />
-              {ingredient.quantity} {ingredient.name}
+              <Text type="h4">
+                {ingredient.quantity} {ingredient.name}
+              </Text>
             </li>
           );
         })}
       </ul>
       <div className="flex items-center justify-between">
-        <Text type="h6">{getInListCount() || "0"} ingredients added</Text>
+        <Text type="h4" className="flex items-center">
+          <IoCheckmarkSharp className="mr-4" />
+          {getInListCount() || "0"} ingredients added
+        </Text>
         <Link to="/shopping-list">
           <Button type="secondary" size="sm">
             View Shopping List

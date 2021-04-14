@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { IoStarHalf, IoStar } from "react-icons/io5";
 
-function StarRating({ numberRating }) {
+function StarRating({ numberRating, className }) {
   const ratingToStars = (rating) => {
     rating = +rating;
     let fullStar = Math.floor(rating);
@@ -10,13 +11,15 @@ function StarRating({ numberRating }) {
     return stars;
   };
 
+  const classNames = `flex ${className}`;
+
   return (
-    <section>
+    <section className={classNames}>
       {ratingToStars(numberRating).map((star) => {
-        star === 1 ? (
-          <img alt="full-star">star</img>
+        return star === 1 ? (
+          <IoStar className="text-gray-400 text-xl mr-1" />
         ) : (
-          <img alt="half-star">half-star</img>
+          <IoStarHalf className="text-gray-400" />
         );
       })}
     </section>

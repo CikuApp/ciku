@@ -3,19 +3,24 @@ import { useRecoilValue, useRecoilState } from "recoil";
 
 import { userShoppingList } from "recoil/user";
 
-import { Text } from "components/Presentation";
+import { Text, Checkbox } from "components/Presentation";
 
 function ShoppingList() {
   const shoppingList = useRecoilValue(userShoppingList);
   return (
     <div>
       <Text type="h2">Shopping List ({shoppingList.length})</Text>
-      <ul className="my-8">
+      <ul className="my-12">
         {shoppingList.map((item) => {
           return (
             <li key={item} className="flex my-4">
-              <input type="checkbox" id={item} name={item} className="mr-4" />
-              {item}
+              <Checkbox
+                value={item}
+                checked={false}
+                handleClick={null}
+                className="mr-8"
+              />
+              <Text type="h4">{item}</Text>
             </li>
           );
         })}
