@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -11,12 +11,15 @@ import { Text, Button, Checkbox } from "components/Presentation";
 function RecipeIngredients({ recipeIngredients }) {
   const [shoppingList, setShoppingList] = useRecoilState(userShoppingList);
   const ingredientsListRef = useRef(null);
+  const [localCount, setLocalCount] = useState(0);
 
   const handleClick = (ingredientName) => {
     setShoppingList((prevState) => {
       if (prevState.includes(ingredientName)) {
+        setLocalCount((prev) => prev - 1);
         return prevState.filter((item) => item !== ingredientName);
       } else {
+        setLocalCount((prev) => prev + 1);
         return [...prevState, ingredientName];
       }
     });
@@ -30,15 +33,15 @@ function RecipeIngredients({ recipeIngredients }) {
     }
   };
 
-  const getInListCount = () => {
+  useEffect(() => {
     const ingredientsList = ingredientsListRef.current;
     if (ingredientsList) {
       let checked = ingredientsList.querySelectorAll(
         "input[type=checkbox]:checked"
       );
-      return checked.length;
+      setLocalCount(checked.length);
     }
-  };
+  }, []);
 
   return (
     <section className="w-1/2 my-16">
@@ -61,7 +64,7 @@ function RecipeIngredients({ recipeIngredients }) {
       <div className="flex items-center justify-between">
         <Text type="h4" className="flex items-center">
           <IoCheckmarkSharp className="mr-4" />
-          {getInListCount() || "0"} ingredients added
+          {localCount} ingredients added
         </Text>
         <Link to="/shopping-list">
           <Button type="secondary" size="sm">
