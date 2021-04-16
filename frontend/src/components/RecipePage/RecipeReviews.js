@@ -28,15 +28,20 @@ function RecipeReviews({ recipeReviews }) {
                 shape="circle"
                 className="mr-4"
               />
-              <Text type="h3">{reviewObject.name}</Text>
+              <Text type="h4" className="font-bold">
+                {reviewObject.name}
+              </Text>
             </div>
-            <div className="flex my-4">
-              <StarRating numberRating={reviewObject.rating} />
-              <Text type="h5" className="font-bold">
+            <div className="flex items-center my-4">
+              <StarRating
+                numberRating={reviewObject.rating}
+                className="mr-12"
+              />
+              <Text type="p" className="font-bold">
                 {getRatingComment(reviewObject.rating)}
               </Text>
             </div>
-            <Text>{reviewObject.review}</Text>
+            <Text type="p">{reviewObject.review}</Text>
           </section>
         );
       })}

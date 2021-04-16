@@ -7,8 +7,8 @@ const userShoppingList = selector({
     const { shoppingList } = get(userAtom);
     return shoppingList;
   },
-  set: ({ set }, newValue) => {
-    set(userAtom, { shoppingList: newValue });
+  set: ({ set, get }, newValue) => {
+    set(userAtom, { ...get(userAtom), shoppingList: newValue });
   },
 });
 

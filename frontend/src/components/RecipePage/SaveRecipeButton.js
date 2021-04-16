@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useRecoilState } from "recoil";
 
-import savedRecipesAtom from "recoil/savedRecipes";
+import { userSavedRecipes } from "recoil/user";
 
 import { Button } from "components/Presentation";
 
-function SaveRecipeButton({ recipeId }) {
-  const [savedRecipes, setSavedRecipes] = useRecoilState(savedRecipesAtom);
+function SaveRecipeButton({ recipe }) {
+  const [savedRecipes, setSavedRecipes] = useRecoilState(userSavedRecipes);
 
   const handleSave = () => {
-    setSavedRecipes((prevState) => [...prevState, recipeId]);
+    setSavedRecipes((prevState) => [...prevState, recipe]);
   };
 
   return (

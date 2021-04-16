@@ -10,14 +10,16 @@ import { Text } from "components/Presentation";
 function RecipeCard({ recipeObject }) {
   return (
     <Link to={`/recipes/${recipeObject.id}`}>
-      <article className="w-52 h-72 flex flex-col my-4 border">
+      <article className="w-64 h-80 flex flex-col my-4 border">
         <img
           src={recipeObject.image}
           alt={recipeObject.name}
-          className="bg-gray-100 w-52 h-52"
+          className="bg-gray-100 w-64 h-64"
         />
-        <Text type="h3">{recipeObject.name}</Text>
-        <StarRating numberRating={recipeObject.rating} />
+        <Text type="p" className="overflow-ellipsis">
+          {recipeObject.name}
+        </Text>
+        {/* <StarRating numberRating={recipeObject.rating} /> */}
       </article>
     </Link>
   );

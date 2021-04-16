@@ -18,26 +18,29 @@ function RecipePage() {
     (recipe) => recipe.id === +recipeId
   );
 
+  // const recipeIngredients = jsonStringToArray(selectedRecipe.ingredients);
+  // const recipeDirections = jsonStringToArray(selectedRecipe.steps);
+
   return (
     <div>
       <RecipeInfo
         recipeId={selectedRecipe.id}
         recipeName={selectedRecipe.name}
-        recipeRating={selectedRecipe.rating}
-        recipeScore={selectedRecipe.score}
-        recipeIamge={selectedRecipe.image}
-        recipeTime={selectedRecipe.time}
+        // recipeRating={selectedRecipe.rating}
+        // recipeScore={selectedRecipe.score}
+        // recipeImage={selectedRecipe.image}
+        recipeTime={selectedRecipe.minutes}
       />
       <div className="w-6/12 flex justify-between">
-        <SaveRecipeButton recipeId={selectedRecipe.id} />
-        <ShareRecipeButton recipeId={selectedRecipe.id} />
+        <SaveRecipeButton recipe={selectedRecipe} />
+        <ShareRecipeButton recipe={selectedRecipe} />
       </div>
       <div className="my-16">
         <RecipeIngredients recipeIngredients={selectedRecipe.ingredients} />
       </div>
       <RecipeDirections recipeDirections={selectedRecipe.directions} />
       <UserReview recipeId={selectedRecipe.id} />
-      <RecipeReviews recipeReviews={selectedRecipe.reviews} />
+      {/* <RecipeReviews recipeReviews={selectedRecipe.reviews} /> */}
     </div>
   );
 }

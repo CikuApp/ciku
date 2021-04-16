@@ -12,31 +12,39 @@ function RecipeInfo({
   recipeScore,
   recipeTime,
 }) {
-  const getTotalTime = (timeObject) => {
-    return `${timeObject.reduce((prev, curr) => prev + curr.time, 0)} mins`;
-  };
+  // const getTotalTime = (timeObject) => {
+  //   return `${timeObject.reduce((prev, curr) => prev + curr.time, 0)} mins`;
+  // };
 
   return (
     <section className="grid grid-flow-row grid-cols-12">
       <div className="col-span-12 my-8">
         <Text type="h1">{recipeName}</Text>
-        <StarRating numberRating={recipeRating} />
-        <Text type="h3">Sustainability Score: {recipeScore}</Text>
+        {/* <StarRating numberRating={recipeRating} className="my-6" /> */}
+        {/* <Text type="h3">Sustainability Score: {recipeScore}</Text> */}
       </div>
       <img
         src={recipeImage}
         alt={recipeName}
-        className="col-span-6 h-80 mb-8 border bg-gray-200"
+        className="col-span-6 h-112 mb-8 border bg-gray-200"
       ></img>
-      <ul className="h-40 col-start-8 col-span-3 flex flex-col justify-between p-8 border border-black ">
-        {recipeTime.map((timeObject) => {
+      <ul className="h-1/2 col-start-8 col-span-3 flex flex-col justify-between p-8 border border-black ">
+        {/* {recipeTime.map((timeObject) => {
           return (
             <li>
-              {timeObject.method}: {timeObject.time} {timeObject.unit}
+              <Text type="p">
+                <span className="mr-2 font-bold">{timeObject.method}:</span>
+                {timeObject.time} {timeObject.unit}
+              </Text>
             </li>
           );
-        })}
-        <li>Total: {getTotalTime(recipeTime)}</li>
+        })} */}
+        <li>
+          <Text type="p">
+            <span className="mr-2 font-bold">Total:</span>
+            {recipeTime} mins
+          </Text>
+        </li>
       </ul>
     </section>
   );
@@ -46,8 +54,8 @@ export default RecipeInfo;
 
 RecipeInfo.propTypes = {
   recipeName: PropTypes.string,
-  recipeRating: PropTypes.number,
-  recipeScore: PropTypes.number,
-  recipeImage: PropTypes.string,
-  recipeTime: PropTypes.array,
+  // recipeRating: PropTypes.number,
+  // recipeScore: PropTypes.number,
+  // recipeImage: PropTypes.string,
+  // recipeTime: PropTypes.array,
 };

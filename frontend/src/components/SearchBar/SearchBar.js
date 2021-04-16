@@ -15,13 +15,14 @@ function SearchBar() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-1/2 h-1/2 flex border border-gray-500"
+      className="w-1/2 h-1/2 flex border border-black"
     >
       <input
         type="text"
         onChange={(e) => setSearchInput(e.target.value)}
         value={searchInput}
-        className="flex-grow bg-gray-200"
+        className="flex-grow pl-4 text-sm bg-gray-200"
+        placeholder="Find A Recipe"
       />
       <button type="submit" className="bg-gray-200 px-4">
         Search
