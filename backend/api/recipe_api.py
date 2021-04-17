@@ -59,6 +59,8 @@ def query_df(query, k):
 async def query_recipes(query: str, count: int = 5):
     recipe_count, recipes = query_df(query, count)
     recipes['tags'] = recipes['tags'].apply(lambda x: literal_eval(str(x)))
+    recipes['ingredients'] = recipes['ingredients'].apply(lambda x: literal_eval(str(x)))
+    recipes['steps'] = recipes['steps'].apply(lambda x: literal_eval(str(x)))
     print('query: {}, recipe count: {}'.format(query, recipe_count))
     return recipes.to_json(orient="records")
 
