@@ -1,15 +1,24 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import searchParamsAtom from "recoil/searchParams";
+import searchRequestedAtom from "recoil/searchRequested";
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState("");
   const [searchParams, setSearchParams] = useRecoilState(searchParamsAtom);
+  const [searchRequested, setSearchRequested] = useRecoilState(
+    searchRequestedAtom
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchParams((prevState) => [...prevState, searchInput]);
-    setSearchInput("");
+    // prevent empty search
+    if (searchInput.length) {
+      // completely overwrite previous search terms
+      setSearchParams([searchInput]);
+      setSearchInput("");
+      setSearchRequested(true);
+    }
   };
 
   return (

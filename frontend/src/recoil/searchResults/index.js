@@ -1,5 +1,6 @@
 import atom from "./searchResults";
 import searchResultsWithFilter from "./withFilter";
+import searchResultsAsArray from "./asArray";
 
-export { searchResultsWithFilter };
+export { searchResultsWithFilter, searchResultsAsArray };
 export default atom;

@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { useParams } from "react-router-dom";
 
-import searchResults from "recoil/searchResults";
+import { searchResultsAsArray } from "recoil/searchResults";
 
 import RecipeInfo from "components/RecipePage/RecipeInfo";
 import RecipeIngredients from "components/RecipePage/RecipeIngredients";
@@ -14,12 +14,9 @@ import RecipeReviews from "components/RecipePage/RecipeReviews";
 
 function RecipePage() {
   let { recipeId } = useParams();
-  const selectedRecipe = useRecoilValue(searchResults).find(
+  const selectedRecipe = useRecoilValue(searchResultsAsArray).find(
     (recipe) => recipe.id === +recipeId
   );
-
-  // const recipeIngredients = jsonStringToArray(selectedRecipe.ingredients);
-  // const recipeDirections = jsonStringToArray(selectedRecipe.steps);
 
   return (
     <div>

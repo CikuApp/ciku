@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useRecoilValue, useRecoilState } from "recoil";
 
 import locationAtom from "recoil/location";
+import { stateNames, formatStateName } from "components/HomePage/stateNames";
 
 function SelectLocation() {
   const [location, setLocation] = useRecoilState(locationAtom);
@@ -35,7 +36,13 @@ function SelectLocation() {
           className="w-48 py-2 px-4 appearance-none"
         >
           <option value="">Select A State</option>
-          <option value="california">California</option>
+          {stateNames.map((name) => {
+            return (
+              <option value={name} key={name}>
+                {formatStateName(name)}
+              </option>
+            );
+          })}
         </select>
         <button type="submit">Go</button>
       </form>

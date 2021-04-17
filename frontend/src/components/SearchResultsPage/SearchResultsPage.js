@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
+
+import searchRequestedAtom from "recoil/searchRequested";
 
 import SearchResultsFilter from "components/SearchResultsPage/SearchResultsFilter";
 import RecipeResultsWrapper from "components/RecipeResultsWrapper/RecipeResultsWrapper";
@@ -6,6 +9,14 @@ import RecipeResultsWrapper from "components/RecipeResultsWrapper/RecipeResultsW
 import { PageContainer } from "components/Presentation";
 
 function SearchResultsPage() {
+  const [searchRequested, setSearchRequested] = useRecoilState(
+    searchRequestedAtom
+  );
+
+  useEffect(() => {
+    setSearchRequested(false);
+  }, [setSearchRequested]);
+
   return (
     <main>
       <SearchResultsFilter />

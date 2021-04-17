@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useRecoilValue, useRecoilState } from "recoil";
 
@@ -21,6 +21,10 @@ function ProduceCard({ produceObject }) {
       setSearchParams((prevState) => [...prevState, produceObject.name]);
     }
   };
+
+  useEffect(() => {
+    setSearchParams([]);
+  }, [setSearchParams]);
 
   return (
     <div className="w-80 h-16 my-4 flex-shrink-0 flex items-center border border-gray-500">

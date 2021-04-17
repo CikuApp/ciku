@@ -15,9 +15,12 @@ function ProduceWrapper() {
         Find Recipes By Ingredient
       </Text>
       <div className="flex flex-wrap justify-between">
-        {produce.map((produceObject) => {
+        {produce.map((produceItem) => {
           return (
-            <ProduceCard produceObject={produceObject} key={produceObject.id} />
+            <ProduceCard
+              produceObject={{ name: produceItem }}
+              key={produceItem}
+            />
           );
         })}
       </div>

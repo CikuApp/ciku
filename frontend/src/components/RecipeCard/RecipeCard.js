@@ -10,7 +10,7 @@ import { Text } from "components/Presentation";
 function RecipeCard({ recipeObject }) {
   return (
     <Link to={`/recipes/${recipeObject.id}`}>
-      <article className="w-64 h-80 flex flex-col my-4 border">
+      <article className="w-64 h-80 flex flex-col my-8 mx-1 border">
         <img
           src={recipeObject.image}
           alt={recipeObject.name}

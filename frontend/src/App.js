@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
-import { RecoilRoot } from "recoil";
-import { Switch, Route } from "react-router-dom";
-
+import { useRecoilValue } from "recoil";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Nav from "components/Nav/Nav";
 import HomePage from "components/HomePage/HomePage";
 import LocationPage from "components/LocationPage/LocationPage";
@@ -10,14 +9,15 @@ import ShoppingListPage from "components/ShoppingListPage/ShoppingListPage";
 import RecipePage from "components/RecipePage/RecipePage";
 
 import { PageContainer } from "components/Presentation";
-
-// * Figure out how we're implementing the search bar
+import searchRequestedAtom from "recoil/searchRequested/atom";
 
 function App() {
+  const searchRequested = useRecoilValue(searchRequestedAtom);
+
   return (
-    <RecoilRoot>
+    <div>
       <Nav />
-      {/* <SearchBar /> */}
+      {searchRequested && <Redirect to="/recipes" />}
       <Suspense fallback={<div>loading</div>}>
         <Switch>
           <Route exact path="/">
@@ -28,9 +28,6 @@ function App() {
           <Route path="/locations/:locationName">
             <LocationPage />
           </Route>
-          {/* <Route path="/locations">
-            <LocationPage />
-          </Route> */}
           <Route path="/recipes/:recipeId">
             <PageContainer>
               <RecipePage />
@@ -46,7 +43,7 @@ function App() {
           </Route>
         </Switch>
       </Suspense>
-    </RecoilRoot>
+    </div>
   );
 }
 
