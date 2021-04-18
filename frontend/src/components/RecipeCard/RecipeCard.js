@@ -18,7 +18,7 @@ function RecipeCard({ recipeObject }) {
           alt={recipeObject.name}
           className="bg-gray-100 w-64 h-64"
         />
-        <Text type="p" className="overflow-ellipsis">
+        <Text type="p" className="overflow-ellipsis h-24 px-2">
           {toTitle(recipeObject.name)}
         </Text>
         {/* <StarRating numberRating={recipeObject.rating} /> */}

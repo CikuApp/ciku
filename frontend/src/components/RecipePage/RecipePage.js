@@ -38,7 +38,7 @@ function RecipePage() {
         <RecipeIngredients recipeIngredients={selectedRecipe.ingredients} />
       </div>
       <RecipeDirections recipeDirections={selectedRecipe.steps} />
-      <UserReview recipeId={selectedRecipe.id} />
+      {/* <UserReview recipeId={selectedRecipe.id} /> */}
       {/* <RecipeReviews recipeReviews={selectedRecipe.reviews} /> */}
     </div>
   );

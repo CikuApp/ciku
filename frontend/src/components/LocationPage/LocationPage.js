@@ -19,7 +19,7 @@ function LocationPage() {
   }, [locationName, setLocation]);
 
   return (
-    <main className="w-full h-screen pb-24">
+    <main className="w-full h-screen">
       <section className="h-1/2 bg-gray-200">
         <PageContainer className="h-full flex flex-col justify-center">
           <Text type="h1">{locationName.toUpperCase()}</Text>
@@ -31,7 +31,7 @@ function LocationPage() {
           </Text>
         </PageContainer>
       </section>
-      <PageContainer className="flex flex-col items-center">
+      <PageContainer className="flex flex-col items-center pb-24">
         <ProduceWrapper />
         <FindRecipesButton />
       </PageContainer>

@@ -3,6 +3,8 @@ import { useRecoilState } from "recoil";
 import searchParamsAtom from "recoil/searchParams";
 import searchRequestedAtom from "recoil/searchRequested";
 
+import { IoMdSearch } from "react-icons/io";
+
 function SearchBar() {
   const [searchInput, setSearchInput] = useState("");
   const [searchParams, setSearchParams] = useRecoilState(searchParamsAtom);
@@ -34,7 +36,7 @@ function SearchBar() {
         placeholder="Find A Recipe"
       />
       <button type="submit" className="bg-gray-200 px-4">
-        Search
+        <IoMdSearch className="text-xl" />
       </button>
     </form>
   );
