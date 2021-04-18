@@ -7,6 +7,8 @@ import StarRating from "components/StarRating/StarRating";
 
 import { Text } from "components/Presentation";
 
+import { toTitle } from "utils/dataHelpers";
+
 function RecipeCard({ recipeObject }) {
   return (
     <Link to={`/recipes/${recipeObject.id}`}>
@@ -17,7 +19,7 @@ function RecipeCard({ recipeObject }) {
           className="bg-gray-100 w-64 h-64"
         />
         <Text type="p" className="overflow-ellipsis">
-          {recipeObject.name}
+          {toTitle(recipeObject.name)}
         </Text>
         {/* <StarRating numberRating={recipeObject.rating} /> */}
       </article>

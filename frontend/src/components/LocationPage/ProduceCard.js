@@ -20,6 +20,7 @@ function ProduceCard({ produceObject }) {
     } else {
       setSearchParams((prevState) => [...prevState, produceObject.name]);
     }
+    console.log(searchParams);
   };
 
   useEffect(() => {

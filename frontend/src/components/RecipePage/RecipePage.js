@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { useParams } from "react-router-dom";
 
-import { searchResultsAsArray } from "recoil/searchResults";
+import { searchResultsInSessionStorage } from "recoil/searchResults";
 
 import RecipeInfo from "components/RecipePage/RecipeInfo";
 import RecipeIngredients from "components/RecipePage/RecipeIngredients";
@@ -12,9 +12,11 @@ import ShareRecipeButton from "components/RecipePage/ShareRecipeButton";
 import UserReview from "components/RecipePage/UserReview";
 import RecipeReviews from "components/RecipePage/RecipeReviews";
 
+import { toTitle } from "utils/dataHelpers";
+
 function RecipePage() {
   let { recipeId } = useParams();
-  const selectedRecipe = useRecoilValue(searchResultsAsArray).find(
+  const selectedRecipe = useRecoilValue(searchResultsInSessionStorage).find(
     (recipe) => recipe.id === +recipeId
   );
 
@@ -22,7 +24,7 @@ function RecipePage() {
     <div>
       <RecipeInfo
         recipeId={selectedRecipe.id}
-        recipeName={selectedRecipe.name}
+        recipeName={toTitle(selectedRecipe.name)}
         // recipeRating={selectedRecipe.rating}
         // recipeScore={selectedRecipe.score}
         // recipeImage={selectedRecipe.image}
@@ -35,7 +37,7 @@ function RecipePage() {
       <div className="my-16">
         <RecipeIngredients recipeIngredients={selectedRecipe.ingredients} />
       </div>
-      <RecipeDirections recipeDirections={selectedRecipe.directions} />
+      <RecipeDirections recipeDirections={selectedRecipe.steps} />
       <UserReview recipeId={selectedRecipe.id} />
       {/* <RecipeReviews recipeReviews={selectedRecipe.reviews} /> */}
     </div>

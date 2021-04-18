@@ -19,17 +19,11 @@ const searchResults = selector({
 
       if (searchTerms.length) {
         await Promise.all(
-          searchTerms.map(async (search) => {
-            const data = await DBQuery(searchTerms);
+          searchTerms.map(async (searchTerm) => {
+            const data = await DBQuery(searchTerm);
             const resultsObject = {
-              search: search,
-              results: data.map((result) => {
-                return {
-                  ...result,
-                  directions: jsonStringToArray(result.steps),
-                  ingredients: jsonStringToArray(result.ingredients),
-                };
-              }),
+              search: searchTerm,
+              results: data,
             };
             results.push(resultsObject);
           })
@@ -43,12 +37,10 @@ const searchResults = selector({
   },
 });
 
-async function DBQuery(searchTerms) {
+async function DBQuery(searchTerm) {
   try {
-    const queryString = searchTerms
-      .map((param) => param.toLowerCase().replace(" ", "%20"))
-      .join("%20");
-    const response = await axios.get(`${baseUrl}?query=${queryString}&k=8`);
+    const queryString = searchTerm.toLowerCase().replace(/ /g, "%20");
+    const response = await axios.get(`${baseUrl}?query=${queryString}&count=8`);
     return JSON.parse(response.data);
   } catch (err) {
     console.error(err);
@@ -56,26 +48,3 @@ async function DBQuery(searchTerms) {
 }
 
 export default searchResults;
-
-// Convert recipe.ingredients and recipe.directions to arrays
-const jsonStringToArray = (string) => {
-  return string
-    .replace(/\[|\]/g, "")
-    .split(/', '|", '|", "|', "/)
-    .map((item) =>
-      item[0] === "'" || item[0] === '"'
-        ? item.slice(1)
-        : item[item.length - 1] === "'" || item[item.length - 1] === '"'
-        ? item.slice(0, item.length - 1)
-        : item
-    )
-    .map((item) => item[0].toUpperCase().concat(item.slice(1)));
-};
-
-// turn string into title
-const toTitle = (string) => {
-  return string
-    .split(" ")
-    .map((word) => word[0] && word[0].toUpperCase().concat(word.slice(1)))
-    .join(" ");
-};

@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import { Text } from "components/Presentation";
 
+import { toSentence } from "utils/dataHelpers";
+
 function RecipeDirections({ recipeDirections }) {
   return (
     <section className="w-6/12 my-16">
@@ -13,7 +15,7 @@ function RecipeDirections({ recipeDirections }) {
             <li className="my-8 flex" key={direction}>
               <Text type="p">
                 <span>{index + 1}. </span>
-                {direction}
+                {toSentence(direction)}
               </Text>
             </li>
           );

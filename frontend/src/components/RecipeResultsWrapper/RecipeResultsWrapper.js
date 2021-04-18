@@ -1,5 +1,5 @@
 import React from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
 import searchResults from "recoil/searchResults";
 import RecipeCard from "components/RecipeCard/RecipeCard";

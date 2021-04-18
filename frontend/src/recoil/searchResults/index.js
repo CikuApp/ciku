@@ -1,6 +1,6 @@
 import atom from "./searchResults";
 import searchResultsWithFilter from "./withFilter";
-import searchResultsAsArray from "./asArray";
+import searchResultsInSessionStorage from "./inSessionStorage";
 
-export { searchResultsWithFilter, searchResultsAsArray };
+export { searchResultsWithFilter, searchResultsInSessionStorage };
 export default atom;
