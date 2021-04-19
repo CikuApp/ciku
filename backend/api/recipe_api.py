@@ -3,6 +3,7 @@ import numpy as np
 import json
 from ast import literal_eval
 from fastapi import Body, FastAPI
+from datetime import datetime
 
 tags_metadata = [
     {
@@ -72,10 +73,40 @@ def query_df(query, count, tags, ingredients):
 
     return recipe_count, return_data
 
+def calc_sus_score(curr_df, selected_state):
+    now = datetime.now()
+    month_array = ['january', 'february', 'march', 'april', 'may', 'june', 'july',\
+        'august', 'september', 'october', 'november', 'december']
+
+    month = month_array[now.month-1]
+    period = 'early' if now.day <= 15 else 'late'
+
+    seasonal_and_local = season_df.query('month=="{}" & period=="{}"'.format(month, period))
+
+    # Get all seasonal food accross america (assuming lots of food gets transported between states)
+    seasonal_set = set()
+    for food_array in seasonal_and_local.foods:
+        for food_item in food_array:
+            curr_word = food_item.lower()
+            seasonal_set.add(curr_word)
+
+    # Narrow down to seasonal and local for one state
+    snl_array = seasonal_and_local.query('state=="{}"'.format(selected_state)).iloc[0].foods
+    snl_array = [food.lower() for food in snl_array]
+
+    def sus_score(row):
+        seasonal_count = len([x for x in row.ingredients if x in seasonal_set])
+        snl_count = len([x for x in row.ingredients if x in snl_array])
+
+        # TODO: Fix weightage of foods based on better factors and smarter reasoning...
+        return (snl_count * 2) + seasonal_count
+
+    curr_df['sus_score'] = curr_df.apply(lambda x: sus_score(x), axis=1)
+
 @app.get("/recipes", tags=["recipes"])
-async def query_recipes(count: int = 5, query: str = '', tags: str = '', ingredients: str = ''):
+async def query_recipes(count: int = 5, query: str = '', tags: str = '', ingredients: str = '', location: str = 'california'):
     recipe_count, recipes = query_df(query, count, tags, ingredients)
-    print('recipe count: {}, query: {}, tags: {}, ingredients: {}'.format(recipe_count, query, tags, ingredients))
+    print('recipe count: {}, location: {}, query: {}, tags: {}, ingredients: {}'.format(recipe_count, location, query, tags, ingredients))
     return recipes.to_json(orient="records")
 
 @app.get("/seasonal", tags=["seasonal"])
