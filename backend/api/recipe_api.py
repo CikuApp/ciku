@@ -3,7 +3,6 @@ import numpy as np
 import json
 from ast import literal_eval
 from fastapi import Body, FastAPI
-from pydantic import BaseModel, Field
 
 tags_metadata = [
     {
@@ -48,6 +47,7 @@ df['ingredients'] = df['ingredients'].apply(lambda x: literal_eval(str(x)))
 df['steps'] = df['steps'].apply(lambda x: literal_eval(str(x)))
 
 season_df = pd.read_csv('../data/seasonality.csv')
+season_df['foods'] = season_df['foods'].apply(lambda x: literal_eval(str(x)))
 
 def query_df(query, count, tags, ingredients):
     data_new = df.copy()
@@ -81,5 +81,4 @@ async def query_recipes(count: int = 5, query: str = '', tags: str = '', ingredi
 @app.get("/seasonal", tags=["seasonal"])
 async def query_seasonal_foods(location: str, month: str, period: str = 'early'):
     queried_food = season_df.query('state=="{}" & month=="{}" & period=="{}"'.format(location, month, period))
-    queried_food['foods'] = queried_food['foods'].apply(lambda x: literal_eval(str(x)))
     return queried_food.to_json(orient="records")
