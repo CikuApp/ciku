@@ -9,8 +9,11 @@ tags_metadata = [
     {
         "name": "recipes",
         "description": "Retrieve a number of recipes based on a query. Variables:\
-        \n- query: str (what to search database for. Note: whitespaces should be replaced with %20)\
-        \n- k: int (number of items requested)",
+        \n- count: int (number of items requested)\
+        \n- query: str (what to search database for)\
+        \n- tags: str (tags to filter results by)\
+        \n- ingredients: str (ingredients to filter results by)\
+        \n\nNote: all whitespaces should be replaced with %20 when requesting",
     },
     {
         "name": "seasonal",
@@ -46,7 +49,7 @@ df['steps'] = df['steps'].apply(lambda x: literal_eval(str(x)))
 
 season_df = pd.read_csv('../data/seasonality.csv')
 
-def query_df(query, k, tags, ingredients):
+def query_df(query, count, tags, ingredients):
     data_new = df.copy()
 
     if len(tags) > 0:
@@ -70,7 +73,7 @@ def query_df(query, k, tags, ingredients):
     return recipe_count, return_data
 
 @app.get("/recipes", tags=["recipes"])
-async def query_recipes(query: str = '', count: int = 5, tags: str = '', ingredients: str = ''):
+async def query_recipes(count: int = 5, query: str = '', tags: str = '', ingredients: str = ''):
     recipe_count, recipes = query_df(query, count, tags, ingredients)
     print('recipe count: {}, query: {}, tags: {}, ingredients: {}'.format(recipe_count, query, tags, ingredients))
     return recipes.to_json(orient="records")
