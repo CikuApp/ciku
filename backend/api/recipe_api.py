@@ -70,9 +70,8 @@ def query_df(query, count, tags, ingredients):
             data_new = data_new[data_new.name.str.contains(search)]
 
     recipe_count = data_new.shape[0]
-    return_data = data_new.head(count)
 
-    return recipe_count, return_data
+    return recipe_count, data_new
 
 def calc_sus_score(curr_df, selected_state):
     now = datetime.now()
@@ -115,7 +114,7 @@ def calc_sus_score(curr_df, selected_state):
 async def query_recipes(count: int = 5, query: str = '', tags: str = '', ingredients: str = '', location: str = 'california'):
     recipe_count, recipes = query_df(query, count, tags, ingredients)
     recipes = calc_sus_score(recipes, location)
-    recipes = recipes.sort_values(by=['sus_score'])
+    recipes = recipes.sort_values(by=['sus_score'], ascending=False)
     print('recipe count: {}, location: {}, query: {}, tags: {}, ingredients: {}'.format(recipe_count, location, query, tags, ingredients))
     return recipes.to_json(orient="records")
 
