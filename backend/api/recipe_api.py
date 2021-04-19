@@ -94,15 +94,20 @@ def calc_sus_score(curr_df, selected_state):
     # Narrow down to seasonal and local for one state
     snl_array = seasonal_and_local.query('state=="{}"'.format(selected_state)).iloc[0].foods
     snl_array = [food.lower() for food in snl_array]
+    exclusive_seasonal = [x for x in seasonal_set if x not in snl_array]  # Remove snl from seasonal set
 
     def sus_score(row):
-        seasonal_count = len([x for x in row.ingredients if x in seasonal_set])
-        snl_count = len([x for x in row.ingredients if x in snl_array])
+        seasonal_match = [x for x in row.ingredients if x in exclusive_seasonal]
+        snl_match = [x for x in row.ingredients if x in snl_array]
+
+        row['seasonal'] = seasonal_match
+        row['snl'] = snl_match
+        row['sus_score'] = len(seasonal_match) + (len(snl_match) * 2)
 
         # TODO: Fix weightage of foods based on better factors and smarter reasoning...
-        return (snl_count * 2) + seasonal_count
+        return row
 
-    curr_df['sus_score'] = curr_df.apply(lambda x: sus_score(x), axis=1)
+    curr_df = curr_df.apply(lambda x: sus_score(x), axis=1)
 
     return curr_df
 
@@ -110,6 +115,7 @@ def calc_sus_score(curr_df, selected_state):
 async def query_recipes(count: int = 5, query: str = '', tags: str = '', ingredients: str = '', location: str = 'california'):
     recipe_count, recipes = query_df(query, count, tags, ingredients)
     recipes = calc_sus_score(recipes, location)
+    recipes = recipes.sort_values(by=['sus_score'])
     print('recipe count: {}, location: {}, query: {}, tags: {}, ingredients: {}'.format(recipe_count, location, query, tags, ingredients))
     return recipes.to_json(orient="records")
 
