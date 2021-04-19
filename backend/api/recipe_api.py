@@ -40,15 +40,29 @@ app = FastAPI(
 
 df = pd.read_csv('../data/recipes/RAW_recipes.csv')
 df = df.dropna()
+df['tags'] = df['tags'].apply(lambda x: literal_eval(str(x)))
+df['ingredients'] = df['ingredients'].apply(lambda x: literal_eval(str(x)))
+df['steps'] = df['steps'].apply(lambda x: literal_eval(str(x)))
+
 season_df = pd.read_csv('../data/seasonality.csv')
 
-def query_df(query, k):
-    search_list = query.split(" ")
-
+def query_df(query, k, tags, ingredients):
     data_new = df.copy()
 
-    for search in search_list:            
-        data_new = data_new[data_new.name.str.contains(search)]
+    if len(tags) > 0:
+        tag_list = tags.split(" ")
+        mask = data_new.tags.apply(lambda x: any(i in tag_list for i in x))
+        data_new = data_new[mask]
+    
+    if len(ingredients) > 0:
+        ingredients_list = ingredients.split(" ")
+        mask = data_new.ingredients.apply(lambda x: any(i in ingredients_list for i in x))
+        data_new = data_new[mask]
+
+    if len(query) > 0:
+        search_list = query.split(" ")
+        for search in search_list:            
+            data_new = data_new[data_new.name.str.contains(search)]
 
     recipe_count = data_new.shape[0]
     return_data = data_new.head(k)
@@ -56,12 +70,9 @@ def query_df(query, k):
     return recipe_count, return_data
 
 @app.get("/recipes", tags=["recipes"])
-async def query_recipes(query: str, count: int = 5):
-    recipe_count, recipes = query_df(query, count)
-    recipes['tags'] = recipes['tags'].apply(lambda x: literal_eval(str(x)))
-    recipes['ingredients'] = recipes['ingredients'].apply(lambda x: literal_eval(str(x)))
-    recipes['steps'] = recipes['steps'].apply(lambda x: literal_eval(str(x)))
-    print('query: {}, recipe count: {}'.format(query, recipe_count))
+async def query_recipes(query: str, count: int = 5, tags: str = '', ingredients: str = ''):
+    recipe_count, recipes = query_df(query, count, tags, ingredients)
+    print('query: {}, recipe count: {}, tags: {}, ingredients: {}'.format(query, recipe_count, tags, ingredients))
     return recipes.to_json(orient="records")
 
 @app.get("/seasonal", tags=["seasonal"])
