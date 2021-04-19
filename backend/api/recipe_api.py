@@ -70,9 +70,9 @@ def query_df(query, k, tags, ingredients):
     return recipe_count, return_data
 
 @app.get("/recipes", tags=["recipes"])
-async def query_recipes(query: str, count: int = 5, tags: str = '', ingredients: str = ''):
+async def query_recipes(query: str = '', count: int = 5, tags: str = '', ingredients: str = ''):
     recipe_count, recipes = query_df(query, count, tags, ingredients)
-    print('query: {}, recipe count: {}, tags: {}, ingredients: {}'.format(query, recipe_count, tags, ingredients))
+    print('recipe count: {}, query: {}, tags: {}, ingredients: {}'.format(recipe_count, query, tags, ingredients))
     return recipes.to_json(orient="records")
 
 @app.get("/seasonal", tags=["seasonal"])
