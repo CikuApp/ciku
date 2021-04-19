@@ -68,7 +68,7 @@ def query_df(query, count, tags, ingredients):
             data_new = data_new[data_new.name.str.contains(search)]
 
     recipe_count = data_new.shape[0]
-    return_data = data_new.head(k)
+    return_data = data_new.head(count)
 
     return recipe_count, return_data
 
