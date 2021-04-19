@@ -13,6 +13,7 @@ tags_metadata = [
         \n- query: str (what to search database for)\
         \n- tags: str (tags to filter results by)\
         \n- ingredients: str (ingredients to filter results by)\
+        \n- location: str (state of choice)\
         \n\nNote: all whitespaces should be replaced with %20 when requesting",
     },
     {
@@ -103,9 +104,12 @@ def calc_sus_score(curr_df, selected_state):
 
     curr_df['sus_score'] = curr_df.apply(lambda x: sus_score(x), axis=1)
 
+    return curr_df
+
 @app.get("/recipes", tags=["recipes"])
 async def query_recipes(count: int = 5, query: str = '', tags: str = '', ingredients: str = '', location: str = 'california'):
     recipe_count, recipes = query_df(query, count, tags, ingredients)
+    recipes = calc_sus_score(recipes, location)
     print('recipe count: {}, location: {}, query: {}, tags: {}, ingredients: {}'.format(recipe_count, location, query, tags, ingredients))
     return recipes.to_json(orient="records")
 
