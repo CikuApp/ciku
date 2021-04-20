@@ -18,13 +18,18 @@ function RecipeResultsWrapper() {
               <Text type="h2">
                 {resultObject.search[0]
                   .toUpperCase()
-                  .concat(resultObject.search.slice(1))}
+                  .concat(resultObject.search.slice(1).toLowerCase())}
               </Text>
-              <div className="flex flex-wrap justify-between">
-                {resultObject.results.length &&
+              <div className="flex flex-wrap justify-between -mx-1">
+                {resultObject.results.length ? (
                   resultObject.results.map((result) => {
                     return <RecipeCard key={result.id} recipeObject={result} />;
-                  })}
+                  })
+                ) : (
+                  <Text type="p" className="italic">
+                    No recipes match your query.
+                  </Text>
+                )}
               </div>
             </div>
           );

@@ -1,46 +1,72 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
 
-// Decide whether to filter results from searchParamsResults atom or to submit a new search
-// Also, filters are dynamic? or pre-set?
+// States
+import searchTagsAtom from "recoil/searchTags";
+
+// Components
+import { DropdownMenu, Checkbox, Text } from "components/Presentation";
+
+// Data
+import { tags } from "data/data";
 
 function SearchResultsFilter() {
+  const [expandedMenu, setExpandedMenu] = useState("");
+  const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom);
+
+  const handleOptionClick = (tag) => {
+    setSearchTags((prevState) => {
+      if (prevState.includes(tag)) {
+        return prevState.filter((item) => item !== tag);
+      } else {
+        return [...prevState, tag];
+      }
+    });
+  };
+
+  const isInSearchTags = (tag) => {
+    if (searchTags.includes(tag)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const isExpanded = (tagName) => {
+    return expandedMenu === tagName;
+  };
+
+  const handleExpandMenu = (tagName) => {
+    setExpandedMenu((prevState) => (prevState === tagName ? "" : tagName));
+  };
+
   return (
-    <section className="h-12 w-full bg-gray-200">
-      <div className="w-8/12 h-full mx-auto flex items-center">
-        <label htmlFor="ingredients"></label>
-        <select
-          name="ingredients"
-          id="ingredients"
-          className="w-48 py-2 pl-0 pr-4 appearance-none bg-transparent"
-        >
-          <option value="">Ingredients</option>
-        </select>
-        <label htmlFor="dish-type"></label>
-        <select
-          name="dish-type"
-          id="dish-type"
-          className="w-48 py-2 px-4 appearance-none bg-transparent"
-        >
-          <option value="">Dish Type</option>
-        </select>
-        <label htmlFor="cuisine"></label>
-        <select
-          name="cuisine"
-          id="cuisine"
-          className="w-48 py-2 px-4 appearance-none bg-transparent"
-        >
-          <option value="">Cuisine</option>
-        </select>
-        <label htmlFor="dietary-concerns"></label>
-        <select
-          name="dietary-concerns"
-          id="dietary-concerns"
-          className="w-48 py-2 px-4 appearance-none bg-transparent"
-        >
-          <option value="">Dietary Concerns</option>
-        </select>
+    <section className="h-14 w-full bg-gray-300 flex justify-center">
+      <div className="w-9/12 flex">
+        {tags.map((tag) => {
+          return (
+            <DropdownMenu
+              selectorName={tag.tagName}
+              isExpanded={isExpanded(tag.tagName)}
+              handleExpand={() => handleExpandMenu(tag.tagName)}
+              key={tag}
+            >
+              {tag.tagOptions.map((option) => {
+                return (
+                  <li className="flex items-center my-4" key={option}>
+                    <Checkbox
+                      value={option.value}
+                      checked={isInSearchTags(option.value)}
+                      handleClick={() => handleOptionClick(option.value)}
+                      className="mr-8 mb-0.5"
+                    />
+                    <Text type="small">{option.name}</Text>
+                  </li>
+                );
+              })}
+            </DropdownMenu>
+          );
+        })}
       </div>
     </section>
   );
