@@ -10,4 +10,13 @@ const toSentence = (string) => {
   return string[0].toUpperCase().concat(string.slice(1));
 };
 
-export { toTitle, toSentence };
+// Formatted state names = for display
+const formatStateName = (stateName) => {
+  return stateName
+    .replace("-", " ")
+    .split(" ")
+    .map((word) => word[0].toUpperCase().concat(word.slice(1)))
+    .join(" ");
+};
+
+export { toTitle, toSentence, formatStateName };
