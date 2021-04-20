@@ -7,6 +7,7 @@ import LocationPage from "components/LocationPage/LocationPage";
 import SearchResultsPage from "components/SearchResultsPage/SearchResultsPage";
 import ShoppingListPage from "components/ShoppingListPage/ShoppingListPage";
 import RecipePage from "components/RecipePage/RecipePage";
+import ScrollToTop from "components/ScrollToTop/ScrollToTop";
 
 import { PageContainer } from "components/Presentation";
 import searchRequestedAtom from "recoil/searchRequested/atom";
@@ -15,10 +16,11 @@ function App() {
   const searchRequested = useRecoilValue(searchRequestedAtom);
 
   return (
-      <div>
-        <Nav />
-        {searchRequested && <Redirect to="/recipes" />}
-        <Suspense fallback={<div>loading</div>}>
+    <div>
+      <Nav />
+      {searchRequested && <Redirect to="/recipes" />}
+      <Suspense fallback={<div>loading</div>}>
+        <ScrollToTop>
           <Switch>
             <Route exact path="/">
               <PageContainer>
@@ -28,7 +30,7 @@ function App() {
             <Route path="/locations/:locationName">
               <LocationPage />
             </Route>
-            <Route path="/recipes/:recipeId">
+            <Route path="/recipes/:recipeName">
               <PageContainer>
                 <RecipePage />
               </PageContainer>
@@ -42,8 +44,9 @@ function App() {
               </PageContainer>
             </Route>
           </Switch>
-        </Suspense>
-      </div>
+        </ScrollToTop>
+      </Suspense>
+    </div>
   );
 }
 

@@ -1,13 +1,13 @@
 import { atom } from "recoil";
 
-import { sessionStorageEffects } from "utils/effects";
+import { localStorageEffects } from "utils/effects";
 
 const userAtom = atom({
   key: "userAtom",
-  default: sessionStorage.getItem("user")
-    ? JSON.parse(sessionStorage.getItem("user"))
+  default: localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
     : { name: "", shoppingList: [], savedRecipes: [] },
-  effects_UNSTABLE: [sessionStorageEffects("user")],
+  effects_UNSTABLE: [localStorageEffects("user")],
 });
 
 export default userAtom;
