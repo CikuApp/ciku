@@ -21,7 +21,9 @@ function RecipeInfo({
       <div className="col-span-12 my-8">
         <Text type="h1">{recipeName}</Text>
         {/* <StarRating numberRating={recipeRating} className="my-6" /> */}
-        {/* <Text type="h3">Sustainability Score: {recipeScore}</Text> */}
+        <Text type="h3" className="my-8">
+          Sustainability Score: {recipeScore}
+        </Text>
       </div>
       <img
         src={recipeImage}
