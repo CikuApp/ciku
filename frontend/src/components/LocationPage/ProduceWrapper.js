@@ -14,7 +14,7 @@ function ProduceWrapper() {
       <Text type="h2" className="mb-8">
         Find Recipes By Ingredient
       </Text>
-      <div className="flex flex-wrap justify-between">
+      <div className="flex flex-wrap justify-start">
         {produce.map((produceItem) => {
           return (
             <ProduceCard

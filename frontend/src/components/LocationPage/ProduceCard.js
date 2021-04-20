@@ -20,7 +20,6 @@ function ProduceCard({ produceObject }) {
     } else {
       setSearchParams((prevState) => [...prevState, produceObject.name]);
     }
-    console.log(searchParams);
   };
 
   useEffect(() => {
@@ -28,7 +27,7 @@ function ProduceCard({ produceObject }) {
   }, [setSearchParams]);
 
   return (
-    <div className="w-80 h-16 my-4 flex-shrink-0 flex items-center border border-gray-500">
+    <div className="w-80 h-16 m-4 flex-shrink-0 flex items-center border border-gray-500">
       <Checkbox
         checked={isInSearchParams()}
         handleClick={handleClick}

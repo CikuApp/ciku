@@ -77,4 +77,7 @@ export const TextType = {
   p: `
   text-lg
   `,
+  small: `
+  text-md
+  `,
 };

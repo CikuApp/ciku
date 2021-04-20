@@ -15,9 +15,10 @@ function SearchBar() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // prevent empty search
-    if (searchInput.length) {
+    const currentSearch = searchInput.trim();
+    if (currentSearch.length) {
       // completely overwrite previous search terms
-      setSearchParams([searchInput]);
+      setSearchParams([currentSearch]);
       setSearchInput("");
       setSearchRequested(true);
     }
@@ -26,7 +27,7 @@ function SearchBar() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-1/2 h-1/2 flex border border-black"
+      className="w-1/2 h-10 flex border border-black"
     >
       <input
         type="text"
