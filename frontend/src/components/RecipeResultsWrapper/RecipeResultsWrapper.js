@@ -20,7 +20,7 @@ function RecipeResultsWrapper() {
                   .toUpperCase()
                   .concat(resultObject.search.slice(1).toLowerCase())}
               </Text>
-              <div className="flex flex-wrap justify-between -mx-1">
+              <div className="flex flex-wrap justify-start -mx-1">
                 {resultObject.results.length ? (
                   resultObject.results.map((result) => {
                     return <RecipeCard key={result.id} recipeObject={result} />;

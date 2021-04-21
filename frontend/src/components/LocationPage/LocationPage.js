@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { useParams } from "react-router-dom";
 
@@ -32,8 +32,13 @@ function LocationPage() {
         </PageContainer>
       </section>
       <PageContainer className="flex flex-col items-center pb-24">
-        <ProduceWrapper />
-        <FindRecipesButton />
+        <Text type="h2" className="mb-8 self-start">
+          Find Recipes By Ingredient
+        </Text>
+        <Suspense fallback={<div>loading</div>}>
+          <ProduceWrapper />
+          <FindRecipesButton />
+        </Suspense>
       </PageContainer>
     </main>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { useRecoilState } from "recoil";
 
 import RecipeResultsWrapper from "components/RecipeResultsWrapper/RecipeResultsWrapper";
@@ -20,7 +20,9 @@ function PopularRecipes() {
       <Text type="h2" className="my-12">
         Popular
       </Text>
-      <RecipeResultsWrapper />
+      <Suspense fallback={<div>loading</div>}>
+        <RecipeResultsWrapper />
+      </Suspense>
     </section>
   );
 }

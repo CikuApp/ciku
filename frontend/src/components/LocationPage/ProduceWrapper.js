@@ -11,9 +11,6 @@ function ProduceWrapper() {
   const produce = useRecoilValue(locationProduce);
   return (
     <section className="mb-12">
-      <Text type="h2" className="mb-8">
-        Find Recipes By Ingredient
-      </Text>
       <div className="flex flex-wrap justify-start">
         {produce.map((produceItem) => {
           return (

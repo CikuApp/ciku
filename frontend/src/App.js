@@ -16,36 +16,34 @@ function App() {
   const searchRequested = useRecoilValue(searchRequestedAtom);
 
   return (
-    <div>
+    <div className="h-screen mb-1">
       <Nav />
       {searchRequested && <Redirect to="/recipes" />}
-      <Suspense fallback={<div>loading</div>}>
-        <ScrollToTop>
-          <Switch>
-            <Route exact path="/">
-              <PageContainer>
-                <HomePage />
-              </PageContainer>
-            </Route>
-            <Route path="/locations/:locationName">
-              <LocationPage />
-            </Route>
-            <Route path="/recipes/:recipeName">
-              <PageContainer>
-                <RecipePage />
-              </PageContainer>
-            </Route>
-            <Route path="/recipes">
-              <SearchResultsPage />
-            </Route>
-            <Route exact path="/shopping-list">
-              <PageContainer>
-                <ShoppingListPage />
-              </PageContainer>
-            </Route>
-          </Switch>
-        </ScrollToTop>
-      </Suspense>
+      <ScrollToTop>
+        <Switch>
+          <Route exact path="/">
+            <PageContainer>
+              <HomePage />
+            </PageContainer>
+          </Route>
+          <Route path="/locations/:locationName">
+            <LocationPage />
+          </Route>
+          <Route path="/recipes/:recipeName">
+            <PageContainer>
+              <RecipePage />
+            </PageContainer>
+          </Route>
+          <Route path="/recipes">
+            <SearchResultsPage />
+          </Route>
+          <Route exact path="/shopping-list">
+            <PageContainer>
+              <ShoppingListPage />
+            </PageContainer>
+          </Route>
+        </Switch>
+      </ScrollToTop>
     </div>
   );
 }

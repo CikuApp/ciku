@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { useRecoilState } from "recoil";
 
 // States
@@ -32,7 +32,9 @@ function SearchResultsPage() {
           <SearchIngredientsWrapper />
         </div>
         <div className="my-16">
-          <RecipeResultsWrapper />
+          <Suspense fallback={<div>loading</div>}>
+            <RecipeResultsWrapper />
+          </Suspense>
         </div>
       </PageContainer>
     </main>
