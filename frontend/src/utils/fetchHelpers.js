@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const baseUrl = "/recipes";
+const baseUrl = `${
+  process.env.NODE_ENV === "development" ? "" : "/api"
+}/recipes`;
 
 const fetchRecipe = async (name) => {
   try {

@@ -2,7 +2,9 @@ import { selector } from "recoil";
 import locationAtom from "./atom";
 import axios from "axios";
 
-const baseUrl = "/seasonal";
+const baseUrl = `${
+  process.env.NODE_ENV === "development" ? "" : "/api"
+}/seasonal`;
 
 const locationProduce = selector({
   key: "locationProduce",

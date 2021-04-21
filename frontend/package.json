@@ -48,5 +48,5 @@
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.4"
   },
-  "proxy": "http://localhost:8000/"
+  "proxy": "http://localhost:8000"
 }

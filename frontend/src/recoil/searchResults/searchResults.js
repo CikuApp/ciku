@@ -1,12 +1,16 @@
 import { selector } from "recoil";
 
 import searchParamsAtom from "recoil/searchParams/atom";
-import locationAtom, { locationProduce } from "recoil/location";
+import locationAtom from "recoil/location";
 import searchTagsAtom from "recoil/searchTags";
 import searchIngredientsAtom from "recoil/searchIngredients";
 
 import axios from "axios";
-const baseUrl = "/recipes";
+const baseUrl = `${
+  process.env.NODE_ENV === "development" ? "" : "/api"
+}/recipes`;
+
+console.log("base URL: ", baseUrl);
 
 const searchResults = selector({
   key: "searchParamsResults",
@@ -15,14 +19,13 @@ const searchResults = selector({
 
     try {
       const searchParams = get(searchParamsAtom);
-      const produce = get(locationProduce);
       const location = get(locationAtom);
       const searchTags = get(searchTagsAtom);
       const searchIngredients = get(searchIngredientsAtom);
 
       const mainQuery = searchParams.length ? searchParams : [];
 
-      // Run search query for each searchParam (either produce selected, or search bar string)
+      // Run search query for each searchParam
       // Apply tags, ingredients, location as additional query params for each
       if (mainQuery.length) {
         await Promise.all(
