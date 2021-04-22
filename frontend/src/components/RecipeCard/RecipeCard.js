@@ -11,7 +11,7 @@ import { toTitle } from "utils/dataHelpers";
 function RecipeCard({ recipeObject }) {
   return (
     <Link to={`/recipes/${recipeObject.name.replace(/ /g, "-")}`}>
-      <article className="w-64 h-88 flex flex-col my-8 mx-1 border">
+      <article className="w-64 h-88 flex flex-col my-8 border">
         <img
           src={recipeObject.image}
           alt={recipeObject.name}

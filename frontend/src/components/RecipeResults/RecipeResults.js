@@ -2,11 +2,12 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 
 import searchResults from "recoil/searchResults";
-import RecipeCard from "components/RecipeCard/RecipeCard";
+import RecipeResultsWrapper from "components/RecipeResults/RecipeResultsWrapper";
+import LoadMore from "components/RecipeResults/LoadMore";
 
 import { Text } from "components/Presentation";
 
-function RecipeResultsWrapper() {
+function RecipeResults() {
   const recipeResults = useRecoilValue(searchResults);
 
   return (
@@ -20,17 +21,15 @@ function RecipeResultsWrapper() {
                   .toUpperCase()
                   .concat(resultObject.search.slice(1).toLowerCase())}
               </Text>
-              <div className="flex flex-wrap justify-start -mx-1">
-                {resultObject.results.length ? (
-                  resultObject.results.map((result) => {
-                    return <RecipeCard key={result.id} recipeObject={result} />;
-                  })
-                ) : (
-                  <Text type="p" className="italic">
-                    No recipes match your query.
-                  </Text>
-                )}
-              </div>
+              {resultObject.results.length ? (
+                <LoadMore elements={resultObject.results} window={8}>
+                  <RecipeResultsWrapper />
+                </LoadMore>
+              ) : (
+                <Text type="p" className="italic mt-8">
+                  No recipes match your query.
+                </Text>
+              )}
             </div>
           );
         })
@@ -41,4 +40,4 @@ function RecipeResultsWrapper() {
   );
 }
 
-export default RecipeResultsWrapper;
+export default RecipeResults;
