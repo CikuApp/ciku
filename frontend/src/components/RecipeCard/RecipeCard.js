@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 
-import StarRating from "components/StarRating/StarRating";
+// import StarRating from "components/StarRating/StarRating";
 
 import { Text } from "components/Presentation";
 

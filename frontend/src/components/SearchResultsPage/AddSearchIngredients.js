@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
 // States
 import searchIngredientsAtom from "recoil/searchIngredients";

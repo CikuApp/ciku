@@ -1,6 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { useRecoilValue, useRecoilState } from "recoil";
 
 import SelectLocation from "components/HomePage/SelectLocation";
 import PopularRecipes from "components/HomePage/PopularRecipes";

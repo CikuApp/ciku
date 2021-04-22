@@ -1,8 +1,8 @@
 import React, { useEffect, Suspense } from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { useParams } from "react-router-dom";
 
-import locationAtom, { locationImage } from "recoil/location";
+import locationAtom from "recoil/location";
 import ProduceWrapper from "components/LocationPage/ProduceWrapper";
 import FindRecipesButton from "components/FindRecipesButton/FindRecipesButton";
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
 import { useParams } from "react-router-dom";
 
 // Components
@@ -7,9 +6,9 @@ import RecipeInfo from "components/RecipePage/RecipeInfo";
 import RecipeIngredients from "components/RecipePage/RecipeIngredients";
 import RecipeDirections from "components/RecipePage/RecipeDirections";
 import SaveRecipeButton from "components/RecipePage/SaveRecipeButton";
-import ShareRecipeButton from "components/RecipePage/ShareRecipeButton";
-import UserReview from "components/RecipePage/UserReview";
-import RecipeReviews from "components/RecipePage/RecipeReviews";
+// import ShareRecipeButton from "components/RecipePage/ShareRecipeButton";
+// import UserReview from "components/RecipePage/UserReview";
+// import RecipeReviews from "components/RecipePage/RecipeReviews";
 
 // Utils
 import { toTitle } from "utils/dataHelpers";
@@ -40,7 +39,7 @@ function RecipePage() {
         />
         <div className="w-6/12 flex justify-between">
           <SaveRecipeButton recipe={selectedRecipe} />
-          <ShareRecipeButton recipe={selectedRecipe} />
+          {/* <ShareRecipeButton recipe={selectedRecipe} /> */}
         </div>
         <div className="my-16">
           <RecipeIngredients recipeIngredients={selectedRecipe.ingredients} />

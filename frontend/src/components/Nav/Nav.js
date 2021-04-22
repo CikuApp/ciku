@@ -1,5 +1,4 @@
 import React from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 
 import SearchBar from "components/SearchBar/SearchBar";

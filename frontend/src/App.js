@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { useRecoilValue } from "recoil";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Nav from "components/Nav/Nav";
