@@ -1,25 +1,13 @@
-import React, { useEffect, Suspense } from "react";
-import { useRecoilState } from "recoil";
-
-// States
-import searchRequestedAtom from "recoil/searchRequested";
+import React, { Suspense } from "react";
 
 // Components
 import SearchResultsFilter from "components/SearchResultsPage/SearchResultsFilter";
-import RecipeResultsWrapper from "components/RecipeResultsWrapper/RecipeResultsWrapper";
+import RecipeResults from "components/RecipeResults/RecipeResults";
 import { PageContainer, Text } from "components/Presentation";
 import SearchIngredientsWrapper from "components/SearchResultsPage/SearchIngredientsWrapper";
 import AddSearchIngredients from "components/SearchResultsPage/AddSearchIngredients";
 
 function SearchResultsPage() {
-  const [searchRequested, setSearchRequested] = useRecoilState(
-    searchRequestedAtom
-  );
-
-  useEffect(() => {
-    setSearchRequested(false);
-  }, [setSearchRequested]);
-
   return (
     <main>
       <SearchResultsFilter />
@@ -33,7 +21,7 @@ function SearchResultsPage() {
         </div>
         <div className="my-16">
           <Suspense fallback={<div>loading</div>}>
-            <RecipeResultsWrapper />
+            <RecipeResults />
           </Suspense>
         </div>
       </PageContainer>

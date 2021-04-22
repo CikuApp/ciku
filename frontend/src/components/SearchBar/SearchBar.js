@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
+
+// State
 import searchParamsAtom from "recoil/searchParams";
 import searchRequestedAtom from "recoil/searchRequested";
+import searchTagsAtom from "recoil/searchTags";
 
+// Components
 import { IoMdSearch } from "react-icons/io";
 
 function SearchBar() {
@@ -11,6 +15,7 @@ function SearchBar() {
   const [searchRequested, setSearchRequested] = useRecoilState(
     searchRequestedAtom
   );
+  const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +25,7 @@ function SearchBar() {
       // completely overwrite previous search terms
       setSearchParams([currentSearch]);
       setSearchInput("");
+      setSearchTags([]);
       setSearchRequested(true);
     }
   };

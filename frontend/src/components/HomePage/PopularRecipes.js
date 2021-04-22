@@ -1,7 +1,7 @@
 import React, { useEffect, Suspense } from "react";
 import { useRecoilState } from "recoil";
 
-import RecipeResultsWrapper from "components/RecipeResultsWrapper/RecipeResultsWrapper";
+import RecipeResults from "components/RecipeResults/RecipeResults";
 
 import searchParamsAtom from "recoil/searchParams";
 
@@ -12,16 +12,13 @@ function PopularRecipes() {
 
   // Change this later to load popular recipes
   useEffect(() => {
-    setSearchParams(["morel"]);
+    setSearchParams(["popular"]);
   }, [setSearchParams]);
 
   return (
-    <section>
-      <Text type="h2" className="my-12">
-        Popular
-      </Text>
+    <section className="mb-12">
       <Suspense fallback={<div>loading</div>}>
-        <RecipeResultsWrapper />
+        <RecipeResults />
       </Suspense>
     </section>
   );

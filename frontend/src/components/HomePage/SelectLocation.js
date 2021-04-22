@@ -61,6 +61,7 @@ function SelectLocation() {
                     <li
                       onClick={() => handleSelection(name)}
                       className="w-full px-4 py-2 hover:bg-gray-200"
+                      key={name}
                     >
                       <Text type="p" className="font-bold mr-8">
                         {formatStateName(name)}

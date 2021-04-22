@@ -42,18 +42,18 @@ function SearchResultsFilter() {
 
   return (
     <section className="h-14 w-full bg-gray-300 flex justify-center">
-      <div className="w-9/12 flex">
+      <div className="w-10/12 max-w-screen-xl flex">
         {tags.map((tag) => {
           return (
             <DropdownMenu
               selectorName={tag.tagName}
               isExpanded={isExpanded(tag.tagName)}
               handleExpand={() => handleExpandMenu(tag.tagName)}
-              key={tag}
+              key={tag.tagName}
             >
               {tag.tagOptions.map((option) => {
                 return (
-                  <li className="flex items-center my-4" key={option}>
+                  <li className="flex items-center my-4" key={option.value}>
                     <Checkbox
                       value={option.value}
                       checked={isInSearchTags(option.value)}
