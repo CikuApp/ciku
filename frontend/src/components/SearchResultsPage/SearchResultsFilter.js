@@ -41,8 +41,8 @@ function SearchResultsFilter() {
   };
 
   return (
-    <section className="h-14 w-full bg-gray-300 flex justify-center">
-      <div className="w-10/12 max-w-screen-xl flex">
+    <section className="h-16 w-full bg-gray-300 flex justify-start align-center">
+      <div className="max-w-screen-xl mx-48 2xl:mx-auto flex">
         {tags.map((tag) => {
           return (
             <DropdownMenu
@@ -53,14 +53,14 @@ function SearchResultsFilter() {
             >
               {tag.tagOptions.map((option) => {
                 return (
-                  <li className="flex items-center my-4" key={option.value}>
+                  <li className="flex items-center my-8" key={option.value}>
                     <Checkbox
                       value={option.value}
                       checked={isInSearchTags(option.value)}
                       handleClick={() => handleOptionClick(option.value)}
-                      className="mr-8 mb-0.5"
+                      className="mr-8 mb-1"
                     />
-                    <Text type="small">{option.name}</Text>
+                    <Text type="p">{option.name}</Text>
                   </li>
                 );
               })}

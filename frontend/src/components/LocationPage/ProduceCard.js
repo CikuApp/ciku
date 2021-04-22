@@ -38,7 +38,9 @@ function ProduceCard({ produceObject }) {
         alt=""
         className="h-full w-16 mr-4 bg-gray-100"
       />
-      <Text type="h5">{produceObject.name}</Text>
+      <Text type="h4" className="font-bold">
+        {produceObject.name}
+      </Text>
     </div>
   );
 }

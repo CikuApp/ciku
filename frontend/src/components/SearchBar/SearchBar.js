@@ -33,7 +33,7 @@ function SearchBar() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-1/2 h-10 flex border border-black"
+      className="w-1/2 h-14 flex border border-black"
     >
       <input
         type="text"

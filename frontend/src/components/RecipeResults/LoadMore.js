@@ -21,8 +21,13 @@ function LoadMore({ elements, window, children }) {
     <div className="flex flex-col items-center">
       {cloneElement(children, { results: elements.slice(0, numberToShow) })}
       {moreToShow && (
-        <Button size="sm" type="secondary" onClick={handleLoadMore}>
-          Load More
+        <Button
+          size="sm"
+          type="secondary"
+          onClick={handleLoadMore}
+          className="mt-12"
+        >
+          More Recipes
         </Button>
       )}
     </div>

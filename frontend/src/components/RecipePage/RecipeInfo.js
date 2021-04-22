@@ -5,49 +5,31 @@ import PropTypes from "prop-types";
 
 import { Text } from "components/Presentation";
 
-function RecipeInfo({
-  recipeName,
-  recipeRating,
-  recipeImage,
-  recipeScore,
-  recipeTime,
-}) {
-  // const getTotalTime = (timeObject) => {
-  //   return `${timeObject.reduce((prev, curr) => prev + curr.time, 0)} mins`;
-  // };
-
+function RecipeInfo({ recipeName, recipeScore, recipeTime, recipeAuthor }) {
   return (
-    <section className="grid grid-flow-row grid-cols-12">
-      <div className="col-span-12 my-8">
-        <Text type="h1">{recipeName}</Text>
-        {/* <StarRating numberRating={recipeRating} className="my-6" /> */}
-        <Text type="h3" className="my-8">
-          Sustainability Score: {recipeScore}
-        </Text>
-      </div>
-      <img
-        src={recipeImage}
-        alt={recipeName}
-        className="col-span-6 h-112 mb-8 border bg-gray-200"
-      ></img>
-      <ul className="h-1/2 col-start-8 col-span-3 flex flex-col justify-between p-8 border border-black ">
-        {/* {recipeTime.map((timeObject) => {
-          return (
-            <li>
-              <Text type="p">
-                <span className="mr-2 font-bold">{timeObject.method}:</span>
-                {timeObject.time} {timeObject.unit}
-              </Text>
-            </li>
-          );
-        })} */}
-        <li>
-          <Text type="p">
-            <span className="mr-2 font-bold">Total:</span>
-            {recipeTime} mins
+    <section className="my-4 pr-24">
+      <Text type="h1">{recipeName}</Text>
+      <Text type="h4" className="mt-8">
+        Recipe by: {}
+      </Text>
+      <div className="w-full flex justify-between text-center my-12">
+        <div className="pr-8 py-4 ">
+          <Text type="h2">{recipeTime}</Text>
+          <Text type="p">Minutes</Text>
+        </div>
+        <div className="px-16 py-4 flex flex-col items-center justify-center border-r-2 border-l-2 border-black">
+          <Text type="h2" className="">
+            {recipeScore}
           </Text>
-        </li>
-      </ul>
+          <Text type="p">Sustainability Score</Text>
+        </div>
+        <div className="px-8 py-4 ">
+          <Text type="h2">0</Text>
+          <Text type="p" className="bold">
+            Servings
+          </Text>
+        </div>
+      </div>
     </section>
   );
 }
@@ -57,7 +39,6 @@ export default RecipeInfo;
 RecipeInfo.propTypes = {
   recipeName: PropTypes.string,
   // recipeRating: PropTypes.number,
-  // recipeScore: PropTypes.number,
-  // recipeImage: PropTypes.string,
-  // recipeTime: PropTypes.array,
+  recipeScore: PropTypes.number,
+  recipeTime: PropTypes.string,
 };
