@@ -8,18 +8,16 @@ import { locationProduce } from "recoil/location";
 function ProduceWrapper() {
   const produce = useRecoilValue(locationProduce);
   return (
-    <section className="mb-12">
-      <div className="flex flex-wrap justify-start">
-        {produce.map((produceItem) => {
-          return (
-            <ProduceCard
-              produceObject={{ name: produceItem }}
-              key={produceItem}
-            />
-          );
-        })}
-      </div>
-    </section>
+    <div className="w-full grid md:grid-cols-2 xl:grid-cols-3 mb-12">
+      {produce.map((produceItem) => {
+        return (
+          <ProduceCard
+            produceObject={{ name: produceItem }}
+            key={produceItem}
+          />
+        );
+      })}
+    </div>
   );
 }
 

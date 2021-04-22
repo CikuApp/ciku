@@ -27,7 +27,7 @@ function ProduceCard({ produceObject }) {
   }, [setSearchParams]);
 
   return (
-    <div className="w-80 h-16 m-4 flex-shrink-0 flex items-center border border-gray-500">
+    <div className="min-w-72 justify-self-stretch h-16 my-4 mx-3 flex items-center border border-gray-500">
       <Checkbox
         checked={isInSearchParams()}
         handleClick={handleClick}

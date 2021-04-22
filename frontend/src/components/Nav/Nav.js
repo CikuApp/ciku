@@ -10,7 +10,7 @@ import { Text } from "components/Presentation";
 function Nav() {
   return (
     <nav className="h-20 bg-gray-100">
-      <div className="w-9/12 h-full mx-auto flex justify-between items-center">
+      <div className="w-10/12 max-w-screen-xl h-full mx-auto flex justify-between items-center">
         <Link to="/">
           <Text type="h2">LOGO</Text>
         </Link>
