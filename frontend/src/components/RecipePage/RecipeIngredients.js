@@ -12,25 +12,42 @@ function RecipeIngredients({ recipeIngredients }) {
   const [shoppingList, setShoppingList] = useRecoilState(userShoppingList);
   const ingredientsListRef = useRef(null);
   const [localCount, setLocalCount] = useState(0);
+  const [localList, setLocalList] = useState([]);
 
   const handleClick = (ingredientName) => {
-    setShoppingList((prevState) => {
-      if (prevState.includes(ingredientName)) {
-        setLocalCount((prev) => prev - 1);
-        return prevState.filter((item) => item !== ingredientName);
-      } else {
-        setLocalCount((prev) => prev + 1);
-        return [...prevState, ingredientName];
-      }
-    });
+    if (localCount === 0) {
+      setLocalList((prevState) => {
+        if (prevState.includes(ingredientName)) {
+          return prevState.filter((item) => item !== ingredientName);
+        } else {
+          return [...prevState, ingredientName];
+        }
+      });
+    } else {
+      setShoppingList((prevState) => {
+        if (prevState.includes(ingredientName)) {
+          setLocalCount((prevState) => prevState - 1);
+          return prevState.filter((item) => item !== ingredientName);
+        } else {
+          setLocalCount((prevState) => prevState + 1);
+
+          return [...prevState, ingredientName];
+        }
+      });
+    }
   };
 
   const inShoppingList = (ingredient) => {
-    if (shoppingList.includes(ingredient)) {
+    if (shoppingList.includes(ingredient) || localList.includes(ingredient)) {
       return true;
     } else {
       return false;
     }
+  };
+
+  const handleAddToList = () => {
+    setShoppingList((prevState) => [...prevState, ...localList]);
+    setLocalCount(localList.length);
   };
 
   useEffect(() => {
@@ -44,7 +61,7 @@ function RecipeIngredients({ recipeIngredients }) {
   }, []);
 
   return (
-    <section className="w-1/2 my-16">
+    <section className="w-1/2 my-16 pr-24">
       <Text type="h2">Ingredients</Text>
       <ul className="my-8" ref={ingredientsListRef}>
         {recipeIngredients.map((ingredient) => {
@@ -61,17 +78,23 @@ function RecipeIngredients({ recipeIngredients }) {
           );
         })}
       </ul>
-      <div className="flex items-center justify-between">
-        <Text type="h4" className="flex items-center">
-          <IoCheckmarkSharp className="mr-4" />
-          {localCount} ingredients added
-        </Text>
-        <Link to="/shopping-list">
-          <Button type="secondary" size="sm">
-            View Shopping List
-          </Button>
-        </Link>
-      </div>
+      {localCount > 0 ? (
+        <div className="flex items-center justify-between">
+          <Text type="h4" className="flex items-center">
+            <IoCheckmarkSharp className="mr-4" />
+            {localCount} ingredients added
+          </Text>
+          <Link to="/shopping-list">
+            <Button type="secondary" size="sm">
+              View Shopping List
+            </Button>
+          </Link>
+        </div>
+      ) : (
+        <Button type="secondary" size="sm" onClick={handleAddToList}>
+          Add To Shopping List
+        </Button>
+      )}
     </section>
   );
 }

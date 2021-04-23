@@ -24,7 +24,7 @@ function LocationPage() {
         <PageContainer className="h-full flex flex-col justify-center">
           <Text type="h1">{locationName.toUpperCase()}</Text>
           <img src="" alt="" />
-          <Text className="w-5/12 my-8">
+          <Text type="p" className="w-5/12 my-8">
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
             nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
             reprehenderit in voluptate

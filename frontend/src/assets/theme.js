@@ -9,11 +9,12 @@ export const ButtonType = {
     text-xl
     `,
   secondary: `
-    w-64 min-w-max  
-    py-3 px-4
-    border border-black
+    w-56 min-w-max
+    h-14 
+    py-3 px-10
+    border rounded-lg border-black
     font-bold
-    text-xl
+    text-lg
     `,
   "nav-primary": `
     min-w-max w-5/12  
@@ -63,19 +64,19 @@ export const TextType = {
 
   `,
   h2: `
-  text-3xl 
-  font-bold
+  text-4xl 
+
   text-gray-900
   `,
   h3: `
-  text-2xl
+  text-3xl
   `,
   h4: `
-  text-xl
+  text-2xl
   text-gray-900
   `,
   p: `
-  text-lg
+  text-xl
   `,
   small: `
   text-md

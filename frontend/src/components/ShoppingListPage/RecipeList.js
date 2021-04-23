@@ -5,6 +5,8 @@ import { userSavedRecipes } from "recoil/user";
 
 import { Text } from "components/Presentation";
 
+import { toTitle } from "utils/dataHelpers";
+
 function RecipeList() {
   const savedRecipes = useRecoilValue(userSavedRecipes);
 
@@ -14,13 +16,19 @@ function RecipeList() {
       {savedRecipes &&
         savedRecipes.map((recipe) => {
           return (
-            <div className="w-72 h-12 my-4 flex-shrink-0 flex items-center border border-gray-500">
+            <div className="w-112 h-20 my-4 flex-shrink-0 flex items-center border border-gray-500 ">
               <img
                 src={recipe.image}
                 alt=""
-                className="h-full w-12 mr-4 bg-gray-100"
+                className="h-full w-20 mr-4 flex-shrink-0 bg-gray-100"
               />
-              <Text type="h5">{recipe.name}</Text>
+
+              <Text
+                type="p"
+                className="w-full whitespace-nowrap overflow-ellipsis overflow-hidden px-2"
+              >
+                {toTitle(recipe.name)}
+              </Text>
             </div>
           );
         })}

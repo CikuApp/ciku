@@ -46,7 +46,7 @@ function SelectLocation() {
         <div className="z-40 mr-4">
           <div
             onClick={handleExpand}
-            className="h-14 w-60 flex items-center justify-between px-4 bg-gray-100"
+            className="h-14 w-88 flex items-center justify-between px-4 bg-gray-100"
           >
             <Text type="p" className="font-bold mr-8">
               {formatStateName(selectedLocation)}
@@ -54,7 +54,7 @@ function SelectLocation() {
             <IoIosArrowDown />
           </div>
           {isExpanded && (
-            <div className="absolute w-60 h-60 overflow-y-scroll bg-gray-100 ">
+            <div className="absolute w-88 h-72 overflow-y-scroll bg-gray-100 ">
               <ul className="list-none">
                 {stateNames.map((name) => {
                   return (
@@ -73,7 +73,9 @@ function SelectLocation() {
             </div>
           )}
         </div>
-        <button type="submit">Go</button>
+        <button type="submit" className="text-lg">
+          Go
+        </button>
       </form>
     );
   }
