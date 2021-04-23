@@ -7,7 +7,7 @@ import searchIngredientsAtom from "recoil/searchIngredients";
 
 import axios from "axios";
 const baseUrl = `${
-  process.env.NODE_ENV === "development" ? "" : "/api"
+  process.env.NODE_ENV === "development" ? "" : "/backend"
 }/recipes`;
 
 console.log("base URL: ", baseUrl);
