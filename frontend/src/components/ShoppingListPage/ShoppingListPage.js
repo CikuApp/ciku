@@ -2,7 +2,6 @@ import React from "react";
 
 import ShoppingList from "components/ShoppingListPage/ShoppingList";
 import RecipeList from "components/ShoppingListPage/RecipeList";
-import CopyButton from "components/ShoppingListPage/CopyButton";
 import SaveShoppingListButton from "components/ShoppingListPage/SaveShoppingListButton";
 import CopyToClipboardButton from "components/ShoppingListPage/CopyToClipboardButton";
 
