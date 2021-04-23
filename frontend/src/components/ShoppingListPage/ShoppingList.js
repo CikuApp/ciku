@@ -8,7 +8,7 @@ import { Text, Checkbox } from "components/Presentation";
 function ShoppingList() {
   const shoppingList = useRecoilValue(userShoppingList);
   return (
-    <div>
+    <div id="shopping-list">
       <Text type="h2">Shopping List ({shoppingList.length})</Text>
       <ul className="my-12">
         {shoppingList.map((item) => {
