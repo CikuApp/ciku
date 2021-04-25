@@ -42,13 +42,14 @@ app = FastAPI(
     openapi_tags=tags_metadata,
 )
 
-df = pd.read_csv('../data/recipes/RAW_recipes.csv')
+# TODO: This is very slow but only happens when you start the server, there should be a way to save CSVs for the arrays as non-strings
+df = pd.read_csv('../data/clean_recipes.csv')
 df = df.dropna()
-df['tags'] = df['tags'].apply(lambda x: literal_eval(str(x)))
-df['ingredients'] = df['ingredients'].apply(lambda x: literal_eval(str(x)))
-df['steps'] = df['steps'].apply(lambda x: literal_eval(str(x)))
+df['tags'] = df['tags'].apply(literal_eval)
+df['ingredients'] = df['ingredients'].apply(literal_eval)
+df['steps'] = df['steps'].apply(literal_eval)
 
-season_df = pd.read_csv('../data/seasonality.csv')
+season_df = pd.read_csv('../data/clean_seasonality.csv')
 season_df['foods'] = season_df['foods'].apply(lambda x: literal_eval(str(x)))
 
 def query_df(query, count, tags, ingredients):
@@ -113,8 +114,10 @@ def calc_sus_score(curr_df, selected_state):
 @app.get("/recipes", tags=["recipes"])
 async def query_recipes(count: int = 5, query: str = '', tags: str = '', ingredients: str = '', location: str = 'california'):
     recipe_count, recipes = query_df(query, count, tags, ingredients)
+    if (recipe_count > 1000): recipes = recipes.head(1000)  # TODO: quick workaround for limiting number of scores calculated, find a better way...
     recipes = calc_sus_score(recipes, location)
     recipes = recipes.sort_values(by=['sus_score'], ascending=False)
+    recipes = recipes.head(count)
     print('recipe count: {}, location: {}, query: {}, tags: {}, ingredients: {}'.format(recipe_count, location, query, tags, ingredients))
     return recipes.to_json(orient="records")
 
