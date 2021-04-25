@@ -5,14 +5,14 @@ function Checkbox({ value, checked, handleClick, className }) {
   if (checked) {
     return (
       <span className={className} onClick={handleClick}>
-        <MdCheckBox className="text-xl mt-1" />
+        <MdCheckBox className="text-3xl mt-1 text-secondary" />
         <input type="checkbox" className="hidden" defaultChecked={checked} />
       </span>
     );
   } else {
     return (
       <span className={className} onClick={handleClick}>
-        <MdCheckBoxOutlineBlank className="text-xl mt-1" />
+        <MdCheckBoxOutlineBlank className="text-3xl mt-1 text-gray-400" />
         <input type="checkbox" className="hidden" defaultChecked={checked} />
       </span>
     );

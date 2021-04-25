@@ -20,12 +20,16 @@ module.exports = {
       white: colors.white,
       gray: colors.coolGray,
       red: colors.red,
-      yellow: colors.amber,
-      green: colors.emerald,
       blue: colors.blue,
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+
+      primary: "#EB6A26",
+
+      secondary: "#007A39",
+
+      background: "#FEFCEE",
     },
     spacing: {
       px: "1px",
@@ -65,6 +69,7 @@ module.exports = {
       88: "22rem",
       96: "24rem",
       112: "28rem",
+      200: "36rem",
     },
     animation: {
       none: "none",
@@ -174,7 +179,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        "Mulish",
+        "Lato",
         "ui-sans-serif",
         "system-ui",
         "-apple-system",
@@ -191,6 +196,7 @@ module.exports = {
         '"Noto Color Emoji"',
       ],
       serif: [
+        "Arvo",
         "ui-serif",
         "Georgia",
         "Cambria",

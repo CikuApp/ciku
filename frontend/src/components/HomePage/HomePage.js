@@ -7,11 +7,13 @@ import { Text } from "components/Presentation";
 
 function HomePage() {
   return (
-    <div className="w-full">
+    <div className="w-full mt-24">
       <section className="flex mb-20">
-        <img src="" alt="" className="w-6/12 h-96 bg-gray-100" />
-        <div className="w-6/12 flex flex-col justify-center ml-8">
-          <Text type="h1">Learn to eat more sustainably.</Text>
+        <img src="" alt="" className="w-6/12 h-112 bg-gray-100" />
+        <div className="w-6/12 flex flex-col justify-center ml-24">
+          <Text type="h1" className="leading-snug">
+            Learn to eat more sustainably.
+          </Text>
           <Text type="p" className="my-8">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.

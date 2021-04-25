@@ -9,7 +9,7 @@ function RecipeDirections({ recipeDirections }) {
   return (
     <section className="w-6/12 my-16">
       <Text type="h2">Directions</Text>
-      <ol className="list-inside">
+      <ol className="list-inside my-16 ">
         {recipeDirections.map((direction, index) => {
           return (
             <li className="my-8 flex" key={direction}>

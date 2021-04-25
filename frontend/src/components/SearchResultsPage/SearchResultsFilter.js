@@ -41,9 +41,9 @@ function SearchResultsFilter() {
   };
 
   return (
-    <section className="h-16 w-full bg-gray-300 flex justify-start align-center">
-      <div className="max-w-screen-xl mx-48 2xl:mx-auto flex">
-        {tags.map((tag) => {
+    <section className="h-16 w-full flex justify-start align-center mt-14">
+      <div className="relative flex -ml-8">
+        {tags.slice(0, tags.length - 1).map((tag) => {
           return (
             <DropdownMenu
               selectorName={tag.tagName}
@@ -51,22 +51,46 @@ function SearchResultsFilter() {
               handleExpand={() => handleExpandMenu(tag.tagName)}
               key={tag.tagName}
             >
-              {tag.tagOptions.map((option) => {
-                return (
-                  <li className="flex items-center my-8" key={option.value}>
-                    <Checkbox
-                      value={option.value}
-                      checked={isInSearchTags(option.value)}
-                      handleClick={() => handleOptionClick(option.value)}
-                      className="mr-8 mb-1"
-                    />
-                    <Text type="p">{option.name}</Text>
-                  </li>
-                );
-              })}
+              <div className="w-72">
+                {tag.tagOptions.map((option) => {
+                  return (
+                    <li className="flex items-center my-8" key={option.value}>
+                      <Checkbox
+                        value={option.value}
+                        checked={isInSearchTags(option.value)}
+                        handleClick={() => handleOptionClick(option.value)}
+                        className="mr-8 mb-1"
+                      />
+                      <Text type="p">{option.name}</Text>
+                    </li>
+                  );
+                })}
+              </div>
             </DropdownMenu>
           );
         })}
+        <DropdownMenu
+          selectorName={tags[tags.length - 1].tagName}
+          isExpanded={isExpanded(tags[tags.length - 1].tagName)}
+          handleExpand={() => handleExpandMenu(tags[tags.length - 1].tagName)}
+          key={tags[tags.length - 1].tagName}
+        >
+          <div className="h-200 w-200 flex flex-col flex-wrap py-4">
+            {tags[tags.length - 1].tagOptions.map((option) => {
+              return (
+                <li className="flex items-center my-4 mr-4" key={option.value}>
+                  <Checkbox
+                    value={option.value}
+                    checked={isInSearchTags(option.value)}
+                    handleClick={() => handleOptionClick(option.value)}
+                    className="mr-8 mb-1"
+                  />
+                  <Text type="p">{option.name}</Text>
+                </li>
+              );
+            })}
+          </div>
+        </DropdownMenu>
       </div>
     </section>
   );

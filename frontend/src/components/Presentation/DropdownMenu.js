@@ -9,8 +9,8 @@ function DropdownMenu({ selectorName, isExpanded, handleExpand, children }) {
     <div className="z-40">
       <button
         onClick={handleExpand}
-        className={`h-full flex items-center px-8 ${
-          isExpanded ? "bg-gray-100" : "bg-gray-300"
+        className={`h-full flex items-center px-8 rounded-t-lg ${
+          isExpanded && "bg-secondary text-white"
         }`}
       >
         <Text type="h4" className="font-bold mr-8">
@@ -19,7 +19,9 @@ function DropdownMenu({ selectorName, isExpanded, handleExpand, children }) {
         <IoIosArrowDown />
       </button>
       {isExpanded && (
-        <div className="absolute w-88 px-8 py-4 bg-gray-100 ">{children}</div>
+        <div className="absolute w-auto h-auto px-8 py-2 bg-white ">
+          {children}
+        </div>
       )}
     </div>
   );

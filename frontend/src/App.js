@@ -16,7 +16,7 @@ function App() {
   const searchRequested = useRecoilValue(searchRequestedAtom);
 
   return (
-    <div className="h-screen mb-1">
+    <div className="min-h-screen h-full mb-1 bg-background">
       <Nav />
       {searchRequested && <Redirect to="/recipes" />}
       <ScrollToTop>

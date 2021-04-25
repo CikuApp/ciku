@@ -22,16 +22,16 @@ function AddSearchIngredients() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex-shrink-0 h-14 w-72 flex border border-black"
+      className="flex-shrink-0 h-14 w-72 flex justify-evenly px-4 border border-black rounded-lg bg-white"
     >
       <input
         placeholder="Include ingredients"
         value={ingredientInput}
         onChange={(e) => setIngredientInput(e.target.value)}
-        className="flex-grow pl-2 text-lg bg-gray-200"
+        className="text-lg"
       />
-      <button type="submit" className="bg-gray-200 px-2">
-        <IoAddCircle className="text-2xl" />
+      <button type="submit" className=" px-2">
+        <IoAddCircle className="text-3xl text-secondary" />
       </button>
     </form>
   );

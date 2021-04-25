@@ -1,7 +1,7 @@
 import { selector } from "recoil";
 
 import searchParamsAtom from "recoil/searchParams/atom";
-import locationAtom from "recoil/location";
+import locationAtom, { locationProduce } from "recoil/location";
 import searchTagsAtom from "recoil/searchTags";
 import searchIngredientsAtom from "recoil/searchIngredients";
 
@@ -20,10 +20,14 @@ const searchResults = selector({
     try {
       const searchParams = get(searchParamsAtom);
       const location = get(locationAtom);
+      const produce = get(locationProduce);
       const searchTags = get(searchTagsAtom);
       const searchIngredients = get(searchIngredientsAtom);
 
-      const mainQuery = searchParams.length ? searchParams : [];
+      // if no selected produce or search query => submit search for first 5 produce items for location
+      const mainQuery = searchParams.length
+        ? searchParams
+        : produce.slice(0, 5);
 
       // Run search query for each searchParam
       // Apply tags, ingredients, location as additional query params for each

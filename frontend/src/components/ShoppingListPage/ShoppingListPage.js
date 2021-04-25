@@ -7,7 +7,7 @@ import CopyToClipboardButton from "components/ShoppingListPage/CopyToClipboardBu
 
 function ShoppingListPage() {
   return (
-    <main className="w-full flex mt-12">
+    <main className="w-full flex mt-12 mb-24">
       <section className="w-6/12">
         <RecipeList />
       </section>

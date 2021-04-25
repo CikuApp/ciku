@@ -33,7 +33,7 @@ function RecipePage() {
               recipeName={toTitle(selectedRecipe.name)}
               recipeScore={selectedRecipe.sus_score}
               recipeTime={selectedRecipe.minutes}
-              recipeAuthor={selectedRecipe.contributer_id}
+              recipeAuthor={selectedRecipe.contributor_id}
             />
             <SaveRecipeButton recipe={selectedRecipe} />
           </div>
@@ -41,7 +41,7 @@ function RecipePage() {
             <img
               src={selectedRecipe.image}
               alt={selectedRecipe.name}
-              className="h-112 mb-8 border bg-gray-200"
+              className="h-200 mb-8 border bg-gray-200"
             ></img>
           </div>
         </div>

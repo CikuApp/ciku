@@ -9,7 +9,7 @@ import { toTitle } from "utils/dataHelpers";
 function RecipeCard({ recipeObject }) {
   return (
     <Link to={`/recipes/${recipeObject.name.replace(/ /g, "-")}`}>
-      <article className="w-80 h-112 flex flex-col my-8 border">
+      <article className="w-80 h-112 flex flex-col my-8 rounded-lg shadow-lg bg-white">
         <img
           src={recipeObject.image}
           alt={recipeObject.name}
@@ -22,7 +22,7 @@ function RecipeCard({ recipeObject }) {
           >
             {toTitle(recipeObject.name)}
           </Text>
-          <Text type="h4" className="font-bold">
+          <Text type="h4" className="font-bold text-primary">
             Score: {recipeObject.sus_score}
           </Text>
         </div>

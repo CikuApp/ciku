@@ -7,12 +7,12 @@ import { Text } from "components/Presentation";
 
 function RecipeInfo({ recipeName, recipeScore, recipeTime, recipeAuthor }) {
   return (
-    <section className="my-4 pr-24">
+    <section className="mt-12 mb-4 pr-24">
       <Text type="h1">{recipeName}</Text>
       <Text type="h4" className="mt-8">
-        Recipe by: {}
+        Recipe by: {recipeAuthor}
       </Text>
-      <div className="w-full flex justify-between text-center my-12">
+      <div className="w-full flex justify-between text-center my-20">
         <div className="pr-8 py-4 ">
           <Text type="h2">{recipeTime}</Text>
           <Text type="p">Minutes</Text>
@@ -40,5 +40,5 @@ RecipeInfo.propTypes = {
   recipeName: PropTypes.string,
   // recipeRating: PropTypes.number,
   recipeScore: PropTypes.number,
-  recipeTime: PropTypes.string,
+  recipeTime: PropTypes.number,
 };

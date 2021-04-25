@@ -9,9 +9,8 @@ function SaveShoppingListButton() {
   const handleClick = () => {
     domtoimage
       .toBlob(document.getElementById("shopping-list"), {
-        bgcolor: "white",
-        // width: 500,
-        // height: 1000,
+        bgcolor: "#FEFCEE",
+        style: {},
       })
       .then((shoppingList) => {
         saveAs(shoppingList, "my-shopping-list.png");

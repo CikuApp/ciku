@@ -46,24 +46,24 @@ function SelectLocation() {
         <div className="z-40 mr-4">
           <div
             onClick={handleExpand}
-            className="h-14 w-88 flex items-center justify-between px-4 bg-gray-100"
+            className="h-14 w-88 flex items-center justify-between px-4 bg-white rounded-lg"
           >
-            <Text type="p" className="font-bold mr-8">
+            <Text type="p" className="mr-8">
               {formatStateName(selectedLocation)}
             </Text>
-            <IoIosArrowDown />
+            <IoIosArrowDown className="text-lg" />
           </div>
           {isExpanded && (
-            <div className="absolute w-88 h-72 overflow-y-scroll bg-gray-100 ">
+            <div className="absolute w-88 h-72 overflow-y-scroll bg-white ">
               <ul className="list-none">
                 {stateNames.map((name) => {
                   return (
                     <li
                       onClick={() => handleSelection(name)}
-                      className="w-full px-4 py-2 hover:bg-gray-200"
+                      className="w-full px-4 py-2 hover:bg-gray-100"
                       key={name}
                     >
-                      <Text type="p" className="font-bold mr-8">
+                      <Text type="p" className="mr-8">
                         {formatStateName(name)}
                       </Text>
                     </li>

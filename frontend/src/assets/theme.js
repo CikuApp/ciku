@@ -1,32 +1,29 @@
 // Buttons
 export const ButtonType = {
   primary: `
-    w-64 min-w-max 
+    w-56 min-w-max 
     py-3 px-4
-    border border-black
-    bg-gray-300 
-    font-bold 
+    rounded-lg 
+    bg-secondary  
+    font-bold
+    text-white 
     text-xl
     `,
   secondary: `
     w-56 min-w-max
     h-14 
     py-3 px-10
-    border rounded-lg border-black
-    font-bold
+    border rounded-lg border-secondary 
+    font-bold 
+    
     text-lg
     `,
   "nav-primary": `
     min-w-max w-5/12  
     py-1.5 px-3  
-    text-white
-    font-bold 
-    bg-gray-500
-    `,
-  "nav-secondary": `
-    min-w-max w-5/12
-    font-bold 
-    py-1.5 px-3
+    text-white  
+    text-xl
+    font-bold
     `,
 };
 
@@ -59,21 +56,18 @@ export const IconShape = {
 export const TextType = {
   h1: `
   text-5xl
-  font-semibold
-  text-gray-900
-
+  font-semibold 
+  font-serif 
   `,
   h2: `
-  text-4xl 
-
-  text-gray-900
+  text-4xl
+  font-serif 
   `,
   h3: `
   text-3xl
   `,
   h4: `
   text-2xl
-  text-gray-900
   `,
   p: `
   text-xl

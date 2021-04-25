@@ -11,12 +11,14 @@ function CopyToClipboardButton() {
   const handleClick = () => {
     const copyText = document.createElement("textarea");
     copyText.value = shoppingList.join("\n");
+    document.body.appendChild(copyText);
     copyText.select();
     document.execCommand("copy");
+    document.body.removeChild(copyText);
   };
 
   return (
-    <Button size="sm" type="secondary" onClick={handleClick}>
+    <Button size="sm" type="secondary" onClick={handleClick} className="mr-12">
       Copy to Clipboard
     </Button>
   );

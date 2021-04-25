@@ -27,7 +27,7 @@ function ProduceCard({ produceObject }) {
   }, [setSearchParams]);
 
   return (
-    <div className="min-w-72 justify-self-stretch h-16 my-4 mx-3 flex items-center border border-gray-500">
+    <div className="min-w-72 justify-self-stretch h-20 my-8 mx-3 flex items-center bg-white rounded-xl shadow-lg">
       <Checkbox
         checked={isInSearchParams()}
         handleClick={handleClick}
@@ -36,7 +36,7 @@ function ProduceCard({ produceObject }) {
       <img
         src={produceObject.image}
         alt=""
-        className="h-full w-16 mr-4 bg-gray-100"
+        className="h-16 w-16 mx-2 my-2 mr-8 bg-gray-100 "
       />
       <Text type="h4" className="font-bold">
         {produceObject.name}

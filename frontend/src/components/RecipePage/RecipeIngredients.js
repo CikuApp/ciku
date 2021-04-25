@@ -63,7 +63,7 @@ function RecipeIngredients({ recipeIngredients }) {
   return (
     <section className="w-1/2 my-16 pr-24">
       <Text type="h2">Ingredients</Text>
-      <ul className="my-8" ref={ingredientsListRef}>
+      <ul className="my-16" ref={ingredientsListRef}>
         {recipeIngredients.map((ingredient) => {
           return (
             <li className="flex items-center my-4" key={ingredient}>

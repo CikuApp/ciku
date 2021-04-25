@@ -6,25 +6,29 @@ import RecipeResults from "components/RecipeResults/RecipeResults";
 import { PageContainer, Text } from "components/Presentation";
 import SearchIngredientsWrapper from "components/SearchResultsPage/SearchIngredientsWrapper";
 import AddSearchIngredients from "components/SearchResultsPage/AddSearchIngredients";
+import LocationSelector from "components/SearchResultsPage/LocationSelector";
 
 function SearchResultsPage() {
   return (
-    <main>
-      <SearchResultsFilter />
-      <PageContainer>
-        <Text type="h2" className="z-0">
+    <main className="h-full min-h-screen">
+      <PageContainer className="relative z-50">
+        <LocationSelector />
+        <Text type="h2" className="mt-16 mb-10">
           Recipe Results
         </Text>
-        <div className="my-4 flex ">
+        <div className="flex">
           <AddSearchIngredients />
           <SearchIngredientsWrapper />
         </div>
-        <div className="my-16">
+        <SearchResultsFilter />
+      </PageContainer>
+      <div>
+        <PageContainer>
           <Suspense fallback={<div>loading</div>}>
             <RecipeResults />
           </Suspense>
-        </div>
-      </PageContainer>
+        </PageContainer>
+      </div>
     </main>
   );
 }
