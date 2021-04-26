@@ -6,6 +6,7 @@ import RecipeInfo from "components/RecipePage/RecipeInfo";
 import RecipeIngredients from "components/RecipePage/RecipeIngredients";
 import RecipeDirections from "components/RecipePage/RecipeDirections";
 import SaveRecipeButton from "components/RecipePage/SaveRecipeButton";
+import { GiForkKnifeSpoon } from "react-icons/gi";
 
 // Utils
 import { toTitle } from "utils/dataHelpers";
@@ -38,11 +39,15 @@ function RecipePage() {
             <SaveRecipeButton recipe={selectedRecipe} />
           </div>
           <div className="w-6/12">
-            <img
-              src={selectedRecipe.image}
-              alt={selectedRecipe.name}
-              className="h-200 mb-8 border bg-gray-200"
-            ></img>
+            {selectedRecipe.image_url ? (
+              <img
+                src={selectedRecipe.image_url}
+                alt={selectedRecipe.name}
+                className="h-200 mb-8 border bg-gray-200 object-fill overflow-hidden"
+              ></img>
+            ) : (
+              <GiForkKnifeSpoon className="h-200 mb-8 border bg-gray-200" />
+            )}
           </div>
         </div>
         <div className="w-6/12 flex justify-between"></div>
