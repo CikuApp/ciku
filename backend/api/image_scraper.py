@@ -52,7 +52,7 @@ for index, row in df[START_INDEX:].iterrows():
         new_df.loc[index] = curr_row
 
         # Check periodically
-        if (row.name != 0 and row.name % 250 == 0): 
+        if (row.name != START_INDEX and row.name % 250 == 0): 
             new_df.to_csv(temp_csv_path, index = False)
             print("Completed: {}".format(row.name))
         
