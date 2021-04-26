@@ -3,14 +3,16 @@ import numpy as np
 import requests
 import time
 import re
+import os.path
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
-START_INDEX = 245
-NEW_CSV = False
-CSV_NAME = 'recipes_with_images'
-# CSV_NAME = 'recipe_imgs'
+START_INDEX = 0  # follow up where you left off (if program crashed, etc)
+CSV_NAME = 'img_recipes'
+
+csv_path = '../data/recipes/{}.csv'.format(CSV_NAME)
+new_csv = False if os.path.isfile(csv_path) else True
 
 df = pd.read_csv('../data/recipes/RAW_recipes.csv')
 df = df.dropna()
@@ -50,8 +52,8 @@ for index, row in df[START_INDEX:].iterrows():
 
         # Check periodically
         if (row.name != 0 and row.name % 250 == 0): 
-            if (NEW_CSV): new_df.to_csv('../data/recipes/{}.csv'.format(CSV_NAME), index = False)
-            else: new_df.to_csv('../data/recipes/{}.csv'.format(CSV_NAME), index = False, mode='a', header=False)
+            if (new_csv): new_df.to_csv(csv_path, index = False)
+            else: new_df.to_csv(csv_path, index = False, mode='a', header=False)
             print("Completed: {}".format(row.name))
         
         time.sleep(1)
@@ -62,6 +64,6 @@ for index, row in df[START_INDEX:].iterrows():
         print('Failed on: {}'.format(curr_url))
         pass
 
-new_df.to_csv('../data/recipes/recipes_with_images.csv', index = False)
+new_df.to_csv(csv_path, index = False)
 
 driver.quit()

@@ -43,8 +43,9 @@ app = FastAPI(
 )
 
 # TODO: This is very slow but only happens when you start the server, there should be a way to save CSVs for the arrays as non-strings
-df = pd.read_csv('../data/clean_recipes.csv')
+df = pd.read_csv('../data/img_recipes.csv')
 df = df.dropna()
+df = df.drop_duplicates(subset=['name'])
 df['tags'] = df['tags'].apply(literal_eval)
 df['ingredients'] = df['ingredients'].apply(literal_eval)
 df['steps'] = df['steps'].apply(literal_eval)
