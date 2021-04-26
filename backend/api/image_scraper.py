@@ -8,10 +8,11 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
-START_INDEX = 0  # follow up where you left off (if program crashed, etc)
+START_INDEX = 6000  # follow up where you left off (if program crashed, etc)
 CSV_NAME = 'img_recipes'
 
 csv_path = '../data/{}.csv'.format(CSV_NAME)
+temp_csv_path = '../data/temp_{}.csv'.format(CSV_NAME)
 new_csv = False if os.path.isfile(csv_path) else True
 
 df = pd.read_csv('../data/recipes/RAW_recipes.csv')
@@ -52,8 +53,7 @@ for index, row in df[START_INDEX:].iterrows():
 
         # Check periodically
         if (row.name != 0 and row.name % 250 == 0): 
-            if (new_csv): new_df.to_csv(csv_path, index = False)
-            else: new_df.to_csv(csv_path, index = False, mode='a', header=False)
+            new_df.to_csv(temp_csv_path, index = False)
             print("Completed: {}".format(row.name))
         
         time.sleep(1)
@@ -64,6 +64,7 @@ for index, row in df[START_INDEX:].iterrows():
         print('Failed on: {}'.format(curr_url))
         pass
 
-new_df.to_csv(csv_path, index = False)
+if (new_csv): new_df.to_csv(csv_path, index = False)
+else: new_df.to_csv(csv_path, index = False, mode='a', header=False)
 
 driver.quit()
