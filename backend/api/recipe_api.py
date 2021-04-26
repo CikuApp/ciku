@@ -50,7 +50,7 @@ df['tags'] = df['tags'].apply(literal_eval)
 df['ingredients'] = df['ingredients'].apply(literal_eval)
 df['steps'] = df['steps'].apply(literal_eval)
 
-season_df = pd.read_csv('../data/clean_seasonality.csv')
+season_df = pd.read_csv('../data/seasonality.csv')
 season_df['foods'] = season_df['foods'].apply(lambda x: literal_eval(str(x)))
 
 def query_df(query, count, tags, ingredients):
