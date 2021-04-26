@@ -11,7 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 START_INDEX = 0  # follow up where you left off (if program crashed, etc)
 CSV_NAME = 'img_recipes'
 
-csv_path = '../data/recipes/{}.csv'.format(CSV_NAME)
+csv_path = '../data/{}.csv'.format(CSV_NAME)
 new_csv = False if os.path.isfile(csv_path) else True
 
 df = pd.read_csv('../data/recipes/RAW_recipes.csv')
