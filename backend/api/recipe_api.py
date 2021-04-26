@@ -117,6 +117,8 @@ async def query_recipes(count: int = 5, query: str = '', tags: str = '', ingredi
     recipe_count, recipes = query_df(query, count, tags, ingredients)
     if (recipe_count > 1000): recipes = recipes.head(1000)  # TODO: quick workaround for limiting number of scores calculated, find a better way...
     recipes = calc_sus_score(recipes, location)
+    if recipes.empty: return recipes.to_json(orient="records")
+    
     recipes = recipes.sort_values(by=['sus_score'], ascending=False)
     recipes = recipes.head(count)
     print('recipe count: {}, location: {}, query: {}, tags: {}, ingredients: {}'.format(recipe_count, location, query, tags, ingredients))
