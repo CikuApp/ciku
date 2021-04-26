@@ -8,10 +8,11 @@ import csv
 def clean_recipes():
     df = pd.read_csv('../data/recipes/RAW_recipes.csv')
     df = df.dropna()
-    # df['tags'] = df['tags'].apply(lambda x: literal_eval(str(x)))
-    df['tags'] = df['tags'].apply(literal_eval)
-    df['ingredients'] = df['ingredients'].apply(literal_eval)
-    df['steps'] = df['steps'].apply(literal_eval)
+
+    # TODO: doesn't really work to save as CSV, try different methods in the future
+    # df['tags'] = df['tags'].apply(literal_eval)
+    # df['ingredients'] = df['ingredients'].apply(literal_eval)
+    # df['steps'] = df['steps'].apply(literal_eval)
 
     df.to_csv('../data/clean_recipes.csv', index=False)
 
