@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
-START_INDEX = 6000  # follow up where you left off (if program crashed, etc)
+START_INDEX = 0  # follow up where you left off (if program crashed, etc)
 CSV_NAME = 'img_recipes'
 
 csv_path = '../data/{}.csv'.format(CSV_NAME)
@@ -22,6 +22,15 @@ df = df.sample(frac=1, random_state=37).reset_index(drop=True)
 column_names = list(df.columns)
 column_names.extend(['web_url', 'image_url'])
 new_df = pd.DataFrame(columns = column_names)
+
+# Determine where to follow up from
+if os.path.isfile(csv_path):
+    img_recipes_df = pd.read_csv(csv_path)
+    food_name = img_recipes_df.iloc[[-1]].name.to_string(header=False, index=False).strip()
+    followup_index = df[df['name']==food_name].index.values[0]
+    START_INDEX = followup_index + 1
+
+    print('Found exising file, starting after #{}: {}'.format(followup_index, food_name))
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
