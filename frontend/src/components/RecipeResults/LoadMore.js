@@ -6,7 +6,9 @@ import { Button } from "components/Presentation";
 
 function LoadMore({ elements, window, children }) {
   const [numberToShow, setNumberToShow] = useState(window);
-  const [moreToShow, setMoreToShow] = useState(elements.length ? true : false);
+  const [moreToShow, setMoreToShow] = useState(
+    elements.length > window ? true : false
+  );
 
   const handleLoadMore = () => {
     if (numberToShow + window < elements.length) {
