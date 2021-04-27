@@ -10,8 +10,6 @@ const baseUrl = `${
   process.env.NODE_ENV === "development" ? "" : "/backend"
 }/recipes`;
 
-console.log("base URL: ", baseUrl);
-
 const searchResults = selector({
   key: "searchParamsResults",
   get: async ({ get }) => {
