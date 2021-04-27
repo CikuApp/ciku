@@ -27,6 +27,9 @@ const searchResults = selector({
         ? searchParams
         : produce.slice(0, 5);
 
+      // Limit max results to fetch to 5000
+      const count = Math.floor(10000 / mainQuery.length);
+
       // Run search query for each searchParam
       // Apply tags, ingredients, location as additional query params for each
       if (mainQuery.length) {
@@ -36,7 +39,8 @@ const searchResults = selector({
               mainQuery,
               searchTags,
               searchIngredients,
-              location
+              location,
+              count
             );
             const resultsObject = {
               search: mainQuery,
@@ -54,7 +58,13 @@ const searchResults = selector({
   },
 });
 
-async function DBQuery(searchTerm, searchTags, searchIngredients, location) {
+async function DBQuery(
+  searchTerm,
+  searchTags,
+  searchIngredients,
+  location,
+  count
+) {
   try {
     const queryString = "query=".concat(
       searchTerm.toLowerCase().replace(/ /g, "%20")
@@ -72,9 +82,10 @@ async function DBQuery(searchTerm, searchTags, searchIngredients, location) {
       : "";
     const locationString = location.length ? "&location=".concat(location) : "";
 
+    const countString = `&count=${count}`;
     // Search for 100 to start
     const response = await axios.get(
-      `${baseUrl}?${queryString}${ingredientsString}${tagsString}${locationString}`
+      `${baseUrl}?${queryString}${ingredientsString}${tagsString}${locationString}${countString}`
     );
 
     return JSON.parse(response.data);
