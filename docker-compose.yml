@@ -5,17 +5,15 @@ services:
       context: ./reverse-proxy
       dockerfile: Dockerfile
     ports:
-      - '80:80'
+      - "80:80"
     container_name: reverse-proxy
     restart: always
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: kuosandys/cca-sustainability-frontend:latest
     container_name: frontend
     restart: on-failure
     ports:
-      - '3000:3000'
+      - "3000:3000"
   backend:
     build:
       context: ./backend
@@ -23,4 +21,4 @@ services:
     container_name: backend
     restart: on-failure
     ports:
-     - '8000:8000'
+      - "8000:8000"
