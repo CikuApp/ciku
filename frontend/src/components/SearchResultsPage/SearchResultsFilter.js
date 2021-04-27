@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
 
 // States
@@ -10,8 +10,7 @@ import { DropdownMenu, Checkbox, Text } from "components/Presentation";
 // Data
 import { tags } from "data/data";
 
-function SearchResultsFilter() {
-  const [expandedMenu, setExpandedMenu] = useState("");
+function SearchResultsFilter({ handleExpandMenu, expandedMenu }) {
   const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom);
 
   const handleOptionClick = (tag) => {
@@ -36,13 +35,9 @@ function SearchResultsFilter() {
     return expandedMenu === tagName;
   };
 
-  const handleExpandMenu = (tagName) => {
-    setExpandedMenu((prevState) => (prevState === tagName ? "" : tagName));
-  };
-
   return (
     <section className="h-16 w-full flex justify-start align-center mt-14">
-      <div className="relative flex -ml-8">
+      <div className="flex -ml-8">
         {tags.slice(0, tags.length - 1).map((tag) => {
           return (
             <DropdownMenu

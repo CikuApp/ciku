@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 
 // Components
 import SearchResultsFilter from "components/SearchResultsPage/SearchResultsFilter";
@@ -9,6 +9,12 @@ import AddSearchIngredients from "components/SearchResultsPage/AddSearchIngredie
 import LocationSelector from "components/SearchResultsPage/LocationSelector";
 
 function SearchResultsPage() {
+  const [expandedMenu, setExpandedMenu] = useState("");
+
+  const handleExpandMenu = (tagName) => {
+    setExpandedMenu((prevState) => (prevState === tagName ? "" : tagName));
+  };
+
   return (
     <main className="h-full min-h-screen">
       <PageContainer className="relative z-50">
@@ -20,9 +26,15 @@ function SearchResultsPage() {
           <AddSearchIngredients />
           <SearchIngredientsWrapper />
         </div>
-        <SearchResultsFilter />
+        <SearchResultsFilter
+          handleExpandMenu={handleExpandMenu}
+          expandedMenu={expandedMenu}
+        />
       </PageContainer>
-      <div>
+      <div className="relative">
+        {expandedMenu !== "" && (
+          <div className="absolute bg-black opacity-60 w-full min-h-screen h-full"></div>
+        )}
         <PageContainer>
           <Suspense fallback={<div>loading</div>}>
             <RecipeResults />
