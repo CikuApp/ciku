@@ -20,7 +20,7 @@ function LocationPage() {
 
   return (
     <main className="w-full h-screen">
-      <section className="h-1/2 bg-gray-200">
+      <section className="h-200 bg-gray-200">
         <PageContainer className="h-full flex items-center">
           <div className="w-1/2 p-12 flex flex-col items-stretch bg-black bg-opacity-70 text-white">
             <Text type="h1" className="mb-10">

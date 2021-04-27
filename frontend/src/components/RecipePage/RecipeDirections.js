@@ -14,7 +14,7 @@ function RecipeDirections({ recipeDirections }) {
           return (
             <li className="my-8 flex" key={direction}>
               <Text type="p">
-                <span>{index + 1}. </span>
+                <span className="mr-2">{index + 1}.</span>
                 {toSentence(direction)}
               </Text>
             </li>

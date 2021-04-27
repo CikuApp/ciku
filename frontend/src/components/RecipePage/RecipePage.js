@@ -43,7 +43,7 @@ function RecipePage() {
               <img
                 src={selectedRecipe.image_url}
                 alt={selectedRecipe.name}
-                className="h-200 mb-8 border bg-gray-200 object-fill overflow-hidden"
+                className="h-200 mb-8 border bg-gray-200 object-cover overflow-hidden"
               ></img>
             ) : (
               <GiForkKnifeSpoon className="h-200 mb-8 border bg-gray-200" />
