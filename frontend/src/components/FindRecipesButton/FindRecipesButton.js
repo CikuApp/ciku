@@ -9,11 +9,13 @@ import { Button } from "components/Presentation";
 function FindRecipesButton() {
   const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom);
 
-  const handleClick = () => [setSearchTags([])];
+  const handleClick = () => {
+    setSearchTags([]);
+  };
 
   return (
     <Link to="/recipes">
-      <Button type="primary" size="sm" handleClick={handleClick}>
+      <Button type="primary" size="sm" onClick={handleClick}>
         Find Recipes
       </Button>
     </Link>
