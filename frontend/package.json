@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
-    "build": "npm run watch:css && react-scripts --max_old_space_size=1024 build --prod",
+    "build": "npm run watch:css && react-scripts build --prod",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
