@@ -2,3 +2,16 @@ html {
   font-size: 13px;
   background-color: #fefcee;
 }
+
+button,
+button:focus,
+button:focus-visible {
+  outline: none !important;
+}
+
+input,
+input:focus,
+input:focus-within,
+input:focus-visible {
+  outline: none !important;
+}
