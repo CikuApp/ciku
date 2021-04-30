@@ -1,6 +1,11 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { Switch, Route, Redirect } from "react-router-dom";
+
+// Atoms
+import searchRequestedAtom from "recoil/searchRequested/atom";
+
+// Components
 import Nav from "components/Nav/Nav";
 import HomePage from "components/HomePage/HomePage";
 import LocationPage from "components/LocationPage/LocationPage";
@@ -9,43 +14,34 @@ import ShoppingListPage from "components/ShoppingListPage/ShoppingListPage";
 import RecipePage from "components/RecipePage/RecipePage";
 import ScrollToTop from "components/ScrollToTop/ScrollToTop";
 
-import { PageContainer } from "components/Presentation";
-import searchRequestedAtom from "recoil/searchRequested/atom";
-
-function App() {
+const App = () => {
   const searchRequested = useRecoilValue(searchRequestedAtom);
 
   return (
-    <div className="min-h-screen h-full mb-1 bg-background">
+    <main className="min-h-screen h-full mb-1 bg-background">
       <Nav />
       {searchRequested && <Redirect to="/recipes" />}
       <ScrollToTop>
         <Switch>
           <Route exact path="/">
-            <PageContainer>
-              <HomePage />
-            </PageContainer>
+            <HomePage />
           </Route>
           <Route path="/locations/:locationName">
             <LocationPage />
           </Route>
           <Route path="/recipes/:recipeName">
-            <PageContainer>
-              <RecipePage />
-            </PageContainer>
+            <RecipePage />
           </Route>
           <Route path="/recipes">
             <SearchResultsPage />
           </Route>
           <Route exact path="/shopping-list">
-            <PageContainer>
-              <ShoppingListPage />
-            </PageContainer>
+            <ShoppingListPage />
           </Route>
         </Switch>
       </ScrollToTop>
-    </div>
+    </main>
   );
-}
+};
 
 export default App;

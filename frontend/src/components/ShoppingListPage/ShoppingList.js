@@ -1,15 +1,17 @@
 import React from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
+// Atoms
 import { userShoppingList } from "recoil/user";
 
+// Components
 import { Text, Checkbox } from "components/Presentation";
 
-function ShoppingList() {
+const ShoppingList = () => {
   const shoppingList = useRecoilValue(userShoppingList);
   return (
     <div id="shopping-list">
-      <Text type="h2">Shopping List ({shoppingList.length})</Text>
+      <Text type="h2">Grocery List ({shoppingList.length})</Text>
       <ul className="my-12">
         {shoppingList.map((item) => {
           return (
@@ -27,6 +29,6 @@ function ShoppingList() {
       </ul>
     </div>
   );
-}
+};
 
 export default ShoppingList;

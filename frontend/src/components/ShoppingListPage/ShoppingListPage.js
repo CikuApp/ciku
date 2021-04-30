@@ -1,13 +1,15 @@
 import React from "react";
 
+// Components
 import ShoppingList from "components/ShoppingListPage/ShoppingList";
 import RecipeList from "components/ShoppingListPage/RecipeList";
 import SaveShoppingListButton from "components/ShoppingListPage/SaveShoppingListButton";
 import CopyToClipboardButton from "components/ShoppingListPage/CopyToClipboardButton";
+import { PageContainer } from "components/Presentation";
 
-function ShoppingListPage() {
+const ShoppingListPage = () => {
   return (
-    <main className="w-full flex mt-12 mb-24">
+    <PageContainer className="w-full flex mt-12 mb-24">
       <section className="w-6/12">
         <RecipeList />
       </section>
@@ -18,8 +20,8 @@ function ShoppingListPage() {
           <SaveShoppingListButton />
         </div>
       </section>
-    </main>
+    </PageContainer>
   );
-}
+};
 
 export default ShoppingListPage;

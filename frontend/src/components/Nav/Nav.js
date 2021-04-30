@@ -1,29 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Components
 import SearchBar from "components/SearchBar/SearchBar";
 import GroceryListButton from "components/Nav/GroceryListButton";
 import AccountButton from "components/Nav/AccountButton";
-
 import { Text } from "components/Presentation";
 
-function Nav() {
+// Assets
+import logo from "assets/images/logo.png";
+
+const Nav = () => {
   return (
     <nav className="h-28 bg-primary">
       <div className="max-w-screen-xl mx-48 2xl:mx-auto h-full flex justify-between items-center">
-        <Link to="/">
-          <Text type="h2" className="text-white">
-            LOGO
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="Ciku" className="h-12 mr-2" />
+          <Text type="h3" className="text-white">
+            Ciku
           </Text>
         </Link>
         <SearchBar />
-        <div className="flex items-stretch h-1/2 ">
+        <section className="flex items-stretch h-1/2 ">
           <GroceryListButton />
           <AccountButton />
-        </div>
+        </section>
       </div>
     </nav>
   );
-}
+};
 
 export default Nav;
