@@ -1,14 +1,19 @@
 import { selector } from "recoil";
+import axios from "axios";
 
+// Atoms
 import searchParamsAtom from "recoil/searchParams/atom";
 import locationAtom, { locationProduce } from "recoil/location";
 import searchTagsAtom from "recoil/searchTags";
 import searchIngredientsAtom from "recoil/searchIngredients";
 
-import axios from "axios";
 const baseUrl = `${
   process.env.NODE_ENV === "development" ? "" : "/backend"
 }/recipes`;
+
+const randomBaseUrl = `${
+  process.env.NODE_ENV === "development" ? "" : "/backend"
+}/random`;
 
 const searchResults = selector({
   key: "searchParamsResults",
@@ -32,7 +37,14 @@ const searchResults = selector({
 
       // Run search query for each searchParam
       // Apply tags, ingredients, location as additional query params for each
-      if (mainQuery.length) {
+      if (searchParams[0] === "random") {
+        const data = await randomDBQuery(8);
+        const resultsObject = {
+          search: "Popular",
+          results: data,
+        };
+        results.push(resultsObject);
+      } else if (mainQuery.length) {
         await Promise.all(
           mainQuery.map(async (mainQuery) => {
             const data = await DBQuery(
@@ -83,7 +95,7 @@ async function DBQuery(
     const locationString = location.length ? "&location=".concat(location) : "";
 
     const countString = `&count=${count}`;
-    // Search for 100 to start
+
     const response = await axios.get(
       `${baseUrl}?${queryString}${ingredientsString}${tagsString}${locationString}${countString}`
     );
@@ -93,6 +105,16 @@ async function DBQuery(
     console.error(err);
 
     // fallback for errors from server
+    return [];
+  }
+}
+
+async function randomDBQuery(count) {
+  try {
+    const response = await axios.get(`${randomBaseUrl}?count=${count}`);
+    return JSON.parse(response.data);
+  } catch (err) {
+    console.error(err);
     return [];
   }
 }

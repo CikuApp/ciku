@@ -11,7 +11,7 @@ function PopularRecipes() {
 
   // Change this later to load popular recipes
   useEffect(() => {
-    setSearchParams(["popular"]);
+    setSearchParams(["random"]);
   }, [setSearchParams]);
 
   return (
