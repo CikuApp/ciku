@@ -21,7 +21,7 @@ const RecipeInfo = ({ recipe }) => {
             Recipe by: {recipe.contributor || "-"}
           </Text>
           <RecipeStats
-            recipeTime={recipe.time}
+            recipeTime={recipe.minutes}
             recipeScore={recipe.sus_score}
           />
         </section>
