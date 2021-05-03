@@ -13,7 +13,7 @@ import logo from "assets/images/logo.png";
 const Nav = () => {
   return (
     <nav className="h-28 bg-primary">
-      <div className="max-w-screen-xl mx-12 xl:mx-48 2xl:mx-auto h-full flex justify-between items-center">
+      <div className="w-full px-12 lg:px-24 xl:px-48 2xl:px-64 h-full flex justify-between items-center">
         <Link to="/" className="flex items-center">
           <img src={logo} alt="Ciku" className="h-12 mr-2" />
           <Text type="logo" className="text-white">

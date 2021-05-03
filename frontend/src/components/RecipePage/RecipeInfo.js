@@ -31,7 +31,7 @@ const RecipeInfo = ({ recipe }) => {
         <img
           src={recipe.image_url}
           alt={recipe.name}
-          className="h-200 mb-8 border bg-gray-200 object-cover overflow-hidden"
+          className="h-200 mb-8 border bg-gray-200 object-cover overflow-hidden rounded-xl"
         ></img>
       </div>
     </div>
