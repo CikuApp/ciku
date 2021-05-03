@@ -130,7 +130,7 @@ async def query_random_recipes(count: int = 5, location: str = 'california'):
     recipes = calc_sus_score(recipes, location)
     if recipes.empty: return recipes.to_json(orient="records")
     
-    recipes = recipes.sort_values(by=['sus_score'], ascending=False)
+    # recipes = recipes.sort_values(by=['sus_score'], ascending=False)
     return recipes.to_json(orient="records")
 
 @app.get("/seasonal", tags=["seasonal"])
