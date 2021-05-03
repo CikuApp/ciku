@@ -8,7 +8,7 @@ import homepageImage from "assets/images/brooke-lark-nTZOILVZuOg-unsplash 1.png"
 
 const Information = () => {
   return (
-    <PageContainer className="relative h-4/5 pt-28 bg-homepage bg-no-repeat">
+    <PageContainer className="relative h-4/5 pt-28 bg-homepage bg-no-repeat bg-cover">
       <section className="flex h-112 mb-20">
         <div className="w-6/12 overflow-hidden">
           <img

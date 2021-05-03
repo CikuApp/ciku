@@ -17,12 +17,12 @@ const RecipeCard = ({ recipeObject }) => {
         />
         <div className="h-full w-full px-3 flex flex-col justify-evenly">
           <Text
-            type="h4"
-            className="w-full font-bold whitespace-nowrap overflow-ellipsis overflow-hidden font-serif"
+            type="h5"
+            className="w-full h-16 pt-1 font-bold whitespace-wrap overflow-ellipsis overflow-hidden font-serif"
           >
             {toTitle(recipeObject.name)}
           </Text>
-          <Text type="h4" className="font-bold text-primary ">
+          <Text type="p" className="font-bold text-primary ">
             Score: {recipeObject.sus_score}
           </Text>
         </div>

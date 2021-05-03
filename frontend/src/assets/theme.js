@@ -71,6 +71,11 @@ export const TextType = {
   text-2xl
 
   `,
+
+  h5: `
+  text-xl
+  leading-normal
+  `,
   p: `
   text-xl
   leading-relaxed
