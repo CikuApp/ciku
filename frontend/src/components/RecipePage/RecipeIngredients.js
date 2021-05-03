@@ -62,7 +62,9 @@ function RecipeIngredients({ recipeIngredients }) {
 
   return (
     <section className="w-1/2 my-16 pr-24">
-      <Text type="h2">Ingredients</Text>
+      <Text type="h2" className="font-serif font-bold">
+        Ingredients
+      </Text>
       <ul className="my-16" ref={ingredientsListRef}>
         {recipeIngredients.map((ingredient) => {
           return (
@@ -79,20 +81,20 @@ function RecipeIngredients({ recipeIngredients }) {
         })}
       </ul>
       {localCount > 0 ? (
-        <div className="flex items-center justify-between">
-          <Text type="h4" className="flex items-center">
+        <div className="flex items-center justify-between 2xl:justify-start">
+          <Text type="h4" className="flex items-center 2xl:mr-12">
             <IoCheckmarkSharp className="mr-4" />
             {localCount} ingredients added
           </Text>
           <Link to="/shopping-list">
             <Button type="secondary" size="sm">
-              View Shopping List
+              View Grocery List
             </Button>
           </Link>
         </div>
       ) : (
         <Button type="secondary" size="sm" onClick={handleAddToList}>
-          Add To Shopping List
+          Add To Grocery List
         </Button>
       )}
     </section>

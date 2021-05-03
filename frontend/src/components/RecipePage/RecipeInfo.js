@@ -1,44 +1,45 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// import StarRating from "components/StarRating/StarRating";
-
+// Components
+import RecipeStats from "components/RecipePage/RecipeStats";
+import SaveRecipeButton from "components/RecipePage/SaveRecipeButton";
 import { Text } from "components/Presentation";
 
-function RecipeInfo({ recipeName, recipeScore, recipeTime, recipeAuthor }) {
+// Utils
+import { toTitle } from "utils/dataHelpers";
+
+const RecipeInfo = ({ recipe }) => {
   return (
-    <section className="mt-12 mb-4 pr-24">
-      <Text type="h1">{recipeName}</Text>
-      <Text type="h4" className="mt-8">
-        Recipe by: {recipeAuthor}
-      </Text>
-      <div className="w-full flex justify-between text-center my-20">
-        <div className="pr-8 py-4 ">
-          <Text type="h2">{recipeTime}</Text>
-          <Text type="p">Minutes</Text>
-        </div>
-        <div className="px-16 py-4 flex flex-col items-center justify-center border-r-2 border-l-2 border-black">
-          <Text type="h2" className="">
-            {recipeScore}
+    <div className="w-full flex">
+      <div className="w-6/12 flex flex-col">
+        <section className="mt-12 mb-4 pr-24">
+          <Text type="h1" className="leading-normal">
+            {toTitle(recipe.name)}
           </Text>
-          <Text type="p">Sustainability Score</Text>
-        </div>
-        <div className="px-8 py-4 ">
-          <Text type="h2">0</Text>
-          <Text type="p" className="bold">
-            Servings
+          <Text type="h4" className="mt-8">
+            Recipe by: {recipe.contributor || "-"}
           </Text>
-        </div>
+          <RecipeStats
+            recipeTime={recipe.time}
+            recipeScore={recipe.sus_score}
+          />
+        </section>
+        <SaveRecipeButton recipe={recipe} />
       </div>
-    </section>
+      <div className="w-6/12">
+        <img
+          src={recipe.image_url}
+          alt={recipe.name}
+          className="h-200 mb-8 border bg-gray-200 object-cover overflow-hidden rounded-xl"
+        ></img>
+      </div>
+    </div>
   );
-}
+};
 
 export default RecipeInfo;
 
 RecipeInfo.propTypes = {
-  recipeName: PropTypes.string,
-  // recipeRating: PropTypes.number,
-  recipeScore: PropTypes.number,
-  recipeTime: PropTypes.number,
+  recipe: PropTypes.object,
 };

@@ -13,7 +13,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { stateNames } from "data/data";
 import { formatStateName } from "utils/dataHelpers";
 
-function SelectLocation() {
+const SelectLocation = () => {
   const [location, setLocation] = useRecoilState(locationAtom);
   const [selectedLocation, setSelectedLocation] = useState(
     location.length ? location : "Select A State"
@@ -79,6 +79,6 @@ function SelectLocation() {
       </form>
     );
   }
-}
+};
 
 export default SelectLocation;

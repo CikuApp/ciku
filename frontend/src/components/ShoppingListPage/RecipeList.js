@@ -11,7 +11,7 @@ function RecipeList() {
 
   return (
     <div>
-      <Text type="h2" className="mb-12">
+      <Text type="h2" className="mb-12 font-serif">
         Recipes
       </Text>
       {savedRecipes &&

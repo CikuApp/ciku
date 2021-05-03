@@ -4,9 +4,11 @@ import { useRecoilState } from "recoil";
 
 import searchParamsAtom from "recoil/searchParams";
 
+// Components
 import { Text, Checkbox } from "components/Presentation";
+import { GiTomato } from "react-icons/gi";
 
-function ProduceCard({ produceObject }) {
+const ProduceCard = ({ produceObject }) => {
   const [searchParams, setSearchParams] = useRecoilState(searchParamsAtom);
   const isInSearchParams = () => {
     return searchParams.includes(produceObject.name) ? true : false;
@@ -27,23 +29,25 @@ function ProduceCard({ produceObject }) {
   }, [setSearchParams]);
 
   return (
-    <div className="min-w-72 justify-self-stretch h-20 my-8 mx-3 flex items-center bg-white rounded-xl shadow-lg">
+    <div className="justify-self-stretch min-w-72 h-20 my-8 mx-3 flex items-center bg-white rounded-xl shadow-lg">
       <Checkbox
         checked={isInSearchParams()}
         handleClick={handleClick}
         className="mx-6"
       />
-      <img
-        src={produceObject.image}
-        alt=""
-        className="h-16 w-16 mx-2 my-2 mr-8 bg-gray-100 "
-      />
+      <div className="h-16 w-16 mx-2 my-2 mr-8 flex items-center justify-center bg-gray-100 rounded">
+        {produceObject.image ? (
+          <img src={produceObject.image} alt="" />
+        ) : (
+          <GiTomato className="text-gray-400 text-4xl" />
+        )}
+      </div>
       <Text type="h4" className="font-bold">
         {produceObject.name}
       </Text>
     </div>
   );
-}
+};
 
 export default ProduceCard;
 

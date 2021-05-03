@@ -12,7 +12,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { formatStateName } from "utils/dataHelpers";
 import { stateNames } from "data/data";
 
-function LocationSelector() {
+const LocationSelector = () => {
   const [location, setLocation] = useRecoilState(locationAtom);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -31,18 +31,18 @@ function LocationSelector() {
         Currently showing recipes for seasonal produce in
       </Text>
       <form className="flex">
-        <div className="z-40 mr-4 border border-black rounded-xl bg-white">
+        <div className="z-40 mr-4 border border-gray-300 rounded-lg bg-white">
           <div
             onClick={handleExpand}
             className="h-14 w-88 flex items-center justify-between px-4"
           >
-            <Text type="p" className="mr-8">
+            <Text type="p" className="mr-8 text-gray-800">
               {formatStateName(location)}
             </Text>
             <IoIosArrowDown className="text-lg" />
           </div>
           {isExpanded && (
-            <div className="absolute w-88 h-52 overflow-y-scroll mt-4 bg-white">
+            <div className="absolute w-88 h-48 overflow-y-scroll mt-0.5 border border-white rounded-lg bg-white">
               <ul className="list-none">
                 {stateNames.map((name) => {
                   return (
@@ -51,7 +51,12 @@ function LocationSelector() {
                       className="w-full px-4 py-2 hover:bg-gray-200"
                       key={name}
                     >
-                      <Text type="p" className="font-bold mr-8">
+                      <Text
+                        type="p"
+                        className={`mr-8 text-gray-800 ${
+                          name === location && "font-bold"
+                        }`}
+                      >
                         {formatStateName(name)}
                       </Text>
                     </li>
@@ -64,6 +69,6 @@ function LocationSelector() {
       </form>
     </div>
   );
-}
+};
 
 export default LocationSelector;

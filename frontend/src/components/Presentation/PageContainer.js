@@ -1,8 +1,8 @@
 import React from "react";
 
-function PageContainer({ children, className }) {
-  const classNames = `max-w-screen-xl mx-48 2xl:mx-auto my-auto pt-12 text-sm ${className}`;
+const PageContainer = ({ children, className }) => {
+  const classNames = `relative w-full px-12 lg:px-24 xl:px-48 2xl:px-64 ${className}`;
   return <div className={classNames}>{children}</div>;
-}
+};
 
 export default PageContainer;

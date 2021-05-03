@@ -1,16 +1,20 @@
 import React from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
+// Atoms
 import { userShoppingList } from "recoil/user";
 
+// Components
 import { Text, Checkbox } from "components/Presentation";
 
-function ShoppingList() {
+const ShoppingList = () => {
   const shoppingList = useRecoilValue(userShoppingList);
   return (
-    <div id="shopping-list">
-      <Text type="h2">Shopping List ({shoppingList.length})</Text>
-      <ul className="my-12">
+    <div id="shopping-list" className="py-12 -mt-12 px-10 -mx-10">
+      <Text type="h2" className="font-serif">
+        Grocery List ({shoppingList.length})
+      </Text>
+      <ul className="mt-12">
         {shoppingList.map((item) => {
           return (
             <li key={item} className="flex my-4">
@@ -18,7 +22,7 @@ function ShoppingList() {
                 value={item}
                 checked={false}
                 handleClick={null}
-                className="mr-8"
+                className="mr-8 "
               />
               <Text type="h4">{item}</Text>
             </li>
@@ -27,6 +31,6 @@ function ShoppingList() {
       </ul>
     </div>
   );
-}
+};
 
 export default ShoppingList;
