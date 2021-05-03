@@ -1,20 +1,18 @@
 import React from "react";
 
-import domtoimage from "dom-to-image";
+import html2canvas from "html2canvas";
 import { saveAs } from "file-saver";
 
 import { Button } from "components/Presentation";
 
-function SaveShoppingListButton() {
+const SaveShoppingListButton = () => {
   const handleClick = () => {
-    domtoimage
-      .toBlob(document.getElementById("shopping-list"), {
-        bgcolor: "#FEFCEE",
-        style: {},
-      })
-      .then((shoppingList) => {
-        saveAs(shoppingList, "my-shopping-list.png");
-      });
+    html2canvas(document.querySelector("#shopping-list")).then((canvas) => {
+      canvas.style.display = "none";
+      document.body.appendChild(canvas);
+      canvas.toBlob((blob) => saveAs(blob, "my-shopping-list.png"));
+      document.body.removeChild(canvas);
+    });
   };
 
   return (
@@ -22,6 +20,6 @@ function SaveShoppingListButton() {
       Save List
     </Button>
   );
-}
+};
 
 export default SaveShoppingListButton;

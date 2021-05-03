@@ -6,7 +6,7 @@ import RecipeResults from "components/RecipeResults/RecipeResults";
 
 const ResultsSection = ({ expandedMenu }) => {
   return (
-    <div className="relative">
+    <div className="relative w-full flex flex-col items-center">
       {expandedMenu !== "" && (
         <div className="absolute w-full min-h-screen h-full bg-black opacity-60 "></div>
       )}

@@ -9,12 +9,12 @@ import LocationSelector from "components/SearchResultsPage/LocationSelector";
 
 const OptionsSection = ({ expandedMenu, handleExpandMenu }) => {
   return (
-    <PageContainer className="relative z-50 pt-14">
+    <PageContainer className="relative z-50 pt-6">
       <LocationSelector />
-      <Text type="h2" className="mt-16 mb-10">
+      <Text type="h2" className="my-14 font-serif">
         Recipe Results
       </Text>
-      <div className="flex">
+      <div className="flex items-center">
         <AddSearchIngredients />
         <SearchIngredientsWrapper />
       </div>

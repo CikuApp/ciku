@@ -17,8 +17,8 @@ const Information = () => {
   }, [locationName, setLocation]);
 
   return (
-    <PageContainer className="h-200 flex items-center bg-gray-200">
-      <div className="w-1/2 p-12 flex flex-col items-stretch bg-black bg-opacity-70 text-white">
+    <PageContainer className="flex items-center py-36 bg-california bg-cover bg-no-repeat">
+      <div className="w-1/2 p-16 ml-0 lg:-ml-16 flex flex-col items-stretch bg-black bg-opacity-80 text-white">
         <Text type="h1" className="mb-10">
           {locationName.toUpperCase()}
         </Text>

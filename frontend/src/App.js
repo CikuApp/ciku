@@ -13,6 +13,7 @@ import SearchResultsPage from "components/SearchResultsPage/SearchResultsPage";
 import ShoppingListPage from "components/ShoppingListPage/ShoppingListPage";
 import RecipePage from "components/RecipePage/RecipePage";
 import ScrollToTop from "components/ScrollToTop/ScrollToTop";
+import { PageVertical } from "components/Presentation";
 
 const App = () => {
   const searchRequested = useRecoilValue(searchRequestedAtom);
@@ -22,23 +23,25 @@ const App = () => {
       <Nav />
       {searchRequested && <Redirect to="/recipes" />}
       <ScrollToTop>
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="/locations/:locationName">
-            <LocationPage />
-          </Route>
-          <Route path="/recipes/:recipeName">
-            <RecipePage />
-          </Route>
-          <Route path="/recipes">
-            <SearchResultsPage />
-          </Route>
-          <Route exact path="/shopping-list">
-            <ShoppingListPage />
-          </Route>
-        </Switch>
+        <PageVertical>
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route path="/locations/:locationName">
+              <LocationPage />
+            </Route>
+            <Route path="/recipes/:recipeName">
+              <RecipePage />
+            </Route>
+            <Route path="/recipes">
+              <SearchResultsPage />
+            </Route>
+            <Route exact path="/shopping-list">
+              <ShoppingListPage />
+            </Route>
+          </Switch>
+        </PageVertical>
       </ScrollToTop>
     </main>
   );

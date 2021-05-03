@@ -16,10 +16,10 @@ function DropdownMenu({ selectorName, isExpanded, handleExpand, children }) {
         <Text type="h4" className="font-bold mr-8">
           {selectorName}
         </Text>
-        <IoIosArrowDown />
+        <IoIosArrowDown className="text-xl font-bold" />
       </button>
       {isExpanded && (
-        <div className="absolute w-auto h-auto px-8 py-2 bg-white ">
+        <div className="absolute w-auto h-auto px-8 bg-white rounded-lg rounded-tl-none">
           {children}
         </div>
       )}

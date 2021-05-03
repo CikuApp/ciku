@@ -8,7 +8,9 @@ import { toSentence } from "utils/dataHelpers";
 function RecipeDirections({ recipeDirections }) {
   return (
     <section className="w-6/12 my-16">
-      <Text type="h2">Directions</Text>
+      <Text type="h2" className="font-serif font-bold">
+        Directions
+      </Text>
       <ol className="list-inside my-16 ">
         {recipeDirections.map((direction, index) => {
           return (

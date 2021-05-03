@@ -15,7 +15,7 @@ function PopularRecipes() {
   }, [setSearchParams]);
 
   return (
-    <PageContainer className="mb-12">
+    <PageContainer className="pt-12 mb-12">
       <Suspense fallback={<div>loading</div>}>
         <RecipeResults />
       </Suspense>

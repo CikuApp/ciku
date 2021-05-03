@@ -24,7 +24,7 @@ const RecipePage = () => {
 
   if (selectedRecipe) {
     return (
-      <PageContainer className="mt-20">
+      <PageContainer className="mt-24">
         <RecipeInfo recipe={selectedRecipe} />
         <div className="flex my-16">
           <RecipeIngredients recipeIngredients={selectedRecipe.ingredients} />

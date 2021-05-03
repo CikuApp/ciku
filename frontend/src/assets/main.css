@@ -3782,6 +3782,10 @@ video {
   background-image: url('./images/bg.png');
 }
 
+.bg-california {
+  background-image: url('./images/california.png');
+}
+
 .from-transparent {
   --tw-gradient-from: transparent;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -30489,6 +30493,10 @@ video {
     background-image: url('./images/bg.png');
   }
 
+  .sm\:bg-california {
+    background-image: url('./images/california.png');
+  }
+
   .sm\:from-transparent {
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -57149,6 +57157,10 @@ video {
 
   .md\:bg-homepage {
     background-image: url('./images/bg.png');
+  }
+
+  .md\:bg-california {
+    background-image: url('./images/california.png');
   }
 
   .md\:from-transparent {
@@ -83813,6 +83825,10 @@ video {
     background-image: url('./images/bg.png');
   }
 
+  .lg\:bg-california {
+    background-image: url('./images/california.png');
+  }
+
   .lg\:from-transparent {
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -110475,6 +110491,10 @@ video {
     background-image: url('./images/bg.png');
   }
 
+  .xl\:bg-california {
+    background-image: url('./images/california.png');
+  }
+
   .xl\:from-transparent {
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -137135,6 +137155,10 @@ video {
 
   .\32xl\:bg-homepage {
     background-image: url('./images/bg.png');
+  }
+
+  .\32xl\:bg-california {
+    background-image: url('./images/california.png');
   }
 
   .\32xl\:from-transparent {

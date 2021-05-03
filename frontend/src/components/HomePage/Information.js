@@ -1,14 +1,22 @@
 import React from "react";
 
+// Components
 import SelectLocation from "components/HomePage/SelectLocation";
 import PageContainer from "components/Presentation/PageContainer";
 import { Text } from "components/Presentation";
+import homepageImage from "assets/images/brooke-lark-nTZOILVZuOg-unsplash 1.png";
 
-function Information() {
+const Information = () => {
   return (
     <PageContainer className="relative h-4/5 pt-28 bg-homepage bg-no-repeat">
-      <section className="flex h-200 mb-20">
-        <img src="" alt="" className="w-6/12 h-112 bg-gray-100" />
+      <section className="flex h-112 mb-20">
+        <div className="w-6/12 overflow-hidden">
+          <img
+            src={homepageImage}
+            alt="a delicious meal"
+            className="mx-auto my-10 lg:my-0"
+          />
+        </div>
         <div className="w-6/12 h-112 flex flex-col justify-center ml-24">
           <Text type="h1" className="leading-snug">
             Learn to eat more sustainably.
@@ -29,6 +37,6 @@ function Information() {
       </section>
     </PageContainer>
   );
-}
+};
 
 export default Information;

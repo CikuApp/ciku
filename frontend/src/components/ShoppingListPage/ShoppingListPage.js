@@ -9,7 +9,7 @@ import { PageContainer } from "components/Presentation";
 
 const ShoppingListPage = () => {
   return (
-    <PageContainer className="w-full flex mt-12 mb-24">
+    <PageContainer className="w-full flex py-24">
       <section className="w-6/12">
         <RecipeList />
       </section>

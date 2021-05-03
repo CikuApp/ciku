@@ -14,9 +14,11 @@ const RecipeInfo = ({ recipe }) => {
     <div className="w-full flex">
       <div className="w-6/12 flex flex-col">
         <section className="mt-12 mb-4 pr-24">
-          <Text type="h1">{toTitle(recipe.name)}</Text>
+          <Text type="h1" className="leading-normal">
+            {toTitle(recipe.name)}
+          </Text>
           <Text type="h4" className="mt-8">
-            Recipe by: {recipe.contributor}
+            Recipe by: {recipe.contributor || "-"}
           </Text>
           <RecipeStats
             recipeTime={recipe.time}

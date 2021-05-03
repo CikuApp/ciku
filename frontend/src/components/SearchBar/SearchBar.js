@@ -33,14 +33,14 @@ function SearchBar() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-1/2 h-14 flex bg-white rounded-lg"
+      className="h-14 flex-grow flex mx-20 bg-white rounded-lg"
     >
       <input
         type="text"
         onChange={(e) => setSearchInput(e.target.value)}
         value={searchInput}
-        className="flex-grow pl-4 text-lg rounded-lg"
         placeholder="Find A Recipe"
+        className="flex-grow pl-6 text-lg rounded-lg placeholder-gray-500"
       />
       <button type="submit" className="px-4">
         <IoMdSearch className="text-2xl text-secondary" />

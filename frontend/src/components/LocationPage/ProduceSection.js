@@ -7,7 +7,7 @@ import { Text, PageContainer } from "components/Presentation";
 
 const ProduceSection = () => {
   return (
-    <PageContainer className="flex flex-col items-center py-28">
+    <PageContainer className="flex flex-col items-center py-24">
       <Text type="h2" className="mb-8 self-start">
         Find Recipes By Ingredient
       </Text>

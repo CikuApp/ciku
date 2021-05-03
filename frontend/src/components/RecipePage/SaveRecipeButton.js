@@ -33,7 +33,7 @@ function SaveRecipeButton({ recipe }) {
   } else {
     return (
       <Button size="sm" type="secondary" onClick={handleSave} className="flex">
-        <IoHeartOutline className="text-2xl my-auto mr-3 text-secondary" />
+        <IoHeartOutline className="text-3xl my-auto mr-4 text-secondary" />
         Save Recipe
       </Button>
     );

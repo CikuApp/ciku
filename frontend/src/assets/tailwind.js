@@ -94,6 +94,7 @@ module.exports = {
       "gradient-to-tl":
         "linear-gradient(to top left, var(--tw-gradient-stops))",
       homepage: "url('./images/bg.png')",
+      california: "url('./images/california.png')",
     },
     backgroundOpacity: (theme) => theme("opacity"),
     backgroundPosition: {
