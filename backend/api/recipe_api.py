@@ -36,7 +36,7 @@ tags_metadata = [
 ]
 
 app = FastAPI(
-    title="Project INSERT-NAME-HERE",
+    title="Ciku API",
     description="An API to support an awesome website for more sustainable recipe selection and grocery shopping!",
     version="1.0.0",
     openapi_tags=tags_metadata,
