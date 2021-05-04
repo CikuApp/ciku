@@ -1,9 +1,12 @@
 import pandas as pd
 import numpy as np
 import json
+
 from ast import literal_eval
 from fastapi import Body, FastAPI
 from datetime import datetime
+from nltk.stem import PorterStemmer
+from nltk.tokenize import sent_tokenize, word_tokenize
 
 tags_metadata = [
     {
@@ -53,8 +56,20 @@ df['steps'] = df['steps'].apply(literal_eval)
 season_df = pd.read_csv('../data/seasonality.csv')
 season_df['foods'] = season_df['foods'].apply(lambda x: literal_eval(str(x)))
 
+porter = PorterStemmer()
+
+def stemSentence(sentence):
+    token_words=word_tokenize(sentence)
+    token_words
+    stem_sentence=[]
+    for word in token_words:
+        stem_sentence.append(porter.stem(word))
+        stem_sentence.append(" ")
+    return "".join(stem_sentence)
+
 def query_df(query, count, tags, ingredients):
     data_new = df.copy()
+    query = stemSentence(query)
 
     if len(tags) > 0:
         tag_list = tags.split(" ")
@@ -125,9 +140,10 @@ async def query_recipes(count: int = 5, query: str = '', tags: str = '', ingredi
     return recipes.to_json(orient="records")
 
 @app.get("/random", tags=["recipes"])
-async def query_random_recipes(count: int = 5, location: str = 'california', sorted: bool = True):
-    recipes = df.sample(n=count)
+async def query_random_recipes(count: int = 5, minimum_sus_score: int = 1, sample_size: int = 100, location: str = 'california', sorted: bool = True):
+    recipes = df.sample(n=sample_size)
     recipes = calc_sus_score(recipes, location)
+    recipes = recipes.loc[recipes['sus_score'] >= minimum_sus_score].sample(n=count)
     if recipes.empty: return recipes.to_json(orient="records")
     
     if (sorted): recipes = recipes.sort_values(by=['sus_score'], ascending=False)
