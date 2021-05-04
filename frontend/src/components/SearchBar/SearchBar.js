@@ -4,16 +4,20 @@ import { useRecoilState } from "recoil";
 // State
 import searchParamsAtom from "recoil/searchParams";
 import searchRequestedAtom from "recoil/searchRequested";
+import searchIngredientsAtom from "recoil/searchIngredients";
 import searchTagsAtom from "recoil/searchTags";
 
 // Components
 import { IoMdSearch } from "react-icons/io";
 
-function SearchBar() {
+const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchParams, setSearchParams] = useRecoilState(searchParamsAtom);
   const [searchRequested, setSearchRequested] = useRecoilState(
     searchRequestedAtom
+  );
+  const [searchIngredients, setSearchIngredients] = useRecoilState(
+    searchIngredientsAtom
   );
   const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom);
 
@@ -26,6 +30,8 @@ function SearchBar() {
       setSearchParams([currentSearch]);
       setSearchInput("");
       setSearchTags([]);
+      setSearchIngredients([]);
+
       setSearchRequested(true);
     }
   };
@@ -47,6 +53,6 @@ function SearchBar() {
       </button>
     </form>
   );
-}
+};
 
 export default SearchBar;
