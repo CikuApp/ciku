@@ -125,12 +125,12 @@ async def query_recipes(count: int = 5, query: str = '', tags: str = '', ingredi
     return recipes.to_json(orient="records")
 
 @app.get("/random", tags=["recipes"])
-async def query_random_recipes(count: int = 5, location: str = 'california'):
+async def query_random_recipes(count: int = 5, location: str = 'california', sorted: bool = True):
     recipes = df.sample(n=count)
     recipes = calc_sus_score(recipes, location)
     if recipes.empty: return recipes.to_json(orient="records")
     
-    # recipes = recipes.sort_values(by=['sus_score'], ascending=False)
+    if (sorted): recipes = recipes.sort_values(by=['sus_score'], ascending=False)
     return recipes.to_json(orient="records")
 
 @app.get("/seasonal", tags=["seasonal"])
