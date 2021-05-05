@@ -7,7 +7,7 @@ import { Text } from "components/Presentation";
 
 import { toTitle } from "utils/dataHelpers";
 
-function RecipeMiniCard({ recipe }) {
+const RecipeMiniCard = ({ recipe }) => {
   return (
     <Link to={`/recipes/${recipe.name.replace(/ /g, "-")}`}>
       <div className="w-112 h-22 my-8 flex-shrink-0 flex items-center rounded-lg shadow-lg bg-white ">
@@ -25,7 +25,7 @@ function RecipeMiniCard({ recipe }) {
       </div>
     </Link>
   );
-}
+};
 
 export default RecipeMiniCard;
 
