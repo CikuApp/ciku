@@ -1,5 +1,4 @@
 import { selector } from "recoil";
-import axios from "axios";
 
 // Atoms
 import searchParamsAtom from "recoil/searchParams/atom";
@@ -8,15 +7,7 @@ import searchTagsAtom from "recoil/searchTags";
 import searchIngredientsAtom from "recoil/searchIngredients";
 
 // Utils
-import { stripS } from "utils/dataHelpers";
-
-const baseUrl = `${
-  process.env.NODE_ENV === "development" ? "" : "/backend"
-}/recipes`;
-
-const randomBaseUrl = `${
-  process.env.NODE_ENV === "development" ? "" : "/backend"
-}/random`;
+import { DBQuery, randomDBQuery } from "utils/fetchHelpers";
 
 const searchResults = selector({
   key: "searchParamsResults",
@@ -67,83 +58,9 @@ const searchResults = selector({
       }
       return results;
     } catch (err) {
-      // console.error(err);
       return results;
     }
   },
 });
-
-async function DBQuery(
-  searchTerm,
-  searchTags,
-  searchIngredients,
-  location,
-  count
-) {
-  try {
-    const queryString = "query=".concat(
-      stripS(searchTerm.toLowerCase()).replace(/ /g, "%20")
-    );
-
-    const ingredientsString = searchIngredients.length
-      ? "&ingredients=".concat(
-          searchIngredients
-            .map((item) =>
-              item
-                .toLowerCase()
-                .replace(/ /g, "%20")
-                .concat(stripS(item) !== item ? "%20" + stripS(item) : "")
-            )
-            .join("%20")
-        )
-      : "";
-
-    const tagsString = searchTags.length
-      ? "&tags=".concat(
-          searchTags.map((tag) => tag.replace(/_/g, "-")).join("%20")
-        )
-      : "";
-
-    const locationString = location.length ? "&location=".concat(location) : "";
-
-    const countString = `&count=${count}`;
-
-    const response = await axios.get(
-      `${baseUrl}?${queryString}${ingredientsString}${tagsString}${locationString}${countString}`
-    );
-
-    const data = JSON.parse(response.data);
-
-    if (data.length) {
-      return data;
-    } else {
-      // Make a secondary search if results are empty
-      const ingredientsString = "ingredients=".concat(
-        stripS(searchTerm.toLowerCase()).replace(/ /g, "%20")
-      );
-      const response = await axios.get(
-        `${baseUrl}?${ingredientsString}${tagsString}${locationString}${countString}`
-      );
-      return JSON.parse(response.data);
-    }
-  } catch (err) {
-    console.error(err);
-
-    // fallback for errors from server
-    return [];
-  }
-}
-
-async function randomDBQuery(count) {
-  try {
-    const response = await axios.get(
-      `${randomBaseUrl}?count=${count}&sorted=true`
-    );
-    return JSON.parse(response.data).slice(0, 8);
-  } catch (err) {
-    console.error(err);
-    return [];
-  }
-}
 
 export default searchResults;
