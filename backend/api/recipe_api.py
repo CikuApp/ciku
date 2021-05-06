@@ -145,7 +145,7 @@ async def query_random_recipes(count: int = 5, minimum_sus_score: int = 1, sampl
     recipes = calc_sus_score(recipes, location)
     if (sorted): recipes = recipes.sort_values(by=['sus_score'], ascending=False)
     # recipes = recipes.loc[recipes['sus_score'] >= minimum_sus_score].sample(n=count)
-    recipes = recipes.sample(n=count)
+    recipes = recipes.head(count)
     if recipes.empty: return recipes.to_json(orient="records")
     
     return recipes.to_json(orient="records")
