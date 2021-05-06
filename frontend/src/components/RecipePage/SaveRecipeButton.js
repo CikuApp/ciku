@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useRecoilState } from "recoil";
 
+// Atoms
 import { userSavedRecipes } from "recoil/user";
 
+// Components
 import { Button } from "components/Presentation";
 import { IoHeartOutline } from "react-icons/io5";
 
-function SaveRecipeButton({ recipe }) {
+const SaveRecipeButton = ({ recipe }) => {
   const [savedRecipes, setSavedRecipes] = useRecoilState(userSavedRecipes);
   const [isSaved, setIsSaved] = useState(
     savedRecipes.some((item) => item.id === recipe.id)
@@ -19,7 +21,12 @@ function SaveRecipeButton({ recipe }) {
       );
       setIsSaved(false);
     } else {
-      setSavedRecipes((prevState) => [...prevState, recipe]);
+      const recipeSummary = {
+        name: recipe.name,
+        image_url: recipe.image_url,
+        id: recipe.id,
+      };
+      setSavedRecipes((prevState) => [...prevState, recipeSummary]);
       setIsSaved(true);
     }
   };
@@ -38,7 +45,7 @@ function SaveRecipeButton({ recipe }) {
       </Button>
     );
   }
-}
+};
 
 export default SaveRecipeButton;
 

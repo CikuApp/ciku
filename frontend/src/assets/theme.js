@@ -12,9 +12,6 @@ export const ButtonType = {
     flex items-center justify-center
     `,
   secondary: `
-    w-56 min-w-max
-    h-14 
-    py-3 px-10
     border-2 rounded-lg border-secondary 
     text-xl
     flex items-center justify-center 
@@ -31,7 +28,13 @@ export const ButtonType = {
 
 export const ButtonSize = {
   sm: `
-      text-sm
+    w-56 min-w-max 
+    h-14 
+    py-3 px-10
+  `,
+
+  icon: `
+  h-12 w-12
   `,
 };
 
