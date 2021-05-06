@@ -9,9 +9,6 @@ const LoadMore = ({ elements, windowSize, children }) => {
   const [moreToShow, setMoreToShow] = useState(
     elements.length > windowSize ? true : false
   );
-  console.log(elements.length);
-  console.log(windowSize);
-  console.log(moreToShow);
 
   const handleLoadMore = () => {
     if (numberToShow + windowSize < elements.length) {
