@@ -20,7 +20,10 @@ const RecipeResults = () => {
       {recipeResults.length ? (
         recipeResults.map((resultObject) => {
           return (
-            <div key={resultObject.results.length} className="mb-24">
+            <div
+              key={resultObject.search.concat(resultObject.results.length)}
+              className="mb-24"
+            >
               <Text type="h2">{toTitle(resultObject.search)}</Text>
               {resultObject.results.length ? (
                 <LoadMore elements={resultObject.results} windowSize={8}>
