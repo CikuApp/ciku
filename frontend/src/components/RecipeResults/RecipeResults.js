@@ -1,15 +1,18 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 
+// Atoms
 import searchResults from "recoil/searchResults";
+
+// Components
 import RecipeResultsWrapper from "components/RecipeResults/RecipeResultsWrapper";
 import LoadMore from "components/RecipeResults/LoadMore";
-
 import { Text } from "components/Presentation";
 
+// Utils
 import { toTitle } from "utils/dataHelpers";
 
-function RecipeResults() {
+const RecipeResults = () => {
   const recipeResults = useRecoilValue(searchResults);
 
   return (
@@ -17,10 +20,10 @@ function RecipeResults() {
       {recipeResults.length ? (
         recipeResults.map((resultObject) => {
           return (
-            <div key={resultObject.search} className="mb-24">
+            <div key={resultObject.results.length} className="mb-24">
               <Text type="h2">{toTitle(resultObject.search)}</Text>
               {resultObject.results.length ? (
-                <LoadMore elements={resultObject.results} window={8}>
+                <LoadMore elements={resultObject.results} windowSize={8}>
                   <RecipeResultsWrapper />
                 </LoadMore>
               ) : (
@@ -36,6 +39,6 @@ function RecipeResults() {
       )}
     </section>
   );
-}
+};
 
 export default RecipeResults;

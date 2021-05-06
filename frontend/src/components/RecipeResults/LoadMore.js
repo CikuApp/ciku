@@ -4,15 +4,18 @@ import PropTypes from "prop-types";
 // Components
 import { Button } from "components/Presentation";
 
-function LoadMore({ elements, window, children }) {
-  const [numberToShow, setNumberToShow] = useState(window);
+const LoadMore = ({ elements, windowSize, children }) => {
+  const [numberToShow, setNumberToShow] = useState(windowSize);
   const [moreToShow, setMoreToShow] = useState(
-    elements.length > window ? true : false
+    elements.length > windowSize ? true : false
   );
+  console.log(elements.length);
+  console.log(windowSize);
+  console.log(moreToShow);
 
   const handleLoadMore = () => {
-    if (numberToShow + window < elements.length) {
-      setNumberToShow((prevState) => prevState + window);
+    if (numberToShow + windowSize < elements.length) {
+      setNumberToShow((prevState) => prevState + windowSize);
     } else {
       setNumberToShow(elements.length);
       setMoreToShow(false);
@@ -34,11 +37,11 @@ function LoadMore({ elements, window, children }) {
       )}
     </div>
   );
-}
+};
 
 export default LoadMore;
 
 LoadMore.propTypes = {
   elements: PropTypes.array,
-  window: PropTypes.number,
+  windowSize: PropTypes.number,
 };
