@@ -22,11 +22,12 @@ const searchResults = selector({
       const searchIngredients = get(searchIngredientsAtom);
 
       // if no selected produce or search query => submit search for first 5 produce items for location
+      // TODO: change this to something more meaningful
       const mainQuery = searchParams.length
         ? searchParams
         : produce.slice(0, 5);
 
-      // Limit max results to fetch to 5000
+      // Limit max results to fetch to 10000
       const count = Math.floor(10000 / mainQuery.length);
 
       // Run search query for each searchParam
@@ -56,7 +57,8 @@ const searchResults = selector({
           })
         );
       }
-      return results;
+      // order alphabetically by search query
+      return results.sort((a, b) => a.search - b.search);
     } catch (err) {
       return results;
     }
