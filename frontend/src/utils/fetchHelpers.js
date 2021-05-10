@@ -8,10 +8,10 @@ const randomBaseUrl = `${
   process.env.NODE_ENV === "development" ? "" : "/backend"
 }/random`;
 
-const fetchRecipe = async (name) => {
+const fetchRecipe = async (name, location) => {
   try {
     const response = await axios.get(
-      `${baseUrl}?query=${name.replace(/-/g, "%20")}`
+      `${baseUrl}?query=${name.replace(/-/g, "%20")}&location=${location}`
     );
     return JSON.parse(response.data)[0];
   } catch (err) {
