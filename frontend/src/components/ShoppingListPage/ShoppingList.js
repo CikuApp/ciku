@@ -11,7 +11,6 @@ import EditListButton from "components/ShoppingListPage/EditListButton";
 
 const ShoppingList = () => {
   const shoppingList = useRecoilValue(userShoppingList);
-  console.log(shoppingList);
   const [editable, setEditable] = useState(false);
 
   const handleSetEditable = () => {
