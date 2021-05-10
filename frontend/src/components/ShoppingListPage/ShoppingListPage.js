@@ -9,17 +9,19 @@ import { PageContainer } from "components/Presentation";
 
 const ShoppingListPage = () => {
   return (
-    <PageContainer className="w-full flex py-24">
-      <section className="w-6/12">
-        <RecipeList />
-      </section>
-      <section className="w-6/12">
-        <ShoppingList />
-        <div className="flex justify-start">
-          <CopyToClipboardButton />
-          <SaveShoppingListButton />
-        </div>
-      </section>
+    <PageContainer className="w-full py-24">
+      <div className="flex">
+        <section className="w-6/12">
+          <RecipeList />
+        </section>
+        <section className="w-6/12">
+          <ShoppingList />
+          <div className="flex justify-start">
+            <CopyToClipboardButton />
+            <SaveShoppingListButton />
+          </div>
+        </section>
+      </div>
     </PageContainer>
   );
 };

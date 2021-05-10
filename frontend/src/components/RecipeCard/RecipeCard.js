@@ -8,17 +8,20 @@ import { toTitle } from "utils/dataHelpers";
 
 const RecipeCard = ({ recipeObject }) => {
   return (
-    <Link to={`/recipes/${recipeObject.name.replace(/ /g, "-")}`}>
-      <article className="w-80 h-112 xl:w-72 xl:h-96 2xl:w-80 2xl:h-112 flex flex-col my-8 rounded-lg shadow-lg bg-white overflow-hidden">
+    <Link
+      to={`/recipes/${recipeObject.name.replace(/ /g, "-")}`}
+      className="w-80 h-112 my-8 flex-shrink-0"
+    >
+      <article className="flex flex-col rounded-lg shadow-lg bg-white overflow-hidden">
         <img
           src={recipeObject.image_url}
           alt={recipeObject.name}
-          className="h-80 xl:h-72 2xl:h-80 flex-shrink-0 object-cover overflow-hidden bg-gray-100 "
+          className="h-80 flex-shrink-0 object-cover overflow-hidden bg-gray-100 "
         />
         <div className="h-full w-full px-3 flex flex-col justify-evenly">
           <Text
             type="h5"
-            className="w-full h-16 pt-1 font-bold whitespace-wrap overflow-ellipsis overflow-hidden font-serif"
+            className="w-full h-16 pt-1 font-bold whitespace-wrap overflow-hidden font-serif"
           >
             {toTitle(recipeObject.name)}
           </Text>

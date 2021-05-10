@@ -12,8 +12,10 @@ const ProduceSection = () => {
         Find Recipes By Ingredient
       </Text>
       <Suspense fallback={<div>loading</div>}>
-        <ProduceWrapper />
-        <FindRecipesButton />
+        <div className="flex flex-col items-center">
+          <ProduceWrapper />
+          <FindRecipesButton />
+        </div>
       </Suspense>
     </PageContainer>
   );

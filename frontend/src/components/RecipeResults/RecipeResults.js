@@ -14,6 +14,7 @@ import { toTitle } from "utils/dataHelpers";
 
 const RecipeResults = () => {
   const recipeResults = useRecoilValue(searchResults);
+  const { innerWidth: width } = window;
 
   return (
     <section className="flex flex-col">
@@ -26,7 +27,10 @@ const RecipeResults = () => {
             >
               <Text type="h2">{toTitle(resultObject.search)}</Text>
               {resultObject.results.length ? (
-                <LoadMore elements={resultObject.results} windowSize={8}>
+                <LoadMore
+                  elements={resultObject.results}
+                  windowSize={width > 1024 && width < 1279 ? 9 : 8}
+                >
                   <RecipeResultsWrapper />
                 </LoadMore>
               ) : (

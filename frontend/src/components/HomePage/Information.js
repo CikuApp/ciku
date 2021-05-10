@@ -14,7 +14,7 @@ const Information = () => {
           <img
             src={homepageImage}
             alt="a delicious meal"
-            className="mx-auto my-10 lg:my-0 rounded-xl"
+            className="my-10 lg:my-0 rounded-xl"
           />
         </div>
         <div className="w-6/12 h-112 flex flex-col justify-center ml-24">
