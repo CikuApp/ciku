@@ -15,8 +15,12 @@ const AddSearchIngredients = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchIngredients((prevState) => [...prevState, ingredientInput]);
-    setIngredientInput("");
+    if (ingredientInput.length) {
+      setSearchIngredients((prevState) =>
+        Array.from(new Set([...prevState, ingredientInput]))
+      );
+      setIngredientInput("");
+    }
   };
 
   return (
