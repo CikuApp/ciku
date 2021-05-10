@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { useRecoilState } from "recoil";
 
+// Atoms
 import searchParamsAtom from "recoil/searchParams";
 
 // Components
@@ -10,6 +11,7 @@ import { GiTomato } from "react-icons/gi";
 
 const ProduceCard = ({ produceObject }) => {
   const [searchParams, setSearchParams] = useRecoilState(searchParamsAtom);
+
   const isInSearchParams = () => {
     return searchParams.includes(produceObject.name) ? true : false;
   };
@@ -24,15 +26,14 @@ const ProduceCard = ({ produceObject }) => {
     }
   };
 
-  useEffect(() => {
-    setSearchParams([]);
-  }, [setSearchParams]);
-
   return (
-    <div className="justify-self-stretch min-w-72 h-20 my-8 mx-3 flex items-center bg-white rounded-xl shadow-lg">
+    <div
+      className="justify-self-stretch min-w-72 h-20 my-8 mx-3 flex items-center bg-white rounded-xl shadow-lg"
+      onClick={handleClick}
+    >
       <Checkbox
         checked={isInSearchParams()}
-        handleClick={handleClick}
+        handleClick={null}
         className="mx-6"
       />
       <div className="h-16 w-16 mx-2 my-2 mr-8 flex items-center justify-center bg-gray-100 rounded">
