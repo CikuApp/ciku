@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import PropTypes from "prop-types";
 
+// Components
 import { PageContainer } from "components/Presentation";
 import RecipeResults from "components/RecipeResults/RecipeResults";
 

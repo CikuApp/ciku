@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
+import React, { useEffect, useState, useRef } from "react";
+import { useRecoilState } from "recoil";
 
 // States
 import locationAtom from "recoil/location";
@@ -8,13 +8,19 @@ import locationAtom from "recoil/location";
 import { Text } from "components/Presentation";
 import { IoIosArrowDown } from "react-icons/io";
 
-// Helpers
+// Utils
 import { formatStateName } from "utils/dataHelpers";
 import { stateNames } from "data/data";
 
 const LocationSelector = () => {
   const [location, setLocation] = useRecoilState(locationAtom);
   const [isExpanded, setIsExpanded] = useState(false);
+  const locationMenuRef = useRef();
+
+  useEffect(() => {
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
+  }, []);
 
   const handleSelection = (name) => {
     setLocation(name);
@@ -25,12 +31,21 @@ const LocationSelector = () => {
     setIsExpanded((prevState) => !prevState);
   };
 
+  const handleClick = (e) => {
+    if (
+      locationMenuRef.current &&
+      !locationMenuRef.current.contains(e.target)
+    ) {
+      setIsExpanded(false);
+    }
+  };
+
   return (
     <div className="flex items-center my-4">
       <Text type="p" className="mr-8">
         Currently showing recipes for seasonal produce in
       </Text>
-      <form className="flex">
+      <form className="flex" ref={locationMenuRef}>
         <div className="z-40 mr-4 border border-gray-300 rounded-lg bg-white">
           <div
             onClick={handleExpand}

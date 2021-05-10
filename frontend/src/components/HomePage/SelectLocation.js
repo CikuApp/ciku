@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Redirect } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
@@ -20,6 +20,12 @@ const SelectLocation = () => {
   );
   const [isRedirected, setIsRedirected] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  let locationMenuRef = useRef();
+
+  useEffect(() => {
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,11 +44,20 @@ const SelectLocation = () => {
     setIsExpanded((prevState) => !prevState);
   };
 
+  const handleClick = (e) => {
+    if (
+      locationMenuRef.current &&
+      !locationMenuRef.current.contains(e.target)
+    ) {
+      setIsExpanded(false);
+    }
+  };
+
   if (isRedirected) {
     return <Redirect push to={`locations/${selectedLocation}`} />;
   } else {
     return (
-      <form onSubmit={handleSubmit} className="flex">
+      <form onSubmit={handleSubmit} ref={locationMenuRef} className="flex">
         <div className="z-40 mr-4">
           <div
             onClick={handleExpand}
