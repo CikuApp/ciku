@@ -60,9 +60,9 @@ porter = PorterStemmer()
 
 def stemSentence(sentence):
     token_words=word_tokenize(sentence)
-    token_words
     stem_sentence=[]
     for word in token_words:
+        if (word.endswith('y')): stem_sentence.append(word + " ")
         stem_sentence.append(porter.stem(word))
         stem_sentence.append(" ")
     return "".join(stem_sentence)
@@ -70,6 +70,7 @@ def stemSentence(sentence):
 def query_df(query, count, tags, ingredients):
     data_new = df.copy()
     query = stemSentence(query)
+    print('query: {}'.format(query))
 
     if len(tags) > 0:
         tag_list = tags.split(" ")
@@ -78,11 +79,13 @@ def query_df(query, count, tags, ingredients):
     
     if len(ingredients) > 0:
         ingredients_list = ingredients.split(" ")
+        ingredients_list = [w.replace('_', ' ') for w in ingredients_list]
         mask = data_new.ingredients.apply(lambda x: any(i in ingredients_list for i in x))
         data_new = data_new[mask]
 
     if len(query) > 0:
         search_list = query.split(" ")
+        print(search_list)
         for search in search_list:            
             data_new = data_new[data_new.name.str.contains(search)]
 
