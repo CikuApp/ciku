@@ -7,6 +7,7 @@ from fastapi import Body, FastAPI
 from datetime import datetime
 from nltk.stem import PorterStemmer
 from nltk.tokenize import sent_tokenize, word_tokenize
+from fuzzywuzzy import fuzz, process
 
 tags_metadata = [
     {
@@ -69,8 +70,8 @@ def stemSentence(sentence):
 
 def query_df(query, count, tags, ingredients):
     data_new = df.copy()
-    query = stemSentence(query)
-    print('query: {}'.format(query))
+    # query = stemSentence(query)
+    # print('query: {}'.format(query))
 
     if len(tags) > 0:
         tag_list = tags.split(" ")
@@ -84,10 +85,11 @@ def query_df(query, count, tags, ingredients):
         data_new = data_new[mask]
 
     if len(query) > 0:
-        search_list = query.split(" ")
-        print(search_list)
-        for search in search_list:            
-            data_new = data_new[data_new.name.str.contains(search)]
+        data_new['name_match'] = data_new.apply(lambda row: fuzz.partial_ratio(row['name'], query), axis=1)
+        match_scores = data_new['name_match']
+        data_new['name_match_norm'] = (match_scores - match_scores.min()) / (match_scores.max() - match_scores.min())
+        data_new = data_new[data_new['name_match_norm'] > 0.90]
+        data_new = data_new.sort_values(by=['name_match'], ascending=False)
 
     recipe_count = data_new.shape[0]
 
