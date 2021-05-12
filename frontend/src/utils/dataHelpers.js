@@ -1,4 +1,3 @@
-// // turn string into title
 const toTitle = (string) => {
   return string
     .split(" ")
@@ -18,7 +17,6 @@ const toSentence = (string) => {
   return string[0].toUpperCase().concat(string.slice(1));
 };
 
-// Formatted state names = for display
 const formatStateName = (stateName) => {
   return stateName
     .replace("-", " ")
@@ -27,18 +25,31 @@ const formatStateName = (stateName) => {
     .join(" ");
 };
 
-const stripS = (string) => {
-  return string.slice(string.length - 2) === "es" &&
-    string.charAt(string.length - 3) === "i"
-    ? string.slice(0, string.length - 3).concat("y")
-    : string.slice(string.length - 2) === "es"
-    ? string.slice(0, string.length - 2)
-    : string.charAt(string.length - 1) === "s" &&
-      string.charAt(string.length - 2) === "'"
-    ? string.slice(0, string.length - 2)
-    : string.charAt(string.length - 1) === "s"
-    ? string.slice(0, string.length - 1)
-    : string;
+// Format inputs for search
+const toQueryString = (query) => {
+  return "?query=" + query.toLowerCase().replace(/ /g, "%20");
 };
 
-export { toTitle, toSentence, formatStateName, stripS };
+const toIngredientsString = (ingredients) => {
+  return ingredients.length
+    ? "&ingredients=" +
+        ingredients
+          .map((item) => item.toLowerCase().replace(/ /g, "_"))
+          .join("%20")
+    : "";
+};
+
+const toTagsString = (tags) => {
+  return tags.length
+    ? "&tags=" + tags.map((tag) => tag.replace(/_/g, "-")).join("%20")
+    : "";
+};
+
+export {
+  toTitle,
+  toSentence,
+  formatStateName,
+  toQueryString,
+  toIngredientsString,
+  toTagsString,
+};

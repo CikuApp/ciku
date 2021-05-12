@@ -12,7 +12,7 @@ import RecipeDirections from "components/RecipePage/RecipeDirections";
 import { PageContainer } from "components/Presentation";
 
 // Utils
-import { fetchRecipe } from "utils/fetchHelpers";
+import { getOneRecipe } from "utils/fetchHelpers";
 
 const RecipePage = () => {
   let { recipeName } = useParams();
@@ -21,7 +21,7 @@ const RecipePage = () => {
 
   useEffect(() => {
     const getRecipeFromDB = async () => {
-      const recipe = await fetchRecipe(recipeName, location);
+      const recipe = await getOneRecipe(recipeName, location);
       setSelectedRecipe(recipe);
     };
     getRecipeFromDB();

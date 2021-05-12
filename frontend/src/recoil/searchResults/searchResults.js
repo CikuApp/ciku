@@ -7,7 +7,7 @@ import searchTagsAtom from "recoil/searchTags";
 import searchIngredientsAtom from "recoil/searchIngredients";
 
 // Utils
-import { DBQuery, randomDBQuery } from "utils/fetchHelpers";
+import { getRecipeResults, getRandomRecipes } from "utils/fetchHelpers";
 
 const searchResults = selector({
   key: "searchParamsResults",
@@ -33,7 +33,7 @@ const searchResults = selector({
       // Run search query for each searchParam
       // Apply tags, ingredients, location as additional query params for each
       if (searchParams[0] === "random") {
-        const data = await randomDBQuery(8, location);
+        const data = await getRandomRecipes(8, location);
         const resultsObject = {
           search: "Featured Recipes",
           results: data,
@@ -42,7 +42,7 @@ const searchResults = selector({
       } else if (mainQuery.length) {
         await Promise.all(
           mainQuery.map(async (mainQuery) => {
-            const data = await DBQuery(
+            const data = await getRecipeResults(
               mainQuery,
               searchTags,
               searchIngredients,
