@@ -1,13 +1,13 @@
 import React from "react";
 
 // Components
-import Information from "components/LocationPage/Information";
+import LocationHeader from "components/LocationPage/LocationHeader";
 import ProduceSection from "components/LocationPage/ProduceSection";
 
 const LocationPage = () => {
   return (
     <>
-      <Information />
+      <LocationHeader />
       <ProduceSection />
     </>
   );

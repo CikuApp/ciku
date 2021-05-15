@@ -28,7 +28,7 @@ const ProduceCard = ({ produceObject }) => {
 
   return (
     <div
-      className="justify-self-stretch min-w-72 h-20 my-8 mx-3 flex items-center bg-white rounded-xl shadow-lg"
+      className="justify-self-stretch min-w-72 h-20 my-8 mx-3 flex items-center bg-white rounded-xl shadow-lg cursor-pointer"
       onClick={handleClick}
     >
       <Checkbox
