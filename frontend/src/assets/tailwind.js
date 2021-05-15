@@ -30,6 +30,8 @@ module.exports = {
       secondary: "#007A39",
 
       background: "#FEFCEE",
+
+      info: "#1371EC",
     },
     spacing: {
       px: "1px",

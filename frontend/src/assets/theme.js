@@ -78,7 +78,6 @@ export const TextType = {
   `,
   p: `
   text-xl
-  leading-relaxed
   `,
   small: `
   text-md

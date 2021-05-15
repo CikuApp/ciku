@@ -7,6 +7,7 @@ import DropdownMenu from "./DropdownMenu";
 import PageVertical from "./PageVertical";
 import TextPill from "./TextPill";
 import TextPillExpanded from "./TextPillExpanded";
+import Tooltip from "./Tooltip";
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   PageVertical,
   TextPill,
   TextPillExpanded,
+  Tooltip,
 };
