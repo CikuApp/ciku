@@ -1,10 +1,11 @@
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Link } from "react-router-dom";
 
-// Atoms
+// States
 import searchTagsAtom from "recoil/searchTags";
 import searchIngredientsAtom from "recoil/searchIngredients";
+import searchParamsAtom from "recoil/searchParams";
 
 // Components
 import { Button } from "components/Presentation";
@@ -14,10 +15,11 @@ const FindRecipesButton = () => {
   const [searchIngredients, setSearchIngredients] = useRecoilState(
     searchIngredientsAtom
   );
+  const searchParams = useRecoilValue(searchParamsAtom);
 
   const handleClick = () => {
     setSearchTags([]);
-    setSearchIngredients([]);
+    setSearchIngredients(searchParams);
   };
 
   return (
