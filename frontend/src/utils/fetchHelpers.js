@@ -16,7 +16,8 @@ const randomBaseUrl = `${
 const getOneRecipe = async (name, location) => {
   try {
     const queryString = toQueryString(name);
-    const locationString = "&location=" + location;
+    const locationString =
+      "&location=" + (location.length ? location : "california");
     const response = await axios.get(baseUrl + queryString + locationString);
 
     // API is returning string for now - do not remove JSON.parse()
@@ -34,7 +35,8 @@ const getRecipeResults = async (
   count
 ) => {
   try {
-    const locationString = "&location=" + location;
+    const locationString =
+      "&location=" + (location.length ? location : "california");
 
     const countString = "&count=" + count;
 
@@ -59,7 +61,8 @@ const getRecipeResults = async (
 const getRandomRecipes = async (count, location, minimum_sus_score = 3) => {
   try {
     const countString = "count=" + count;
-    const locationString = "&location=" + location;
+    const locationString =
+      "&location=" + (location.length ? location : "california");
     const minScoreString = "&minimum_sus_score=" + minimum_sus_score;
 
     const response = await axios.get(

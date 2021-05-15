@@ -7,7 +7,7 @@ const locationAtom = atom({
   // set default location to be last selected location or Califonia
   default: localStorage.getItem("location")
     ? JSON.parse(localStorage.getItem("location"))
-    : "california",
+    : "",
   effects_UNSTABLE: [localStorageEffects("location")],
 });
 
