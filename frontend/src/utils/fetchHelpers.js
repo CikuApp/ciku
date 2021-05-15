@@ -7,11 +7,11 @@ import {
 
 const baseUrl = `${
   process.env.NODE_ENV === "development" ? "" : "/backend"
-}/recipes`;
+}/recipes?`;
 
 const randomBaseUrl = `${
   process.env.NODE_ENV === "development" ? "" : "/backend"
-}/random`;
+}/random?`;
 
 const getOneRecipe = async (name, location) => {
   try {
@@ -58,7 +58,7 @@ const getRecipeResults = async (
 
 const getRandomRecipes = async (count, location, minimum_sus_score = 3) => {
   try {
-    const countString = "&count=" + count;
+    const countString = "count=" + count;
     const locationString = "&location=" + location;
     const minScoreString = "&minimum_sus_score=" + minimum_sus_score;
 
