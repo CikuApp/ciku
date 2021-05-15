@@ -3782,6 +3782,10 @@ video {
   background-image: url('./images/bg.png');
 }
 
+.bg-homepage-2 {
+  background-image: url('./images/bg-2.png');
+}
+
 .bg-california {
   background-image: url('./images/california.png');
 }
@@ -30493,6 +30497,10 @@ video {
     background-image: url('./images/bg.png');
   }
 
+  .sm\:bg-homepage-2 {
+    background-image: url('./images/bg-2.png');
+  }
+
   .sm\:bg-california {
     background-image: url('./images/california.png');
   }
@@ -57157,6 +57165,10 @@ video {
 
   .md\:bg-homepage {
     background-image: url('./images/bg.png');
+  }
+
+  .md\:bg-homepage-2 {
+    background-image: url('./images/bg-2.png');
   }
 
   .md\:bg-california {
@@ -83825,6 +83837,10 @@ video {
     background-image: url('./images/bg.png');
   }
 
+  .lg\:bg-homepage-2 {
+    background-image: url('./images/bg-2.png');
+  }
+
   .lg\:bg-california {
     background-image: url('./images/california.png');
   }
@@ -110491,6 +110507,10 @@ video {
     background-image: url('./images/bg.png');
   }
 
+  .xl\:bg-homepage-2 {
+    background-image: url('./images/bg-2.png');
+  }
+
   .xl\:bg-california {
     background-image: url('./images/california.png');
   }
@@ -137155,6 +137175,10 @@ video {
 
   .\32xl\:bg-homepage {
     background-image: url('./images/bg.png');
+  }
+
+  .\32xl\:bg-homepage-2 {
+    background-image: url('./images/bg-2.png');
   }
 
   .\32xl\:bg-california {

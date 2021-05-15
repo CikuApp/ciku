@@ -1,8 +1,6 @@
 // Buttons
 export const ButtonType = {
   primary: `
-    w-60 min-w-max 
-    h-16 
     py-3 px-4
     rounded-lg 
     bg-secondary  
@@ -77,7 +75,6 @@ export const TextType = {
 
   h5: `
   text-xl
-  leading-normal
   `,
   p: `
   text-xl

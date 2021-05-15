@@ -25,7 +25,13 @@ const RecipeResults = () => {
               key={resultObject.search.concat(resultObject.results.length)}
               className="mb-24"
             >
-              <Text type="h2">{toTitle(resultObject.search)}</Text>
+              {resultObject.search === "random" ? (
+                <Text type="h2" className="font-serif font-bold">
+                  Featured Recipes
+                </Text>
+              ) : (
+                <Text type="h2">{toTitle(resultObject.search)}</Text>
+              )}
               {resultObject.results.length ? (
                 <LoadMore
                   elements={resultObject.results}

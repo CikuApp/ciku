@@ -5,6 +5,8 @@ import PageContainer from "./PageContainer";
 import Checkbox from "./Checkbox";
 import DropdownMenu from "./DropdownMenu";
 import PageVertical from "./PageVertical";
+import TextPill from "./TextPill";
+import TextPillExpanded from "./TextPillExpanded";
 
 export {
   Button,
@@ -14,4 +16,6 @@ export {
   Checkbox,
   DropdownMenu,
   PageVertical,
+  TextPill,
+  TextPillExpanded,
 };

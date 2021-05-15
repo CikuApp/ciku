@@ -33,9 +33,9 @@ const searchResults = selector({
       // Run search query for each searchParam
       // Apply tags, ingredients, location as additional query params for each
       if (searchParams[0] === "random") {
-        const data = await getRandomRecipes(8, location);
+        const data = await getRandomRecipes(12, location);
         const resultsObject = {
-          search: "Featured Recipes",
+          search: "random",
           results: data,
         };
         results.push(resultsObject);

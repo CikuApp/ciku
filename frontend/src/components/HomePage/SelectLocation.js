@@ -6,7 +6,12 @@ import { useRecoilState } from "recoil";
 import locationAtom from "recoil/location";
 
 // Components
-import { Text } from "components/Presentation";
+import {
+  Text,
+  Button,
+  TextPill,
+  TextPillExpanded,
+} from "components/Presentation";
 import { IoIosArrowDown } from "react-icons/io";
 
 // Data
@@ -57,25 +62,26 @@ const SelectLocation = () => {
     return <Redirect push to={`locations/${selectedLocation}`} />;
   } else {
     return (
-      <form onSubmit={handleSubmit} ref={locationMenuRef} className="flex">
+      <form
+        onSubmit={handleSubmit}
+        ref={locationMenuRef}
+        className="flex items-center"
+      >
         <div className="z-40 mr-4">
-          <div
-            onClick={handleExpand}
-            className="h-14 w-88 flex items-center justify-between px-4 bg-white rounded-lg"
-          >
-            <Text type="p" className="mr-8">
+          <TextPill width="w-88" onClick={handleExpand}>
+            <Text type="p" className="w-full mr-8 cursor-default">
               {formatStateName(selectedLocation)}
             </Text>
             <IoIosArrowDown className="text-lg" />
-          </div>
+          </TextPill>
           {isExpanded && (
-            <div className="absolute w-88 h-72 overflow-y-scroll bg-white ">
+            <TextPillExpanded width="w-88">
               <ul className="list-none">
                 {stateNames.map((name) => {
                   return (
                     <li
                       onClick={() => handleSelection(name)}
-                      className="w-full px-4 py-2 hover:bg-gray-100"
+                      className="w-full px-4 py-2 hover:bg-gray-100 cursor-pointer"
                       key={name}
                     >
                       <Text type="p" className="mr-8">
@@ -85,12 +91,12 @@ const SelectLocation = () => {
                   );
                 })}
               </ul>
-            </div>
+            </TextPillExpanded>
           )}
         </div>
-        <button type="submit" className="text-lg">
+        <Button size="icon" type="primary">
           Go
-        </button>
+        </Button>
       </form>
     );
   }
