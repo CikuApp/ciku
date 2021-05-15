@@ -9,23 +9,25 @@ const EditListButton = ({ editable, handleSetEditable }) => {
   if (editable) {
     return (
       <Button
-        type="secondary"
-        size="icon"
+        type="secondary-active"
+        size="sm"
         onClick={handleSetEditable}
-        className="text-white bg-secondary"
+        className="mr-12"
       >
-        <MdEdit className="text-3xl" />
+        <MdEdit className="text-2xl mr-4" />
+        Edit List
       </Button>
     );
   } else {
     return (
       <Button
         type="secondary"
-        size="icon"
+        size="sm"
         onClick={handleSetEditable}
-        className="text-secondary"
+        className="mr-12"
       >
-        <MdEdit className="text-3xl" />
+        <MdEdit className="text-2xl mr-4 text-secondary" />
+        Edit List
       </Button>
     );
   }

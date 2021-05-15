@@ -15,6 +15,13 @@ export const ButtonType = {
     flex items-center justify-center 
     font-bold
     `,
+  "secondary-active": `
+    border-2 rounded-lg border-secondary
+    bg-secondary text-white 
+    text-xl
+    flex items-center justify-center 
+    font-bold
+    `,
   "nav-primary": `
     min-w-max w-5/12  
     py-1.5 px-3  

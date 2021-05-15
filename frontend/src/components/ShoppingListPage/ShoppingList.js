@@ -8,6 +8,7 @@ import { userShoppingList } from "recoil/user";
 import { Text, Checkbox } from "components/Presentation";
 import DeleteItemButton from "components/ShoppingListPage/DeleteItemButton";
 import EditListButton from "components/ShoppingListPage/EditListButton";
+import SaveShoppingListButton from "components/ShoppingListPage/SaveShoppingListButton";
 
 const ShoppingList = () => {
   const shoppingList = useRecoilValue(userShoppingList);
@@ -23,10 +24,6 @@ const ShoppingList = () => {
         <Text type="h2" className="font-serif mr-8">
           Grocery List ({shoppingList.length})
         </Text>
-        <EditListButton
-          editable={editable}
-          handleSetEditable={handleSetEditable}
-        />
       </span>
       <ul className="mt-12">
         {shoppingList.map((item) => {
@@ -47,6 +44,13 @@ const ShoppingList = () => {
           );
         })}
       </ul>
+      <div className="flex justify-start mt-12">
+        <EditListButton
+          editable={editable}
+          handleSetEditable={handleSetEditable}
+        />
+        <SaveShoppingListButton />
+      </div>
     </div>
   );
 };

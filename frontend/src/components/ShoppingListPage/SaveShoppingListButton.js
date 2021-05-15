@@ -16,7 +16,7 @@ const SaveShoppingListButton = () => {
   };
 
   return (
-    <Button type="secondary" size="sm" onClick={handleClick}>
+    <Button type="secondary" size="sm" onClick={null}>
       Save List
     </Button>
   );
