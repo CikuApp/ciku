@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { Text } from "components/Presentation";
 
-import { toTitle } from "utils/dataHelpers";
+import { toTitle, truncate } from "utils/dataHelpers";
 
 const RecipeCard = ({ recipeObject }) => {
   return (
@@ -21,9 +21,9 @@ const RecipeCard = ({ recipeObject }) => {
         <div className="h-28 w-full p-3 flex flex-col justify-evenly">
           <Text
             type="h5"
-            className="h-16 w-full whitespace-wrap overflow-hidden font-serif font-bold leading-tight"
+            className="h-12 w-full whitespace-wrap overflow-hidden font-serif font-bold leading-tight"
           >
-            {toTitle(recipeObject.name)}
+            {truncate(toTitle(recipeObject.name))}
           </Text>
           <Text type="p" className="font-bold text-primary">
             Score: {recipeObject.sus_score}

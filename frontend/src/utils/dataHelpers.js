@@ -45,6 +45,11 @@ const toTagsString = (tags) => {
     : "";
 };
 
+// Truncates recipe card titles if over 2 lines long
+const truncate = (str) => {
+  return str.length > 45 ? str.slice(0, 42) + "..." : str;
+};
+
 export {
   toTitle,
   toSentence,
@@ -52,4 +57,5 @@ export {
   toQueryString,
   toIngredientsString,
   toTagsString,
+  truncate,
 };
