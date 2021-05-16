@@ -50,6 +50,15 @@ const truncate = (str) => {
   return str.length > 45 ? str.slice(0, 42) + "..." : str;
 };
 
+// returns a suggestion from an array matching the start of string, else ""
+const getHints = (str, arr) => {
+  if (!str.length) {
+    return "";
+  }
+  const suggestions = arr.filter((item) => item.startsWith(str));
+  return suggestions.length ? suggestions[0] : "";
+};
+
 export {
   toTitle,
   toSentence,
@@ -58,4 +67,5 @@ export {
   toIngredientsString,
   toTagsString,
   truncate,
+  getHints,
 };
