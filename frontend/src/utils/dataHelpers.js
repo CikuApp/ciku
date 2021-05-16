@@ -27,7 +27,7 @@ const formatStateName = (stateName) => {
 
 // Format inputs for search
 const toQueryString = (query) => {
-  return "query=" + query.toLowerCase().replace(/ /g, "%20");
+  return "query=" + query.toLowerCase().replace(/[ ,-]/g, "_");
 };
 
 const toIngredientsString = (ingredients) => {
