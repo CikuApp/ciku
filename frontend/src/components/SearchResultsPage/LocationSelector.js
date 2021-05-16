@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import locationAtom from "recoil/location";
 
 // Components
-import { Text } from "components/Presentation";
+import { Text, TextPill, TextPillExpanded } from "components/Presentation";
 import { IoIosArrowDown } from "react-icons/io";
 
 // Utils
@@ -46,39 +46,31 @@ const LocationSelector = () => {
         Currently showing recipes for seasonal produce in
       </Text>
       <form className="flex" ref={locationMenuRef}>
-        <div className="z-40 mr-4 border border-gray-300 rounded-lg bg-white">
-          <div
-            onClick={handleExpand}
-            className="h-14 w-88 flex items-center justify-between px-4"
-          >
-            <Text type="p" className="mr-8 text-gray-800">
+        <div className="z-40 mr-4">
+          <TextPill width="w-80" onClick={handleExpand}>
+            <Text type="p" className="w-full mr-8 cursor-default">
               {formatStateName(location)}
             </Text>
             <IoIosArrowDown className="text-lg" />
-          </div>
+          </TextPill>
           {isExpanded && (
-            <div className="absolute w-88 h-48 overflow-y-scroll mt-0.5 border border-white rounded-lg bg-white">
+            <TextPillExpanded width="w-80">
               <ul className="list-none">
                 {stateNames.map((name) => {
                   return (
                     <li
                       onClick={() => handleSelection(name)}
-                      className="w-full px-4 py-2 hover:bg-gray-200"
+                      className="w-full px-4 py-2 hover:bg-gray-100 cursor-pointer"
                       key={name}
                     >
-                      <Text
-                        type="p"
-                        className={`mr-8 text-gray-800 ${
-                          name === location && "font-bold"
-                        }`}
-                      >
+                      <Text type="p" className="mr-8">
                         {formatStateName(name)}
                       </Text>
                     </li>
                   );
                 })}
               </ul>
-            </div>
+            </TextPillExpanded>
           )}
         </div>
       </form>
