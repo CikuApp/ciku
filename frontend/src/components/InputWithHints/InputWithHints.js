@@ -41,15 +41,15 @@ const InputWithHints = ({ inputField, setInputField, placeholder }) => {
         onChange={handleInputChange}
         onKeyDown={handleKeyPress}
         placeholder={placeholder}
-        className="w-full placeholder-gray-500 rounded-lg"
+        className="w-full z-10 placeholder-gray-500 bg-transparent rounded-lg"
       />
-      <span className="h-full absolute left-0 flex items-center">
+      <span className="h-full w-full absolute left-0 flex items-center whitespace-nowrap overflow-x-hidden">
         <span className="opacity-0">{inputField}</span>
         {(inputHint[0] === " " ||
           inputField[inputField.length - 1] === " ") && <span>&nbsp;</span>}
         <span
           onClick={handleFillInput}
-          className="text-gray-500 whitespace-nowrap overflow-x-hidden"
+          className="text-gray-500 whitespace-nowrap "
         >
           {inputHint}
         </span>

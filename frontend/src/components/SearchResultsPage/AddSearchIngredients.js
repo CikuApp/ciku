@@ -25,18 +25,12 @@ const AddSearchIngredients = () => {
     }
   };
 
-  const handleInputChange = (currentInput) => {
-    if (currentInput.length) {
-      setIngredientInput(currentInput);
-    }
-  };
-
   return (
     <TextPill>
       <form onSubmit={handleSubmit} className="flex items-center">
         <InputWithHints
           inputField={ingredientInput}
-          setInputField={handleInputChange}
+          setInputField={setIngredientInput}
           placeholder={"Add ingredients"}
         />
         <button type="submit" className="px-2">
