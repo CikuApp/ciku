@@ -6,10 +6,11 @@ import searchParamsAtom from "recoil/searchParams";
 import searchRequestedAtom from "recoil/searchRequested";
 import searchIngredientsAtom from "recoil/searchIngredients";
 import searchTagsAtom from "recoil/searchTags";
-import InputWithHints from "components/InputWithHints/InputWithHints";
+import locationAtom from "recoil/location";
 
 // Components
 import { IoMdSearch } from "react-icons/io";
+import InputWithHints from "components/InputWithHints/InputWithHints";
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -20,6 +21,7 @@ const SearchBar = () => {
     searchIngredientsAtom
   );
   const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom);
+  const [location, setLocation] = useRecoilState(locationAtom);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,6 +33,9 @@ const SearchBar = () => {
       setSearchInput("");
       setSearchTags([]);
       setSearchIngredients([]);
+      setLocation((currentLocation) =>
+        currentLocation.length ? currentLocation : "california"
+      );
       setSearchRequested(true);
     }
   };
