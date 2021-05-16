@@ -45,7 +45,6 @@ const SearchBar = () => {
           inputField={searchInput}
           setInputField={setSearchInput}
           placeholder={"Find A Recipe"}
-          formSubmitted={searchRequested}
         />
       </div>
       <button type="submit" className="px-4">

@@ -7,12 +7,7 @@ import ingredients from "data/allIngredients";
 // Utils
 import { getHints } from "utils/dataHelpers";
 
-const InputWithHints = ({
-  inputField,
-  setInputField,
-  placeholder,
-  formSubmitted,
-}) => {
+const InputWithHints = ({ inputField, setInputField, placeholder }) => {
   const [inputHint, setInputHint] = useState("");
 
   const handleInputChange = (e) => {
@@ -36,8 +31,8 @@ const InputWithHints = ({
   };
 
   useEffect(() => {
-    formSubmitted && setInputHint("");
-  }, [formSubmitted]);
+    inputField === "" && setInputHint("");
+  }, [inputField]);
 
   return (
     <div className="relative h-full flex items-center text-lg rounded-lg">

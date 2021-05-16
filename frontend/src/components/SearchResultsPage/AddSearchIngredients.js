@@ -14,7 +14,6 @@ const AddSearchIngredients = () => {
   const [searchIngredients, setSearchIngredients] = useRecoilState(
     searchIngredientsAtom
   );
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,14 +22,12 @@ const AddSearchIngredients = () => {
         Array.from(new Set([...prevState, ingredientInput]))
       );
       setIngredientInput("");
-      setFormSubmitted(true);
     }
   };
 
   const handleInputChange = (currentInput) => {
     if (currentInput.length) {
       setIngredientInput(currentInput);
-      setFormSubmitted(false);
     }
   };
 
@@ -41,7 +38,6 @@ const AddSearchIngredients = () => {
           inputField={ingredientInput}
           setInputField={handleInputChange}
           placeholder={"Add ingredients"}
-          formSubmitted={formSubmitted}
         />
         <button type="submit" className="px-2">
           <IoAddCircle
