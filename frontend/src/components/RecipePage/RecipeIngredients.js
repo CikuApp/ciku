@@ -47,6 +47,7 @@ function RecipeIngredients({ recipeIngredients }) {
 
   const handleAddToList = () => {
     setShoppingList((prevState) => [...prevState, ...localList]);
+    setLocalList([]);
     setLocalCount(localList.length);
   };
 
