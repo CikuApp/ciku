@@ -1,8 +1,8 @@
 import React from "react";
 
 // Components
-import LocationHeader from "components/LocationPage/LocationHeader";
-import ProduceSection from "components/LocationPage/ProduceSection";
+import LocationHeader from "pages/LocationPage/LocationHeader";
+import ProduceSection from "pages/LocationPage/ProduceSection";
 
 const LocationPage = () => {
   return (

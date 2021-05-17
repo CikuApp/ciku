@@ -1,3 +1,4 @@
 import HomePage from "./HomePage/HomePage";
+import LocationPage from "./LocationPage/LocationPage";
 
-export { HomePage };
+export { HomePage, LocationPage };

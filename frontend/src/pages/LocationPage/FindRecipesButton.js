@@ -1,5 +1,5 @@
 import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import { Link } from "react-router-dom";
 
 // States
@@ -8,13 +8,11 @@ import searchIngredientsAtom from "recoil/searchIngredients";
 import searchParamsAtom from "recoil/searchParams";
 
 // Components
-import { Button } from "components/Presentation";
+import { Button } from "components/atoms";
 
 const FindRecipesButton = () => {
-  const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom);
-  const [searchIngredients, setSearchIngredients] = useRecoilState(
-    searchIngredientsAtom
-  );
+  const setSearchTags = useSetRecoilState(searchTagsAtom);
+  const setSearchIngredients = useSetRecoilState(searchIngredientsAtom);
   const searchParams = useRecoilValue(searchParamsAtom);
 
   const handleClick = () => {
@@ -24,7 +22,7 @@ const FindRecipesButton = () => {
 
   return (
     <Link to="/recipes">
-      <Button type="primary" size="sm" onClick={handleClick}>
+      <Button type="primary" onClick={handleClick}>
         Find Recipes
       </Button>
     </Link>

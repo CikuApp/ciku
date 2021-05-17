@@ -1,24 +1,24 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
-// Atoms
+// States
 import searchParamsAtom from "recoil/searchParams";
-
-// Components
-import ProduceCard from "components/LocationPage/ProduceCard";
 import { locationProduce } from "recoil/location";
 
-const ProduceWrapper = () => {
+// Components
+import ProduceCard from "pages/LocationPage/ProduceCard";
+
+const ProduceCardsWrapper = () => {
   const produce = useRecoilValue(locationProduce);
-  const [searchParams, setSearchParams] = useRecoilState(searchParamsAtom);
+  const setSearchParams = useSetRecoilState(searchParamsAtom);
 
   useEffect(() => {
     setSearchParams([]);
   }, [setSearchParams]);
 
   return (
-    <div className="w-full grid md:grid-cols-2 xl:grid-cols-3 mb-12">
+    <div className="w-full grid sm:grid-cols-2 lg:grid-cols-3 mb-12">
       {produce.map((produceItem) => {
         return (
           <ProduceCard
@@ -31,8 +31,8 @@ const ProduceWrapper = () => {
   );
 };
 
-export default ProduceWrapper;
+export default ProduceCardsWrapper;
 
-ProduceWrapper.propTypes = {
+ProduceCardsWrapper.propTypes = {
   produceData: PropTypes.array,
 };

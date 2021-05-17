@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useRecoilState } from "recoil";
 
-// Atoms
+// States
 import searchParamsAtom from "recoil/searchParams";
 
 // Components
-import { Text, Checkbox } from "components/Presentation";
+import { Text, Checkbox } from "components/atoms";
 import { GiTomato } from "react-icons/gi";
 
 const ProduceCard = ({ produceObject }) => {
@@ -28,22 +28,20 @@ const ProduceCard = ({ produceObject }) => {
 
   return (
     <div
-      className="justify-self-stretch min-w-72 h-20 my-8 mx-3 flex items-center bg-white rounded-xl shadow-lg cursor-pointer"
+      className="justify-self-stretch min-w-68 h-16 my-8 mx-3 flex items-center overflow-hidden bg-white rounded-md shadow-md hover:shadow-lg cursor-pointer"
       onClick={handleClick}
     >
-      <Checkbox
-        checked={isInSearchParams()}
-        handleClick={null}
-        className="mx-6"
-      />
-      <div className="h-16 w-16 mx-2 my-2 mr-8 flex items-center justify-center bg-gray-100 rounded">
+      <div className="mx-4">
+        <Checkbox checked={isInSearchParams()} />
+      </div>
+      <div className="h-14 w-14 mx-2 my-2 mr-8 flex items-center justify-center bg-gray-100 rounded">
         {produceObject.image ? (
           <img src={produceObject.image} alt="" />
         ) : (
-          <GiTomato className="text-gray-400 text-4xl" />
+          <GiTomato className="text-gray-dark text-4xl" />
         )}
       </div>
-      <Text type="h4" className="font-bold">
+      <Text type="md" variant="bold">
         {produceObject.name}
       </Text>
     </div>

@@ -12,28 +12,27 @@ export const Button = (props) => {
 
 const buttonType = {
   primary: `
-    w-56 min-w-max 
-    h-11 
-    py-3 px-10 
+    w-48 min-w-max 
+    h-12  
     flex items-center justify-center 
     rounded-md  
     bg-secondary hover:bg-secondary-dark 
-    text-lg font-bold text-white 
+    text-xl font-bold text-white 
     `,
   "primary-icon": `
     w-11 h-11 
     flex items-center justify-center 
     rounded-md  
     bg-secondary hover:bg-secondary-dark 
-    text-lg font-bold text-white 
+    text-xl font-bold text-white 
     `,
   secondary: `
     w-56 min-w-max 
-    h-11 
+    h-12 
     py-3 px-10 
     flex items-center justify-center
     border-2 rounded-md border-secondary hover:border-4 
-    text-lg font-bold text-black-light
+    text-xl font-bold text-black-light
     `,
   "secondary-active": `
     w-56 min-w-max 

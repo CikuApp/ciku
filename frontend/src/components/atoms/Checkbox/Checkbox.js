@@ -5,12 +5,12 @@ const Checkbox = (props) => {
   const { checked } = props;
   return checked ? (
     <span {...props}>
-      <MdCheckBox className="text-secondary" />
+      <MdCheckBox className="text-secondary text-2xl" />
       <input type="checkbox" className="hidden" defaultChecked={checked} />
     </span>
   ) : (
     <span {...props}>
-      <MdCheckBoxOutlineBlank className="text-gray-dark" />
+      <MdCheckBoxOutlineBlank className="text-gray-light text-2xl" />
       <input type="checkbox" className="hidden" defaultChecked={checked} />
     </span>
   );
