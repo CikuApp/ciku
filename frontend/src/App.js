@@ -6,7 +6,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import searchRequestedAtom from "recoil/searchRequested/atom";
 
 // Components
-import Nav from "components/Nav/Nav";
+import Nav from "components/common/Nav";
 import { HomePage } from "pages";
 import LocationPage from "components/LocationPage/LocationPage";
 import SearchResultsPage from "components/SearchResultsPage/SearchResultsPage";

@@ -20,7 +20,7 @@ const InputWithHints = ({ inputField, setInputField, placeholder }) => {
 
   const handleKeyPress = (e) => {
     if (e.keyCode === 39) {
-      // listen for right arrow key press -> fill with suggestion
+      // listen for right arrow key press
       handleFillInput();
     }
   };
@@ -35,21 +35,21 @@ const InputWithHints = ({ inputField, setInputField, placeholder }) => {
   }, [inputField]);
 
   return (
-    <div className="relative h-full flex items-center text-lg rounded-lg">
+    <div className="relative h-full flex items-center text-lg rounded-md">
       <input
         value={inputField}
         onChange={handleInputChange}
         onKeyDown={handleKeyPress}
         placeholder={placeholder}
-        className="w-full z-10 placeholder-gray-500 bg-transparent rounded-lg"
+        className="w-full z-10 placeholder-gray-dark bg-transparent rounded-md text-sm"
       />
-      <span className="h-full w-full absolute left-0 flex items-center whitespace-nowrap overflow-x-hidden">
+      <span className="h-full w-full absolute left-0 flex items-center whitespace-nowrap overflow-x-hidden text-sm">
         <span className="opacity-0">{inputField}</span>
         {(inputHint[0] === " " ||
           inputField[inputField.length - 1] === " ") && <span>&nbsp;</span>}
         <span
           onClick={handleFillInput}
-          className="text-gray-500 whitespace-nowrap "
+          className="text-gray-dark whitespace-nowrap"
         >
           {inputHint}
         </span>

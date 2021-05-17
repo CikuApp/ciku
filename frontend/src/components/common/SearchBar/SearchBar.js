@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 // State
 import searchParamsAtom from "recoil/searchParams";
@@ -10,18 +10,15 @@ import locationAtom from "recoil/location";
 
 // Components
 import { IoMdSearch } from "react-icons/io";
-import InputWithHints from "components/InputWithHints/InputWithHints";
+import InputWithHints from "components/common/InputWithHints";
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
-  const [searchParams, setSearchParams] = useRecoilState(searchParamsAtom);
-  const [searchRequested, setSearchRequested] =
-    useRecoilState(searchRequestedAtom);
-  const [searchIngredients, setSearchIngredients] = useRecoilState(
-    searchIngredientsAtom
-  );
-  const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom);
-  const [location, setLocation] = useRecoilState(locationAtom);
+  const setSearchParams = useSetRecoilState(searchParamsAtom);
+  const setSearchRequested = useSetRecoilState(searchRequestedAtom);
+  const setSearchIngredients = useSetRecoilState(searchIngredientsAtom);
+  const setSearchTags = useSetRecoilState(searchTagsAtom);
+  const setLocation = useSetRecoilState(locationAtom);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,9 +40,9 @@ const SearchBar = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="h-14 flex-grow flex mx-20 bg-white rounded-lg"
+      className="h-10 flex-grow flex mx-20 bg-white rounded-md"
     >
-      <div className="flex-grow pl-6">
+      <div className="flex-grow pl-4">
         <InputWithHints
           inputField={searchInput}
           setInputField={setSearchInput}

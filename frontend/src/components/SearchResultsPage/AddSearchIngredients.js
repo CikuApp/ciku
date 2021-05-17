@@ -7,7 +7,7 @@ import searchIngredientsAtom from "recoil/searchIngredients";
 // Components
 import { TextPill } from "components/Presentation";
 import { IoAddCircle } from "react-icons/io5";
-import InputWithHints from "components/InputWithHints/InputWithHints";
+import InputWithHints from "components/common/InputWithHints";
 
 const AddSearchIngredients = () => {
   const [ingredientInput, setIngredientInput] = useState("");

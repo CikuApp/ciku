@@ -1,18 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { Button } from "components/Presentation";
+// Components
+import { Button } from "components/atoms";
 import { IoMdPerson } from "react-icons/io";
 
-function AccountButton() {
+const AccountButton = () => {
   return (
     <Link to="" className="flex align-end">
-      <Button type="nav-primary" size="sm" className="flex items-center">
+      <Button type="nav">
         <IoMdPerson className="mr-4" />
         Account
       </Button>
     </Link>
   );
-}
+};
 
 export default AccountButton;
