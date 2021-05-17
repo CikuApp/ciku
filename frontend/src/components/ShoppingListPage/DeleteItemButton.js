@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import PropTypes from "prop-types";
 
-// Atoms
+// States
 import { userShoppingList } from "recoil/user";
 
 // Components
@@ -27,5 +27,5 @@ const DeleteButton = ({ ingredient }) => {
 export default DeleteButton;
 
 DeleteButton.propTypes = {
-  ingredient: PropTypes.object,
+  ingredient: PropTypes.string,
 };

@@ -36,7 +36,7 @@ const OptionsSection = ({ expandedMenu, handleExpandMenu }) => {
         </SustainabilityScoreTooltip>
         <Text type="p">?</Text>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-start">
         <AddSearchIngredients />
         <SearchIngredientsWrapper />
       </div>

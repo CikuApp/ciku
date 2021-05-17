@@ -11,7 +11,7 @@ import exampleRecipe from "data/exampleRecipe";
 
 const SustainabilityScoreInfo = () => {
   return (
-    <PageContainer className="relative h-4/5 pt-28 bg-homepage-2 bg-no-repeat bg-cover">
+    <PageContainer className="relative h-4/5 pt-14 bg-homepage-2 bg-no-repeat bg-cover">
       <section className="flex h-112 mb-20">
         <div className="w-6/12 h-full pr-48 flex flex-col justify-center">
           <Text type="h2" className="font-serif font-bold my-8">
