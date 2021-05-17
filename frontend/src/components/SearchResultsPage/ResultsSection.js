@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 // Components
 import { PageContainer } from "components/Presentation";
-import RecipeResults from "components/RecipeResults/RecipeResults";
+import RecipeResults from "components/common/RecipeResults/RecipeResults";
 
 const ResultsSection = ({ expandedMenu }) => {
   return (

@@ -44,16 +44,16 @@ const Heading = (props) => {
 
 const headingType = {
   h1: `
-  text-4xl font-bold
+  text-5xl
   `,
   h2: `
-  text-3xl font-bold
+  text-3xl
   `,
   h3: `
-  text-xl font-medium
+  text-2xl leading-normal
   `,
   h4: `
-  text-base font-bold
+  text-lg font-bold leading-snug
   `,
 };
 

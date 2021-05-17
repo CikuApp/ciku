@@ -3,10 +3,11 @@ import React from "react";
 const TextPill = (props) => {
   const { children } = props;
   const classes = `
-    flex-shrink-0 w-52 h-9
-    flex justify-evenly items-center
+    relative 
+    flex-shrink-0 w-72 h-11
+    flex justify-between items-center
     px-4
-    border border-gray-dark rounded-md
+    border border-black-light rounded-md
     bg-white
   `;
   return (

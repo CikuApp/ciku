@@ -13,8 +13,15 @@ export const Button = (props) => {
 const buttonType = {
   primary: `
     w-56 min-w-max 
-    h-14 
+    h-11 
     py-3 px-10 
+    flex items-center justify-center 
+    rounded-md  
+    bg-secondary hover:bg-secondary-dark 
+    text-lg font-bold text-white 
+    `,
+  "primary-icon": `
+    w-11 h-11 
     flex items-center justify-center 
     rounded-md  
     bg-secondary hover:bg-secondary-dark 
@@ -22,7 +29,7 @@ const buttonType = {
     `,
   secondary: `
     w-56 min-w-max 
-    h-14 
+    h-11 
     py-3 px-10 
     flex items-center justify-center
     border-2 rounded-md border-secondary hover:border-4 
@@ -30,7 +37,7 @@ const buttonType = {
     `,
   "secondary-active": `
     w-56 min-w-max 
-    h-14 
+    h-11 
     py-3 px-10 
     flex items-center justify-center 
     border-2 rounded-md border-black-green hover:border-4

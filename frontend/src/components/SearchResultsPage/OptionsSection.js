@@ -5,7 +5,7 @@ import SearchResultsFilter from "components/SearchResultsPage/SearchResultsFilte
 import { PageContainer, Text } from "components/Presentation";
 import SearchIngredientsWrapper from "components/SearchResultsPage/SearchIngredientsWrapper";
 import AddSearchIngredients from "components/SearchResultsPage/AddSearchIngredients";
-import LocationSelector from "components/SearchResultsPage/LocationSelector";
+import LocationSelector from "components/common/LocationSelector";
 import SustainabilityScoreTooltip from "components/SearchResultsPage/SustainabilityScoreTooltip";
 
 const OptionsSection = ({ expandedMenu, handleExpandMenu }) => {

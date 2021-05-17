@@ -2,7 +2,7 @@ import React, { useState, cloneElement } from "react";
 import PropTypes from "prop-types";
 
 // Components
-import { Button } from "components/Presentation";
+import { Button } from "components/atoms";
 
 const LoadMore = ({ elements, windowSize, children }) => {
   const [numberToShow, setNumberToShow] = useState(windowSize);
@@ -20,19 +20,16 @@ const LoadMore = ({ elements, windowSize, children }) => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <>
       {cloneElement(children, { results: elements.slice(0, numberToShow) })}
       {moreToShow && (
-        <Button
-          size="sm"
-          type="secondary"
-          onClick={handleLoadMore}
-          className="mt-12"
-        >
-          More Recipes
-        </Button>
+        <div className="flex justify-center mt-12">
+          <Button type="secondary" onClick={handleLoadMore}>
+            More Recipes
+          </Button>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

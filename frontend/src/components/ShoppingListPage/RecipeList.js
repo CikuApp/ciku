@@ -6,7 +6,7 @@ import { userSavedRecipes } from "recoil/user";
 
 // Components
 import { Text } from "components/Presentation";
-import RecipeMiniCard from "components/RecipeCard/RecipeMiniCard";
+import RecipeMiniCard from "components/common/RecipeCard/RecipeMiniCard";
 
 const RecipeList = () => {
   const savedRecipes = useRecoilValue(userSavedRecipes);

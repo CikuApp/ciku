@@ -29,9 +29,9 @@ const Text = (props) => {
         );
       case "md":
         return (
-          <h4 className={classes} {...props}>
+          <p className={classes} {...props}>
             {children}
-          </h4>
+          </p>
         );
       case "sm":
         return (
@@ -47,9 +47,9 @@ const Text = (props) => {
         );
       default:
         return (
-          <p className={classes} {...props}>
+          <span className={classes} {...props}>
             {children}
-          </p>
+          </span>
         );
     }
   };
@@ -58,22 +58,22 @@ const Text = (props) => {
 
 const textType = {
   "2xl": `
-  text-2xl
+  text-3xl
   `,
   xl: `
-  text-xl
+  text-2xl
   `,
   lg: `
-  text-lg
+  text-xl
   `,
   md: `
-  text-md
+  text-lg
   `,
   sm: `
-  text-sm
+  text-base
   `,
   xs: `
-  text-xs
+  text-s
   `,
 };
 
@@ -91,7 +91,10 @@ const textVariant = {
     font-medium text-black-light 
   `,
   em: `
-    underline text-primary
+    font-bold underline text-primary
+  `,
+  "bold-em": `
+    font-bold text-primary 
   `,
 };
 
