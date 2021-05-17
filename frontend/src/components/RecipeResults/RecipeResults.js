@@ -26,7 +26,7 @@ const RecipeResults = () => {
               className="mb-24"
             >
               {resultObject.search === "random" ? (
-                <Text type="h2" className="font-serif font-bold">
+                <Text type="h2" className="font-serif">
                   Featured Recipes
                 </Text>
               ) : (

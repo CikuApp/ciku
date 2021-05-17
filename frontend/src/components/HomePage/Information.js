@@ -9,19 +9,19 @@ import homepageImage from "assets/images/brooke-lark-nTZOILVZuOg-unsplash-1.png"
 const Information = () => {
   return (
     <PageContainer className="relative h-4/5 pt-28 bg-homepage bg-no-repeat bg-cover">
-      <section className="flex h-112 mb-20">
+      <section className="flex h-4/5 mb-20">
         <div className="w-6/12 overflow-hidden">
           <img
             src={homepageImage}
             alt="a delicious meal"
-            className="my-10 lg:my-0 rounded-xl"
+            className="h-full w-full object-contain rounded-lg"
           />
         </div>
-        <div className="w-6/12 h-112 flex flex-col justify-center ml-24">
-          <Text type="h1" className="font-bold leading-tight">
+        <div className="w-6/12 flex flex-col justify-center ml-24">
+          <Text type="h1" className="leading-tight">
             Find out which fruits and vegetables are currently in season.
           </Text>
-          <Text type="h3" className="my-8">
+          <Text type="h3" className="my-12">
             Select your state below to get started
           </Text>
           <SelectLocation />

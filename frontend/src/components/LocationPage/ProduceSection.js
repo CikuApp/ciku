@@ -8,10 +8,10 @@ import { Text, PageContainer } from "components/Presentation";
 const ProduceSection = () => {
   return (
     <PageContainer className="flex flex-col items-center py-24">
-      <Text type="h2" className="self-start font-serif font-bold">
+      <Text type="h2" className="self-start font-serif">
         Currently In-Season Produce
       </Text>
-      <Text type="h4" className="w-1/2 my-12">
+      <Text type="h4" className="w-3/5 my-12">
         Choose from the list of local and seasonal fruits and vegetables below
         to learn how to make delicious meals with them!
       </Text>
