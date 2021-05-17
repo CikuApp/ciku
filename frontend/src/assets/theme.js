@@ -33,9 +33,9 @@ export const ButtonType = {
 
 export const ButtonSize = {
   sm: `
-    w-56 min-w-max 
+    w-60 min-w-max 
     h-14 
-    py-3 px-10
+    py-3 px-5
   `,
 
   icon: `
