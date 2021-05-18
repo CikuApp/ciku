@@ -30,7 +30,7 @@ const RecipePage = () => {
   return selectedRecipe ? (
     <>
       <RecipeInfo recipe={selectedRecipe} />
-      <PageSectionContainer displayClasses="flex">
+      <PageSectionContainer displayClasses="flex pt-12">
         <RecipeIngredients recipeIngredients={selectedRecipe.ingredients} />
         <RecipeDirections recipeDirections={selectedRecipe.steps} />
       </PageSectionContainer>

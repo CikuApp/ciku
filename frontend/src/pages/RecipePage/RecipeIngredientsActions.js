@@ -6,20 +6,24 @@ import { Button, Text } from "components/atoms";
 import { IoCheckmarkSharp } from "react-icons/io5";
 
 const RecipeIngredientsActions = ({ localCount, handleAddToList }) => {
-  return localCount > 0 ? (
-    <div className="flex space-x-12">
-      <span className="flex items-center">
-        <IoCheckmarkSharp className="text-xl mr-4 text-secondary" />
-        <Text type="md">{localCount} ingredients added</Text>
-      </span>
-      <Link to="/shopping-list">
-        <Button type="secondary">View Grocery List</Button>
-      </Link>
+  return (
+    <div className="flex space-x-6 mt-20">
+      {localCount > 0 ? (
+        <>
+          <span className="flex items-center">
+            <IoCheckmarkSharp className="text-xl mr-4 text-secondary" />
+            <Text type="md">{localCount} ingredients added</Text>
+          </span>
+          <Link to="/shopping-list">
+            <Button type="secondary">View Grocery List</Button>
+          </Link>
+        </>
+      ) : (
+        <Button type="secondary" onClick={handleAddToList}>
+          Add To Grocery List
+        </Button>
+      )}
     </div>
-  ) : (
-    <Button type="secondary" onClick={handleAddToList}>
-      Add To Grocery List
-    </Button>
   );
 };
 

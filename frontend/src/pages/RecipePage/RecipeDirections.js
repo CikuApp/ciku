@@ -11,7 +11,7 @@ const RecipeDirections = ({ recipeDirections }) => {
   return (
     <section className="w-1/2">
       <Heading type="h3">Directions</Heading>
-      <ol className="list-inside space-y-2 my-8 -ml-4">
+      <ol className="list-inside space-y-3 my-8 -ml-4">
         {recipeDirections.map((direction, index) => {
           return (
             <ListItem2 key={direction}>

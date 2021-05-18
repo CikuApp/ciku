@@ -69,7 +69,7 @@ const RecipeIngredients = ({ recipeIngredients }) => {
         {recipeIngredients.map((ingredient) => {
           return (
             <ListItem2 key={ingredient}>
-              <span className="mr-8">
+              <span className="mr-10">
                 <Checkbox
                   value={ingredient}
                   checked={inShoppingList(ingredient)}

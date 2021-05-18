@@ -12,8 +12,8 @@ import { toTitle } from "utils/dataHelpers";
 
 const RecipeInfo = ({ recipe }) => {
   return (
-    <PageSectionContainer displayClasses="flex">
-      <div className="w-6/12 space-y-16 py-8 pr-24">
+    <PageSectionContainer displayClasses="flex pt-8">
+      <div className="w-6/12 space-y-16 py-8 pr-20">
         <div className="space-y-8">
           <Heading type="h1/2">{toTitle(recipe.name)}</Heading>
           <Text type="lg">Recipe by: {recipe.contributor || "-"}</Text>
