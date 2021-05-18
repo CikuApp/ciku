@@ -16,9 +16,11 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
 
-      black: colors.black,
+      black: "#373F41",
+      "black-dark": "#000000",
       white: colors.white,
       gray: colors.coolGray,
+      "gray-dark": "#373F41",
       red: colors.red,
       blue: colors.blue,
       indigo: colors.indigo,
@@ -28,6 +30,7 @@ module.exports = {
       primary: "#EB6A26",
 
       secondary: "#007A39",
+      "secondary-dark": "#004B23",
 
       background: "#FEFCEE",
 
@@ -807,7 +810,7 @@ module.exports = {
     ],
     borderRadius: ["responsive"],
     borderStyle: ["responsive"],
-    borderWidth: ["responsive"],
+    borderWidth: ["responsive", "hover"],
     boxShadow: ["responsive", "group-hover", "focus-within", "hover", "focus"],
     boxSizing: ["responsive"],
     clear: ["responsive"],

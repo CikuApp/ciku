@@ -10,7 +10,7 @@ import { toTitle } from "utils/dataHelpers";
 const RecipeMiniCard = ({ recipe }) => {
   return (
     <Link to={`/recipes/${recipe.name.replace(/ /g, "-")}`}>
-      <div className="w-112 h-22 my-8 flex-shrink-0 flex items-center rounded-lg shadow-lg bg-white ">
+      <div className="w-112 h-22 my-8 flex-shrink-0 flex items-center rounded-lg shadow-lg hover:shadow-xl bg-white ">
         <img
           src={recipe.image_url}
           alt={recipe.name}

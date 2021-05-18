@@ -18,7 +18,7 @@ const LocationHeader = () => {
 
   return (
     <PageContainer className="h-200 flex items-end py-16 bg-california bg-cover bg-no-repeat">
-      <div className="max-w-max p-16 rounded-xl bg-black bg-opacity-80 text-white">
+      <div className="max-w-max p-16 -ml-16 rounded-xl bg-black-dark bg-opacity-80 text-white">
         <Text type="h1" className="font-bold tracking-wide">
           {locationName.toUpperCase()}
         </Text>

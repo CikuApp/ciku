@@ -23,7 +23,7 @@ function SearchIngredientsWrapper() {
   };
 
   return (
-    <div className="w-full flex flex-wrap ml-4 mt-1">
+    <div className="w-full flex flex-wrap ml-6 mt-1">
       {searchIngredients.length
         ? searchIngredients.map((ingredient) => (
             <SearchIngredientsCard

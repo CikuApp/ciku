@@ -5,7 +5,7 @@ import { Text } from "components/Presentation";
 
 const RecipeStats = ({ recipeTime, recipeScore }) => {
   return (
-    <div className="w-200 flex justify-between text-center my-20">
+    <div className="w-200 flex flex-shrink justify-between text-center my-20">
       <div className="pr-8 py-4 ">
         <Text type="h2">{recipeTime || "-"}</Text>
         <Text type="p">Minutes</Text>

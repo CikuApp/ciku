@@ -12,7 +12,7 @@ const RecipeCard = ({ recipeObject }) => {
       to={`/recipes/${recipeObject.name.replace(/ /g, "-")}`}
       className="w-72 h-90 flex-shrink-0"
     >
-      <article className="flex flex-col rounded-lg shadow-lg bg-white overflow-hidden">
+      <article className="flex flex-col rounded-lg shadow-lg hover:shadow-xl bg-white overflow-hidden">
         <img
           src={recipeObject.image_url}
           alt={recipeObject.name}

@@ -16,7 +16,7 @@ const OptionsSection = ({ expandedMenu, handleExpandMenu }) => {
         <Text type="h2" className="my-14 font-serif">
           Recipe Results
         </Text>
-        <Text type="p" className="ml-24">
+        <Text type="p" className="ml-14">
           What's a{" "}
         </Text>
         <SustainabilityScoreTooltip title="Sustainability Score">

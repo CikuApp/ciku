@@ -33,7 +33,7 @@ const AddSearchIngredients = () => {
           setInputField={setIngredientInput}
           placeholder={"Add ingredients"}
         />
-        <button type="submit" className="px-2">
+        <button type="submit" className="pl-2">
           <IoAddCircle
             className={
               "text-3xl text-secondary " +

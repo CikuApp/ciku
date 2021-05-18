@@ -3,20 +3,20 @@ export const ButtonType = {
   primary: `
     py-3 px-4
     rounded-lg 
-    bg-secondary  
+    bg-secondary hover:bg-secondary-dark 
     font-bold
     text-white 
     text-2xl 
     flex items-center justify-center
     `,
   secondary: `
-    border-2 rounded-lg border-secondary 
+    border-2 rounded-lg border-secondary hover:border-4 hover:border-secondary 
     text-xl
     flex items-center justify-center 
     font-bold
     `,
   "secondary-active": `
-    border-2 rounded-lg border-secondary
+    border-2 rounded-lg border-black 
     bg-secondary text-white 
     text-xl
     flex items-center justify-center 
@@ -33,13 +33,13 @@ export const ButtonType = {
 
 export const ButtonSize = {
   sm: `
-    w-56 min-w-max 
+    w-60 min-w-max 
     h-14 
-    py-3 px-10
+    py-3 px-5
   `,
 
   icon: `
-  h-12 w-12
+  h-14 w-14
   `,
 };
 
