@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 // States
 import searchIngredientsAtom from "recoil/searchIngredients";
 
 // Components
-import { TextPill } from "components/Presentation";
+import { TextPill } from "components/atoms";
 import { IoAddCircle } from "react-icons/io5";
 import InputWithHints from "components/common/InputWithHints";
 
 const AddSearchIngredients = () => {
   const [ingredientInput, setIngredientInput] = useState("");
-  const [searchIngredients, setSearchIngredients] = useRecoilState(
-    searchIngredientsAtom
-  );
+  const setSearchIngredients = useSetRecoilState(searchIngredientsAtom);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,13 +24,15 @@ const AddSearchIngredients = () => {
   };
 
   return (
-    <TextPill>
-      <form onSubmit={handleSubmit} className="flex items-center">
-        <InputWithHints
-          inputField={ingredientInput}
-          setInputField={setIngredientInput}
-          placeholder={"Add ingredients"}
-        />
+    <TextPill type="sm">
+      <form onSubmit={handleSubmit} className="flex-grow flex items-center">
+        <div className="flex-grow">
+          <InputWithHints
+            inputField={ingredientInput}
+            setInputField={setIngredientInput}
+            placeholder={"Add ingredients"}
+          />
+        </div>
         <button type="submit" className="pl-2">
           <IoAddCircle
             className={

@@ -69,13 +69,11 @@ const RecipeIngredients = ({ recipeIngredients }) => {
         {recipeIngredients.map((ingredient) => {
           return (
             <ListItem2 key={ingredient}>
-              <span className="mr-10">
-                <Checkbox
-                  value={ingredient}
-                  checked={inShoppingList(ingredient)}
-                  onClick={() => handleClick(ingredient)}
-                />
-              </span>
+              <Checkbox
+                value={ingredient}
+                checked={inShoppingList(ingredient)}
+                onClick={() => handleClick(ingredient)}
+              />
               <Text type="md">{ingredient}</Text>
             </ListItem2>
           );

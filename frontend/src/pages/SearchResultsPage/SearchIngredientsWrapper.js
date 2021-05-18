@@ -5,9 +5,9 @@ import { useRecoilState } from "recoil";
 import searchIngredientsAtom from "recoil/searchIngredients";
 
 // Components
-import SearchIngredientsCard from "components/SearchResultsPage/SearchIngredientCard";
+import SearchIngredientsCard from "pages/SearchResultsPage/SearchIngredientCard";
 
-function SearchIngredientsWrapper() {
+const SearchIngredientsWrapper = () => {
   const [searchIngredients, setSearchIngredients] = useRecoilState(
     searchIngredientsAtom
   );
@@ -23,7 +23,7 @@ function SearchIngredientsWrapper() {
   };
 
   return (
-    <div className="w-full flex flex-wrap ml-6 mt-1">
+    <div className="w-full flex flex-wrap ml-4 mt-0.5 -mb-8">
       {searchIngredients.length
         ? searchIngredients.map((ingredient) => (
             <SearchIngredientsCard
@@ -35,6 +35,6 @@ function SearchIngredientsWrapper() {
         : null}
     </div>
   );
-}
+};
 
 export default SearchIngredientsWrapper;

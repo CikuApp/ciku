@@ -7,7 +7,7 @@ const TextPillExpanded = (props) => {
   absolute w-72 h-52 
   z-50  
   overflow-y-scroll
-  rounded-bl-md rounded-br-md 
+  rounded-bl-lg rounded-br-lg 
   bg-white shadow-sm
   `;
 

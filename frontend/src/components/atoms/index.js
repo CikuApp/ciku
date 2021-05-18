@@ -4,13 +4,11 @@ import Heading from "./Heading/Heading";
 import ExpandIcon from "./ExpandIcon/ExpandIcon";
 import ListItem from "./ListItem/ListItem";
 import ListItem2 from "./ListItem2/ListItem2";
-
+import Tooltip from "./Tooltip/Tooltip";
 import TextPill from "./TextPill/TextPill";
 import TextPillExpanded from "./TextPillExpanded/TextPillExpanded";
-
 import Checkbox from "./Checkbox/Checkbox";
-
-import Tooltip from "./Tooltip";
+import DropdownMenu from "./DropdownMenu/DropdownMenu";
 
 export {
   Button,
@@ -23,4 +21,5 @@ export {
   TextPillExpanded,
   Checkbox,
   Tooltip,
+  DropdownMenu,
 };

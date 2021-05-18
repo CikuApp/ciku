@@ -27,7 +27,7 @@ const RecipeResults = () => {
       {recipeResults.length ? (
         recipeResults.map((resultObject) => {
           return (
-            <div key={resultObject.search} className="mb-24">
+            <div key={resultObject.search} className="mb-16">
               {resultObject.search !== "random" && (
                 <Text type="2xl" variant="medium">
                   {toTitle(resultObject.search)}
@@ -41,13 +41,17 @@ const RecipeResults = () => {
                   <RecipeCardsWrapper />
                 </LoadMore>
               ) : (
-                <Text type="sm">No recipes match your query.</Text>
+                <div className="my-6">
+                  <Text type="sm">No recipes match your query.</Text>
+                </div>
               )}
             </div>
           );
         })
       ) : (
-        <Text type="sm">There are no results to show.</Text>
+        <div className="my-6">
+          <Text type="sm">There are no results to show.</Text>
+        </div>
       )}
     </section>
   );

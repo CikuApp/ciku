@@ -7,8 +7,7 @@ import searchRequestedAtom from "recoil/searchRequested/atom";
 
 // Components
 import Nav from "components/common/Nav";
-import { HomePage, LocationPage, RecipePage } from "pages";
-import SearchResultsPage from "components/SearchResultsPage/SearchResultsPage";
+import { HomePage, LocationPage, RecipePage, SearchResultsPage } from "pages";
 import ShoppingListPage from "components/ShoppingListPage/ShoppingListPage";
 import ScrollToTop from "components/common/ScrollToTop";
 import { PageVertical } from "components/Presentation";

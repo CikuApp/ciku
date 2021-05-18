@@ -70,10 +70,10 @@ const textType = {
   text-lg leading-snug
   `,
   sm: `
-  text-base leading-relaxed
+  text-base leading-snug
   `,
   xs: `
-  text-s
+  text-sm
   `,
 };
 
@@ -95,6 +95,9 @@ const textVariant = {
   `,
   "bold-em": `
     font-bold text-primary 
+  `,
+  tooltip: `
+    text-white
   `,
 };
 

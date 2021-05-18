@@ -2,20 +2,21 @@ import React, { Suspense } from "react";
 import PropTypes from "prop-types";
 
 // Components
-import { PageContainer } from "components/Presentation";
+import { PageSectionContainer } from "components/templates";
+import Loading from "components/common/Loading";
 import RecipeResults from "components/common/RecipeResults/RecipeResults";
 
 const ResultsSection = ({ expandedMenu }) => {
   return (
     <div className="relative w-full flex flex-col items-center">
       {expandedMenu !== "" && (
-        <div className="absolute w-full min-h-screen h-full bg-black-dark opacity-60 z-30 "></div>
+        <div className="absolute w-full min-h-screen h-full bg-black opacity-60 z-30 -mb-1"></div>
       )}
-      <PageContainer className="pt-14">
-        <Suspense fallback={<div>loading</div>}>
+      <PageSectionContainer className="pt-14">
+        <Suspense fallback={<Loading />}>
           <RecipeResults />
         </Suspense>
-      </PageContainer>
+      </PageSectionContainer>
     </div>
   );
 };

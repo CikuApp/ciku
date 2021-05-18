@@ -66,4 +66,4 @@ const tags = [
   },
 ];
 
-export { tags };
+export default tags;

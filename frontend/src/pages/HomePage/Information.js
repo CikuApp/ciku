@@ -15,7 +15,7 @@ const Information = () => {
         <img
           src={deliciousMealImage}
           alt="A Delicious Meal"
-          className="my-10 lg:my-0 rounded-md shadow-lg"
+          className="my-10 lg:my-0 rounded-lg shadow-lg"
         />
       </section>
       <section className="w-6/12 px-12 pt-8 space-y-8 my-auto">

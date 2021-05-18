@@ -40,7 +40,7 @@ const SearchBar = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="h-10 flex-grow flex mx-20 bg-white rounded-md"
+      className="h-10 flex-grow flex mx-20 bg-white rounded-lg"
     >
       <div className="flex-grow pl-4">
         <InputWithHints

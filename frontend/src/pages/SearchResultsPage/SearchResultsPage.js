@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 // Components
-import ResultsSection from "components/SearchResultsPage/ResultsSection";
-import OptionsSection from "components/SearchResultsPage/OptionsSection";
+import ResultsSection from "pages/SearchResultsPage/ResultsSection";
+import OptionsSection from "pages/SearchResultsPage/OptionsSection";
 
 const SearchResultsPage = () => {
   const [expandedMenu, setExpandedMenu] = useState("");

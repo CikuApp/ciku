@@ -24,11 +24,11 @@ const RecipeInfo = ({ recipe }) => {
         />
         <SaveRecipeButton recipe={recipe} />
       </div>
-      <div className="w-6/12 overflow-hidden">
+      <div className="w-6/12">
         <img
           src={recipe.image_url}
           alt={recipe.name}
-          className="h-112 bg-gray-light object-cover rounded-md"
+          className="h-112 bg-gray-light object-cover rounded-lg shadow-lg"
         ></img>
       </div>
     </PageSectionContainer>

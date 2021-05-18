@@ -28,7 +28,7 @@ const ProduceCard = ({ produceObject }) => {
 
   return (
     <div
-      className="justify-self-stretch min-w-68 h-16 my-8 mr-6 px-4 space-x-8 flex items-center overflow-hidden bg-white rounded-md shadow-md hover:shadow-lg cursor-pointer"
+      className="justify-self-stretch min-w-68 h-16 my-8 mr-6 px-4 space-x-8 flex items-center overflow-hidden bg-white rounded-lg shadow-md hover:shadow-lg cursor-pointer"
       onClick={handleClick}
     >
       <Checkbox checked={isInSearchParams()} />

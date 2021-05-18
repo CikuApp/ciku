@@ -51,7 +51,7 @@ const LocationSelector = () => {
 
   return (
     <span className="z-40 mr-6" ref={locationSelectorRef}>
-      <TextPill onClick={handleExpandSelector}>
+      <TextPill type="md" onClick={handleExpandSelector}>
         <Text type="xs">
           {location.length ? formatStateName(location) : "Select A State"}
         </Text>

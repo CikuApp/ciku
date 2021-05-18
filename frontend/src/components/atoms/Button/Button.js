@@ -15,14 +15,14 @@ const buttonType = {
     w-48 min-w-max 
     h-12  
     flex items-center justify-center 
-    rounded-md  
+    rounded-lg  
     bg-secondary hover:bg-secondary-dark 
     text-xl font-bold text-white 
     `,
   "primary-icon": `
     w-11 h-11 
     flex items-center justify-center 
-    rounded-md  
+    rounded-lg  
     bg-secondary hover:bg-secondary-dark 
     text-xl font-bold text-white 
     `,
@@ -30,14 +30,14 @@ const buttonType = {
     w-48 min-w-max 
     h-11 
     flex items-center justify-center
-    border-2 rounded-md border-secondary hover:border-4 
+    border-2 rounded-lg border-secondary hover:border-4 
     text-s font-bold text-black-light
     `,
   "secondary-active": `
     w-48 min-w-max 
     h-11 
     flex items-center justify-center 
-    border-2 rounded-md border-black-green hover:border-4
+    border-2 rounded-lg border-black-green hover:border-4
     bg-secondary hover:bg-white
     text-lg font-bold text-white hover:text-black-light
     `,

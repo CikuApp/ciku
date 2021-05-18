@@ -35,13 +35,13 @@ const InputWithHints = ({ inputField, setInputField, placeholder }) => {
   }, [inputField]);
 
   return (
-    <div className="relative h-full flex items-center text-lg rounded-md">
+    <div className="relative h-full flex items-center text-lg rounded-lg">
       <input
         value={inputField}
         onChange={handleInputChange}
         onKeyDown={handleKeyPress}
         placeholder={placeholder}
-        className="w-full z-10 placeholder-gray-dark bg-transparent rounded-md text-sm"
+        className="w-full z-10 placeholder-gray-dark bg-transparent rounded-lg text-sm"
       />
       <span className="h-full w-full absolute left-0 flex items-center whitespace-nowrap overflow-x-hidden text-sm">
         <span className="opacity-0">{inputField}</span>
