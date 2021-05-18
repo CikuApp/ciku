@@ -1,31 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Text } from "components/Presentation";
+// Components
+import { Text, Heading, ListItem2 } from "components/atoms";
 
+// Utils
 import { toSentence } from "utils/dataHelpers";
 
-function RecipeDirections({ recipeDirections }) {
+const RecipeDirections = ({ recipeDirections }) => {
   return (
-    <section className="w-6/12 my-16">
-      <Text type="h2" className="font-serif font-bold">
-        Directions
-      </Text>
-      <ol className="list-inside my-16 ">
+    <section className="w-1/2">
+      <Heading type="h3">Directions</Heading>
+      <ol className="list-inside space-y-2 my-8 -ml-4">
         {recipeDirections.map((direction, index) => {
           return (
-            <li className="my-8 flex" key={direction}>
-              <Text type="p">
+            <ListItem2 key={direction}>
+              <Text type="sm">
                 <span className="mr-2">{index + 1}.</span>
                 {toSentence(direction)}
               </Text>
-            </li>
+            </ListItem2>
           );
         })}
       </ol>
     </section>
   );
-}
+};
 
 export default RecipeDirections;
 

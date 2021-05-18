@@ -46,6 +46,9 @@ const headingType = {
   h1: `
   text-5xl text-white font-bold
   `,
+  "h1/2": `
+  text-4xl text-black-light leading-snug
+  `,
   h2: `
   text-3xl text-black-light 
   `,

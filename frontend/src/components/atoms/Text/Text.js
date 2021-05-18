@@ -70,7 +70,7 @@ const textType = {
   text-lg
   `,
   sm: `
-  text-base
+  text-base leading-relaxed
   `,
   xs: `
   text-s

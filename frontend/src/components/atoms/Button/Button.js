@@ -27,17 +27,15 @@ const buttonType = {
     text-xl font-bold text-white 
     `,
   secondary: `
-    w-56 min-w-max 
-    h-12 
-    py-3 px-10 
+    w-48 min-w-max 
+    h-11 
     flex items-center justify-center
     border-2 rounded-md border-secondary hover:border-4 
-    text-xl font-bold text-black-light
+    text-s font-bold text-black-light
     `,
   "secondary-active": `
-    w-56 min-w-max 
+    w-48 min-w-max 
     h-11 
-    py-3 px-10 
     flex items-center justify-center 
     border-2 rounded-md border-black-green hover:border-4
     bg-secondary hover:bg-white

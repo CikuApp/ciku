@@ -1,18 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { IoCheckmarkSharp } from "react-icons/io5";
 
+// States
 import { userShoppingList } from "recoil/user";
 
-import { Text, Button, Checkbox } from "components/Presentation";
+// Components
+import RecipeIngredientsActions from "pages/RecipePage/RecipeIngredientsActions";
+import { Text, Heading, Checkbox, ListItem2 } from "components/atoms";
 
-function RecipeIngredients({ recipeIngredients }) {
+const RecipeIngredients = ({ recipeIngredients }) => {
   const [shoppingList, setShoppingList] = useRecoilState(userShoppingList);
-  const ingredientsListRef = useRef(null);
   const [localCount, setLocalCount] = useState(0);
   const [localList, setLocalList] = useState([]);
+  const ingredientsListRef = useRef(null);
 
   const handleClick = (ingredientName) => {
     if (localCount === 0) {
@@ -62,45 +63,31 @@ function RecipeIngredients({ recipeIngredients }) {
   }, []);
 
   return (
-    <section className="w-1/2 my-16 pr-24">
-      <Text type="h2" className="font-serif font-bold">
-        Ingredients
-      </Text>
-      <ul className="my-16" ref={ingredientsListRef}>
+    <section className="w-1/2 pr-24">
+      <Heading type="h3">Ingredients</Heading>
+      <ul className="space-y-2 my-8 -ml-4" ref={ingredientsListRef}>
         {recipeIngredients.map((ingredient) => {
           return (
-            <li className="flex items-center my-4" key={ingredient}>
-              <Checkbox
-                value={ingredient}
-                checked={inShoppingList(ingredient)}
-                handleClick={() => handleClick(ingredient)}
-                className="mr-8"
-              />
-              <Text type="h4">{ingredient}</Text>
-            </li>
+            <ListItem2 key={ingredient}>
+              <span className="mr-8">
+                <Checkbox
+                  value={ingredient}
+                  checked={inShoppingList(ingredient)}
+                  onClick={() => handleClick(ingredient)}
+                />
+              </span>
+              <Text type="md">{ingredient}</Text>
+            </ListItem2>
           );
         })}
       </ul>
-      {localCount > 0 ? (
-        <div className="flex items-center justify-between 2xl:justify-start">
-          <Text type="h4" className="flex items-center 2xl:mr-12">
-            <IoCheckmarkSharp className="mr-4" />
-            {localCount} ingredients added
-          </Text>
-          <Link to="/shopping-list">
-            <Button type="secondary" size="sm">
-              View Grocery List
-            </Button>
-          </Link>
-        </div>
-      ) : (
-        <Button type="secondary" size="sm" onClick={handleAddToList}>
-          Add To Grocery List
-        </Button>
-      )}
+      <RecipeIngredientsActions
+        localCount={localCount}
+        handleAddToList={handleAddToList}
+      />
     </section>
   );
-}
+};
 
 export default RecipeIngredients;
 

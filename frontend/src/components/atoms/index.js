@@ -3,6 +3,8 @@ import Text from "./Text/Text";
 import Heading from "./Heading/Heading";
 import ExpandIcon from "./ExpandIcon/ExpandIcon";
 import ListItem from "./ListItem/ListItem";
+import ListItem2 from "./ListItem2/ListItem2";
+
 import TextPill from "./TextPill/TextPill";
 import TextPillExpanded from "./TextPillExpanded/TextPillExpanded";
 
@@ -16,6 +18,7 @@ export {
   Heading,
   ExpandIcon,
   ListItem,
+  ListItem2,
   TextPill,
   TextPillExpanded,
   Checkbox,
