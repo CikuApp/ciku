@@ -18,7 +18,7 @@ const ProduceCardsWrapper = () => {
   }, [setSearchParams]);
 
   return (
-    <div className="w-full grid sm:grid-cols-2 lg:grid-cols-3 mb-12">
+    <div className="w-full grid sm:grid-cols-2 lg:grid-cols-3 mb-8">
       {produce.map((produceItem) => {
         return (
           <ProduceCard

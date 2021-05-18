@@ -28,17 +28,16 @@ const ProduceCard = ({ produceObject }) => {
 
   return (
     <div
-      className="justify-self-stretch min-w-68 h-16 my-8 mx-3 flex items-center overflow-hidden bg-white rounded-md shadow-md hover:shadow-lg cursor-pointer"
+      className="justify-self-stretch min-w-68 h-16 my-8 mr-6 px-4 space-x-8 flex items-center overflow-hidden bg-white rounded-md shadow-md hover:shadow-lg cursor-pointer"
       onClick={handleClick}
     >
-      <div className="mx-4">
-        <Checkbox checked={isInSearchParams()} />
-      </div>
-      <div className="h-14 w-14 mx-2 my-2 mr-8 flex items-center justify-center bg-gray-100 rounded">
+      <Checkbox checked={isInSearchParams()} />
+
+      <div className="h-14 w-14 flex items-center justify-center bg-gray-100 rounded">
         {produceObject.image ? (
           <img src={produceObject.image} alt="" />
         ) : (
-          <GiTomato className="text-gray-dark text-4xl" />
+          <GiTomato className="text-gray-light text-4xl" />
         )}
       </div>
       <Text type="md" variant="bold">

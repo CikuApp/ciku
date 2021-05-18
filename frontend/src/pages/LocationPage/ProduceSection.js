@@ -10,7 +10,7 @@ import Loading from "components/common/Loading";
 const ProduceSection = () => {
   return (
     <PageSectionContainer displayClasses="flex flex-col items-start">
-      <div className="h-32 w-3/5 my-6 flex flex-col justify-between">
+      <div className="w-3/5 my-6 space-y-12">
         <Heading type="h2">Currently In-Season Produce</Heading>
         <Text type="xl">
           Choose from the list of local and seasonal fruits and vegetables below

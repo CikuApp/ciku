@@ -67,7 +67,7 @@ const textType = {
   text-xl
   `,
   md: `
-  text-lg
+  text-lg leading-snug
   `,
   sm: `
   text-base leading-relaxed
