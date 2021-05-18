@@ -28,12 +28,12 @@ const ProduceCard = ({ produceObject }) => {
 
   return (
     <div
-      className="justify-self-stretch min-w-68 h-16 my-8 mr-6 px-4 space-x-8 flex items-center overflow-hidden bg-white rounded-lg shadow-md hover:shadow-lg cursor-pointer"
+      className="justify-self-stretch min-w-68 h-18 my-8 mr-6 px-4 space-x-8 flex items-center overflow-hidden bg-white rounded-lg shadow-md hover:shadow-lg cursor-pointer"
       onClick={handleClick}
     >
       <Checkbox checked={isInSearchParams()} />
 
-      <div className="h-14 w-14 flex items-center justify-center bg-gray-100 rounded">
+      <div className="h-16 w-16 flex items-center justify-center bg-gray-100 rounded">
         {produceObject.image ? (
           <img src={produceObject.image} alt="" />
         ) : (

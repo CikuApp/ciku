@@ -50,7 +50,7 @@ const LocationSelector = () => {
   };
 
   return (
-    <span className="z-40 mr-6" ref={locationSelectorRef}>
+    <span className="z-40 mr-6 cursor-pointer" ref={locationSelectorRef}>
       <TextPill type="md" onClick={handleExpandSelector}>
         <Text type="xs">
           {location.length ? formatStateName(location) : "Select A State"}

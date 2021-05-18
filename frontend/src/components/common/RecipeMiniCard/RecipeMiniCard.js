@@ -3,23 +3,21 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 // Components
-import { Text } from "components/Presentation";
+import { Text } from "components/atoms";
 
+// Utils
 import { toTitle } from "utils/dataHelpers";
 
 const RecipeMiniCard = ({ recipe }) => {
   return (
     <Link to={`/recipes/${recipe.name.replace(/ /g, "-")}`}>
-      <div className="w-112 h-22 my-8 flex-shrink-0 flex items-center rounded-lg shadow-lg hover:shadow-xl bg-white ">
+      <div className="w-96 h-18 flex-shrink-0 space-x-4 mb-8 p-1 flex items-center rounded-lg shadow-md hover:shadow-lg bg-white overflow-hidden">
         <img
           src={recipe.image_url}
           alt={recipe.name}
-          className="h-20 w-20 my-2 mx-2 mr-4 flex-shrink-0 bg-gray-100 object_cover overflow-hidden"
+          className="h-16 w-16 flex-shrink-0 flex items-center justify-center bg-gray-100 rounded object-cover overflow-hidden"
         />
-        <Text
-          type="h4"
-          className="w-full whitespace-nowrap overflow-ellipsis overflow-hidden px-2 font-bold"
-        >
+        <Text type="md" variant="bold">
           {toTitle(recipe.name)}
         </Text>
       </div>

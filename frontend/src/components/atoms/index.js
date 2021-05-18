@@ -9,6 +9,7 @@ import TextPill from "./TextPill/TextPill";
 import TextPillExpanded from "./TextPillExpanded/TextPillExpanded";
 import Checkbox from "./Checkbox/Checkbox";
 import DropdownMenu from "./DropdownMenu/DropdownMenu";
+import CloseIcon from "./CloseIcon/CloseIcon";
 
 export {
   Button,
@@ -22,4 +23,5 @@ export {
   Checkbox,
   Tooltip,
   DropdownMenu,
+  CloseIcon,
 };

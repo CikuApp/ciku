@@ -4,8 +4,9 @@ const TextPillExpanded = (props) => {
   const { children } = props;
 
   const classes = `
-  absolute w-72 h-52 
-  z-50  
+  absolute w-72 h-56  
+  z-50
+  pt-1 
   overflow-y-scroll
   rounded-bl-lg rounded-br-lg 
   bg-white shadow-sm

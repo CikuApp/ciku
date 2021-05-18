@@ -27,7 +27,10 @@ const RecipeResults = () => {
       {recipeResults.length ? (
         recipeResults.map((resultObject) => {
           return (
-            <div key={resultObject.search} className="mb-16">
+            <div
+              key={resultObject.search.concat(resultObject.results.length)}
+              className="mb-16"
+            >
               {resultObject.search !== "random" && (
                 <Text type="2xl" variant="medium">
                   {toTitle(resultObject.search)}

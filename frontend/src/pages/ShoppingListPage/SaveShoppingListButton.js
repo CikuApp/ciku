@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Button } from "components/Presentation";
+import { Button } from "components/atoms";
 
 const SaveShoppingListButton = () => {
   return (
-    <Button type="secondary" size="sm" onClick={null}>
+    <Button type="secondary" onClick={null}>
       Save List
     </Button>
   );

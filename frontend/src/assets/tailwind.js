@@ -18,6 +18,7 @@ module.exports = {
 
       black: colors.black,
       "black-light": "#373F41",
+      "black-green": "#0b150C",
       white: colors.white,
       gray: colors.coolGray,
       "gray-dark": "#737B7D",
@@ -58,6 +59,7 @@ module.exports = {
       12: "3rem",
       14: "3.5rem",
       16: "4rem",
+      18: "4.5rem",
       20: "5rem",
       24: "6rem",
       28: "7rem",

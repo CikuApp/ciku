@@ -2,15 +2,20 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-// Atoms
+// States
 import searchRequestedAtom from "recoil/searchRequested/atom";
 
 // Components
 import Nav from "components/common/Nav";
-import { HomePage, LocationPage, RecipePage, SearchResultsPage } from "pages";
-import ShoppingListPage from "components/ShoppingListPage/ShoppingListPage";
+import {
+  HomePage,
+  LocationPage,
+  RecipePage,
+  SearchResultsPage,
+  ShoppingListPage,
+} from "pages";
 import ScrollToTop from "components/common/ScrollToTop";
-import { PageVertical } from "components/Presentation";
+import { PageContainer } from "components/templates";
 
 const App = () => {
   const searchRequested = useRecoilValue(searchRequestedAtom);
@@ -20,7 +25,7 @@ const App = () => {
       <Nav />
       {searchRequested && <Redirect to="/recipes" />}
       <ScrollToTop>
-        <PageVertical>
+        <PageContainer>
           <Switch>
             <Route exact path="/">
               <HomePage />
@@ -38,7 +43,7 @@ const App = () => {
               <ShoppingListPage />
             </Route>
           </Switch>
-        </PageVertical>
+        </PageContainer>
       </ScrollToTop>
     </main>
   );

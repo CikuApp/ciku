@@ -47,7 +47,7 @@ const toTagsString = (tags) => {
 
 // Truncates recipe card titles if over 2 lines long
 const truncate = (str) => {
-  return str.length > 45 ? str.slice(0, 42) + "..." : str;
+  return str.length > 40 ? str.slice(0, 40) + "..." : str;
 };
 
 // returns a suggestion from an array matching the start of string, else ""

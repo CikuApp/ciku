@@ -7,12 +7,14 @@ import { IoCheckmarkSharp } from "react-icons/io5";
 
 const RecipeIngredientsActions = ({ localCount, handleAddToList }) => {
   return (
-    <div className="flex space-x-6 mt-20">
+    <div className="flex space-x-12 mt-20">
       {localCount > 0 ? (
         <>
           <span className="flex items-center">
             <IoCheckmarkSharp className="text-xl mr-4 text-secondary" />
-            <Text type="md">{localCount} ingredients added</Text>
+            <Text type="md">
+              {localCount} ingredient{localCount > 1 ? "s" : ""} added
+            </Text>
           </span>
           <Link to="/shopping-list">
             <Button type="secondary">View Grocery List</Button>

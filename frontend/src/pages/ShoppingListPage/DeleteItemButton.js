@@ -1,5 +1,5 @@
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import PropTypes from "prop-types";
 
 // States
@@ -9,7 +9,7 @@ import { userShoppingList } from "recoil/user";
 import { AiFillCloseSquare } from "react-icons/ai";
 
 const DeleteButton = ({ ingredient }) => {
-  const [shoppingList, setShoppingList] = useRecoilState(userShoppingList);
+  const setShoppingList = useSetRecoilState(userShoppingList);
 
   const handleClick = () => {
     setShoppingList((prevState) => {
@@ -18,8 +18,8 @@ const DeleteButton = ({ ingredient }) => {
   };
 
   return (
-    <span className="mr-8" onClick={handleClick}>
-      <AiFillCloseSquare className="text-3xl font-black text-red-500" />
+    <span onClick={handleClick} className="cursor-pointer">
+      <AiFillCloseSquare className="text-2xl text-red-500" />
     </span>
   );
 };

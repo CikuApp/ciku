@@ -31,15 +31,15 @@ const buttonType = {
     h-11 
     flex items-center justify-center
     border-2 rounded-lg border-secondary hover:border-4 
-    text-s font-bold text-black-light
+    text-sm font-bold text-black-light
     `,
   "secondary-active": `
     w-48 min-w-max 
     h-11 
     flex items-center justify-center 
-    border-2 rounded-lg border-black-green hover:border-4
-    bg-secondary hover:bg-white
-    text-lg font-bold text-white hover:text-black-light
+    border-2 rounded-lg border-black-green 
+    bg-secondary 
+    text-sm font-bold text-white
     `,
   nav: `
     min-w-max w-auto  
