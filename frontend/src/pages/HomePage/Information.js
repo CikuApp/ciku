@@ -10,7 +10,10 @@ import deliciousMealImage from "assets/images/brooke-lark-nTZOILVZuOg-unsplash-1
 
 const Information = () => {
   return (
-    <PageSectionContainer bgClasses="bg-homepage" displayClasses="flex h-112">
+    <PageSectionContainer
+      bgClasses="bg-homepage xl:bg-repeat-round"
+      displayClasses="flex h-112"
+    >
       <section className="w-6/12 pt-12">
         <img
           src={deliciousMealImage}

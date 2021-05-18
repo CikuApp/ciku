@@ -19,7 +19,7 @@ const LocationHeader = () => {
 
   return (
     <PageSectionContainer
-      bgClasses="bg-california"
+      bgClasses="bg-california bg-bottom"
       displayClasses="h-112 flex items-end"
     >
       <div className="max-w-max p-14 -ml-16 mb-8 rounded-lg bg-black bg-opacity-80">

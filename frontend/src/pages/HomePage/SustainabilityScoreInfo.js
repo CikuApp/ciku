@@ -13,7 +13,10 @@ import exampleRecipe from "data/exampleRecipe";
 
 const SustainabilityScoreInfo = () => {
   return (
-    <PageSectionContainer bgClasses="bg-homepage-2" displayClasses="flex h-112">
+    <PageSectionContainer
+      bgClasses="bg-homepage-2 xl:bg-repeat-round"
+      displayClasses="flex h-112"
+    >
       <section className="w-6/12 space-y-8 pr-36 my-auto">
         <Heading type="h3">
           Get recipe suggestions from Ciku to help you eat more sustainably.
