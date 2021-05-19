@@ -23,7 +23,7 @@ const SustainabilityScoreInfo = () => {
         </Heading>
         <Text type="md">
           Ciku’s recipe suggestions have{" "}
-          <Text variant="em">sustainability scores</Text> to help you identify
+          <Text variant="em">sustainability scores </Text> to help you identify
           which recipes include more sustainable ingredients.
         </Text>
         <Text type="md">
@@ -37,7 +37,7 @@ const SustainabilityScoreInfo = () => {
       </section>
       <section className="w-6/12 flex items-end">
         <div className="w-1/4 pb-32 text-center">
-          <Text type="lg" variant="semibold">
+          <Text type="lg" variant="medium">
             Sustainability Score
           </Text>
         </div>

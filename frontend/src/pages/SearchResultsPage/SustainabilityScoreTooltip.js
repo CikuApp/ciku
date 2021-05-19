@@ -12,7 +12,7 @@ const SustainabilityScoreTooltip = ({ title, children }) => {
   return (
     <span className="relative mx-1">
       <span onClick={handleClick} className="cursor-pointer">
-        <Text type="xs" variant="em">
+        <Text type="xs" variant="em-link">
           {title}
         </Text>
       </span>

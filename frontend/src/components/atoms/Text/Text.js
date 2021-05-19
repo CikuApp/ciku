@@ -3,7 +3,7 @@ import React from "react";
 const Text = (props) => {
   const { type, variant, children } = props;
 
-  const classes = `font-sans ${textType[type]} ${
+  const classes = `font-sans ${type ? textType[type] : ""} ${
     variant ? textVariant[variant] : "normal"
   }`;
 
@@ -64,7 +64,7 @@ const textType = {
   text-2xl
   `,
   lg: `
-  text-xl
+  text-xl 
   `,
   md: `
   text-lg leading-snug
@@ -91,6 +91,9 @@ const textVariant = {
     font-medium text-black-light 
   `,
   em: `
+    font-semibold text-primary
+  `,
+  "em-link": `
     font-bold underline text-primary
   `,
   "bold-em": `
