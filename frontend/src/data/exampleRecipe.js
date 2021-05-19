@@ -1,4 +1,4 @@
-import exampleRecipeImage from "assets/images/cala-w6ftFbPCs9I-unsplash-4.png";
+import exampleRecipeImage from "assets/images/cala-w6ftFbPCs9I-unsplash-4.jpg";
 
 const exampleRecipe = {
   name: "Example Recipe",

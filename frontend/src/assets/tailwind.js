@@ -1,7 +1,16 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: [],
+  purge: [
+    {
+      content: [
+        "../../src/**/*.js",
+        "../../src/**/*.jsx",
+        "../../public/**/*.html",
+      ],
+      enabled: process.env.NODE_ENV === "production",
+    },
+  ],
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -101,9 +110,9 @@ module.exports = {
       "gradient-to-l": "linear-gradient(to left, var(--tw-gradient-stops))",
       "gradient-to-tl":
         "linear-gradient(to top left, var(--tw-gradient-stops))",
-      homepage: "url('./images/bg.png')",
-      "homepage-2": "url('./images/bg-2.png')",
-      california: "url('./images/california.png')",
+      homepage: "url('./images/bg.jpg')",
+      "homepage-2": "url('./images/bg-2.jpg')",
+      california: "url('./images/california.jpg')",
     },
     backgroundOpacity: (theme) => theme("opacity"),
     backgroundPosition: {
