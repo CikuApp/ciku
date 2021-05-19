@@ -1,5 +1,5 @@
 {
-  "name": "sustainability-dashboard",
+  "name": "ciku",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,8 +21,7 @@
     "build": "npm run watch:css && react-scripts build --prod",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
-    "deploy": "gh-pages -d build"
+    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
   },
   "eslintConfig": {
     "extends": [
@@ -44,9 +43,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
-    "gh-pages": "^3.1.0",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.4"
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "http://backend:8000"
 }
