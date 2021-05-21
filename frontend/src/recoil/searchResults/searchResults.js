@@ -58,7 +58,7 @@ const searchResults = selector({
         );
       }
       // order alphabetically by search query
-      return results.sort((a, b) => a.search - b.search);
+      return results.sort((a, b) => a.search > b.search);
     } catch (err) {
       return results;
     }
