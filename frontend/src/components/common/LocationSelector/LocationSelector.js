@@ -6,6 +6,7 @@ import locationAtom from 'recoil/location'
 
 // Hooks
 import useClickOutside from 'hooks/useClickOutside'
+import useExpandable from 'hooks/useExpandable'
 
 // Components
 import {
@@ -24,24 +25,20 @@ import stateNames from 'data/stateNames'
 
 const LocationSelector = () => {
   const [location, setLocation] = useRecoilState(locationAtom)
-  const [isExpanded, setIsExpanded] = useState(false)
   const locationSelectorRef = useRef()
-  useClickOutside(locationSelectorRef, () => setIsExpanded(false))
+  const [isExpanded, toggleExpanded, closeExpanded] = useExpandable()
+  useClickOutside(locationSelectorRef, closeExpanded)
 
   const handleLocationSelection = (value) => {
     if (value !== 'Select A State') {
       setLocation(value)
-      setIsExpanded(false)
+      closeExpanded()
     }
-  }
-
-  const handleExpandSelector = () => {
-    setIsExpanded((prevState) => !prevState)
   }
 
   return (
     <span className="z-40 mr-6 cursor-pointer" ref={locationSelectorRef}>
-      <TextPill type="md" onClick={handleExpandSelector}>
+      <TextPill type="md" onClick={toggleExpanded}>
         <Text type="xs">
           {location.length ? formatStateName(location) : 'Select A State'}
         </Text>
