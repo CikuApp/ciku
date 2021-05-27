@@ -1,32 +1,22 @@
-import React from "react";
-import { useSetRecoilState, useRecoilValue } from "recoil";
-import { Link } from "react-router-dom";
-
-// States
-import searchTagsAtom from "recoil/searchTags";
-import searchIngredientsAtom from "recoil/searchIngredients";
-import searchParamsAtom from "recoil/searchParams";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 // Components
-import { Button } from "components/atoms";
+import { Button } from 'components/atoms'
+
+// Hooks
+import useFindRecipes from 'hooks/useFindRecipes'
 
 const FindRecipesButton = () => {
-  const setSearchTags = useSetRecoilState(searchTagsAtom);
-  const setSearchIngredients = useSetRecoilState(searchIngredientsAtom);
-  const searchParams = useRecoilValue(searchParamsAtom);
-
-  const handleClick = () => {
-    setSearchTags([]);
-    setSearchIngredients(searchParams);
-  };
+  const [findRecipes] = useFindRecipes()
 
   return (
     <Link to="/recipes">
-      <Button type="primary" onClick={handleClick}>
+      <Button type="primary" onClick={findRecipes}>
         Find Recipes
       </Button>
     </Link>
-  );
-};
+  )
+}
 
-export default FindRecipesButton;
+export default FindRecipesButton
