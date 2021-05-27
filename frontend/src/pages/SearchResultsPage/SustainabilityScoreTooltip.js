@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React from 'react'
 
-import { Tooltip, Text } from "components/atoms";
+// Components
+import { Tooltip, Text } from 'components/atoms'
 
-const SustainabilityScoreTooltip = ({ title, children }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+// Hooks
+import useExpandable from 'hooks/useExpandable'
 
-  const handleClick = () => {
-    setIsExpanded((prevState) => !prevState);
-  };
+const SustainabilityScoreTooltip = ({ title }) => {
+  const [isExpanded, toggleExpanded, closeExpanded] = useExpandable()
 
   return (
     <span className="relative mx-1">
-      <span onClick={handleClick} className="cursor-pointer">
+      <span onClick={toggleExpanded} className="cursor-pointer">
         <Text type="xs" variant="em-link">
           {title}
         </Text>
       </span>
       {isExpanded && (
-        <Tooltip handleClose={handleClick}>
+        <Tooltip handleClose={closeExpanded}>
           <div className="space-y-6 mt-2">
             <Text type="sm" variant="tooltip">
               Every recipe is given a sustainability score marked in orange. It
@@ -36,7 +36,7 @@ const SustainabilityScoreTooltip = ({ title, children }) => {
         </Tooltip>
       )}
     </span>
-  );
-};
+  )
+}
 
-export default SustainabilityScoreTooltip;
+export default SustainabilityScoreTooltip
