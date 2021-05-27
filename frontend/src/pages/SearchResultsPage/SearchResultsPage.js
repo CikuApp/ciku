@@ -1,25 +1,25 @@
-import React, { useState } from "react";
+import React from 'react'
 
 // Components
-import ResultsSection from "pages/SearchResultsPage/ResultsSection";
-import OptionsSection from "pages/SearchResultsPage/OptionsSection";
+import ResultsSection from 'pages/SearchResultsPage/ResultsSection'
+import OptionsSection from 'pages/SearchResultsPage/OptionsSection'
+
+// Hooks
+import useGetExpanded from 'hooks/useGetExpanded'
 
 const SearchResultsPage = () => {
-  const [expandedMenu, setExpandedMenu] = useState("");
-
-  const handleExpandMenu = (tagName) => {
-    setExpandedMenu((prevState) => (prevState === tagName ? "" : tagName));
-  };
+  const [currentExpanded, handleExpanded, closeAllExpanded] = useGetExpanded()
 
   return (
     <>
       <OptionsSection
-        expandedMenu={expandedMenu}
-        handleExpandMenu={handleExpandMenu}
+        expandedMenu={currentExpanded}
+        handleExpandMenu={handleExpanded}
+        handleCloseMenus={closeAllExpanded}
       />
-      <ResultsSection expandedMenu={expandedMenu} />
+      <ResultsSection expandedMenu={currentExpanded} />
     </>
-  );
-};
+  )
+}
 
-export default SearchResultsPage;
+export default SearchResultsPage

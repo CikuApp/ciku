@@ -1,16 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
 // Components
-import SearchResultsFilter from "pages/SearchResultsPage/SearchResultsFilter";
-import SearchIngredientsWrapper from "pages/SearchResultsPage/SearchIngredientsWrapper";
-import AddSearchIngredients from "pages/SearchResultsPage/AddSearchIngredients";
-import SustainabilityScoreTooltip from "pages/SearchResultsPage/SustainabilityScoreTooltip";
-import LocationSelector from "components/common/LocationSelector";
-import { PageBarContainer } from "components/templates";
-import { Text, Heading } from "components/atoms";
+import SearchResultsFilter from 'pages/SearchResultsPage/SearchResultsFilter'
+import SearchIngredientsWrapper from 'pages/SearchResultsPage/SearchIngredientsWrapper'
+import AddSearchIngredients from 'pages/SearchResultsPage/AddSearchIngredients'
+import SustainabilityScoreTooltip from 'pages/SearchResultsPage/SustainabilityScoreTooltip'
+import LocationSelector from 'components/common/LocationSelector'
+import { PageBarContainer } from 'components/templates'
+import { Text, Heading } from 'components/atoms'
 
-const OptionsSection = ({ expandedMenu, handleExpandMenu }) => {
+const OptionsSection = ({
+  expandedMenu,
+  handleExpandMenu,
+  handleCloseMenus,
+}) => {
   return (
     <>
       <PageBarContainer displayClasses="items-center space-x-4">
@@ -33,16 +37,17 @@ const OptionsSection = ({ expandedMenu, handleExpandMenu }) => {
       </PageBarContainer>
       <PageBarContainer displayClasses="items-start">
         <SearchResultsFilter
-          handleExpandMenu={handleExpandMenu}
           expandedMenu={expandedMenu}
+          handleExpandMenu={handleExpandMenu}
+          handleCloseMenus={handleCloseMenus}
         />
       </PageBarContainer>
     </>
-  );
-};
+  )
+}
 
-export default OptionsSection;
+export default OptionsSection
 
 OptionsSection.propTypes = {
   expandedMenu: PropTypes.string,
-};
+}
