@@ -1,6 +1,6 @@
 # Ciku
 
-A web app to encourage sustainable eating by helping people find recipes with more seasonal and local produce based on their location (US state) and the current month. The project is currently deployed [here](http://50.18.95.117/).
+A web app to encourage sustainable eating by helping people find recipes with more seasonal and local produce based on their location (US state) and the current month. The project is currently deployed [here](http://52.8.144.150/).
 
 <img src="ciku-1.png" alt="drawing" width="400"/>
 
