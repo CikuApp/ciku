@@ -1,56 +1,44 @@
-import React, { useRef, useEffect, createRef } from "react";
-import { useRecoilState } from "recoil";
+import React, { useRef, useEffect, createRef } from 'react'
+import { useRecoilState } from 'recoil'
 
 // States
-import searchTagsAtom from "recoil/searchTags";
+import searchTagsAtom from 'recoil/searchTags'
+
+// Hooks
+import useClickOutsideArray from 'hooks/useClickOutsideArray'
 
 // Components
-import { Checkbox, Text, DropdownMenu, ListItem2 } from "components/atoms";
+import { Checkbox, Text, DropdownMenu, ListItem2 } from 'components/atoms'
 
 // Data
-import tags from "data/tags";
+import tags from 'data/tags'
 
-const SearchResultsFilter = ({ handleExpandMenu, expandedMenu }) => {
-  const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom);
-  const dropdownMenusRef = useRef(tags.map((tag) => createRef()));
-
-  useEffect(() => {
-    window.addEventListener("click", handleClick);
-    return () => window.removeEventListener("click", handleClick);
-  }, []);
+const SearchResultsFilter = ({
+  expandedMenu,
+  handleExpandMenu,
+  handleCloseMenus,
+}) => {
+  const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom)
+  const dropdownMenusRef = useRef(tags.map(() => createRef()))
+  useClickOutsideArray(dropdownMenusRef, handleCloseMenus)
 
   const handleOptionClick = (tag) => {
     setSearchTags((prevState) => {
       if (prevState.includes(tag)) {
-        return prevState.filter((item) => item !== tag);
+        return prevState.filter((item) => item !== tag)
       } else {
-        return [...prevState, tag];
+        return [...prevState, tag]
       }
-    });
-  };
-
-  const handleClick = (e) => {
-    if (
-      dropdownMenusRef.current.length &&
-      !dropdownMenusRef.current.some(
-        (item) => item.current && item.current.contains(e.target)
-      )
-    ) {
-      handleExpandMenu("");
-    }
-  };
+    })
+  }
 
   const isInSearchTags = (tag) => {
     if (searchTags.includes(tag)) {
-      return true;
+      return true
     } else {
-      return false;
+      return false
     }
-  };
-
-  const isExpanded = (tagName) => {
-    return expandedMenu === tagName;
-  };
+  }
 
   return (
     <div className="flex -ml-8">
@@ -58,7 +46,7 @@ const SearchResultsFilter = ({ handleExpandMenu, expandedMenu }) => {
         return (
           <DropdownMenu
             selectorName={tag.tagName}
-            isExpanded={isExpanded(tag.tagName)}
+            isExpanded={expandedMenu === tag.tagName}
             handleExpand={() => handleExpandMenu(tag.tagName)}
             key={tag.tagName}
             ref={dropdownMenusRef.current[index]}
@@ -74,15 +62,15 @@ const SearchResultsFilter = ({ handleExpandMenu, expandedMenu }) => {
                     />
                     <Text type="sm">{option.name}</Text>
                   </ListItem2>
-                );
+                )
               })}
             </ul>
           </DropdownMenu>
-        );
+        )
       })}
       <DropdownMenu
         selectorName={tags[tags.length - 1].tagName}
-        isExpanded={isExpanded(tags[tags.length - 1].tagName)}
+        isExpanded={expandedMenu === tags[tags.length - 1].tagName}
         handleExpand={() => handleExpandMenu(tags[tags.length - 1].tagName)}
         key={tags[tags.length - 1].tagName}
         ref={dropdownMenusRef.current[tags.length - 1]}
@@ -100,12 +88,12 @@ const SearchResultsFilter = ({ handleExpandMenu, expandedMenu }) => {
                   <Text type="sm">{option.name}</Text>
                 </ListItem2>
               </div>
-            );
+            )
           })}
         </div>
       </DropdownMenu>
     </div>
-  );
-};
+  )
+}
 
-export default SearchResultsFilter;
+export default SearchResultsFilter
