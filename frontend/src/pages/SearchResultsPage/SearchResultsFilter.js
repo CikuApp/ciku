@@ -1,11 +1,8 @@
-import React, { useRef, useEffect, createRef } from 'react'
-import { useRecoilState } from 'recoil'
-
-// States
-import searchTagsAtom from 'recoil/searchTags'
+import React, { useRef, createRef } from 'react'
 
 // Hooks
 import useClickOutsideArray from 'hooks/useClickOutsideArray'
+import useSearchTags from 'hooks/useSearchTags'
 
 // Components
 import { Checkbox, Text, DropdownMenu, ListItem2 } from 'components/atoms'
@@ -18,27 +15,9 @@ const SearchResultsFilter = ({
   handleExpandMenu,
   handleCloseMenus,
 }) => {
-  const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom)
   const dropdownMenusRef = useRef(tags.map(() => createRef()))
   useClickOutsideArray(dropdownMenusRef, handleCloseMenus)
-
-  const handleOptionClick = (tag) => {
-    setSearchTags((prevState) => {
-      if (prevState.includes(tag)) {
-        return prevState.filter((item) => item !== tag)
-      } else {
-        return [...prevState, tag]
-      }
-    })
-  }
-
-  const isInSearchTags = (tag) => {
-    if (searchTags.includes(tag)) {
-      return true
-    } else {
-      return false
-    }
-  }
+  const [isInSearchTags, toggleSearchTag] = useSearchTags()
 
   return (
     <div className="flex -ml-8">
@@ -58,7 +37,7 @@ const SearchResultsFilter = ({
                     <Checkbox
                       value={option.value}
                       checked={isInSearchTags(option.value)}
-                      onClick={() => handleOptionClick(option.value)}
+                      onClick={() => toggleSearchTag(option.value)}
                     />
                     <Text type="sm">{option.name}</Text>
                   </ListItem2>
@@ -83,7 +62,7 @@ const SearchResultsFilter = ({
                   <Checkbox
                     value={option.value}
                     checked={isInSearchTags(option.value)}
-                    onClick={() => handleOptionClick(option.value)}
+                    onClick={() => toggleSearchTag(option.value)}
                   />
                   <Text type="sm">{option.name}</Text>
                 </ListItem2>
