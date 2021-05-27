@@ -1,71 +1,50 @@
+// Converts a string to title format
 const toTitle = (string) => {
   return string
-    .split(" ")
+    .split(' ')
     .map((word) => word[0] && word[0].toUpperCase().concat(word.slice(1)))
-    .reduce((accum, curr) => {
-      if (curr === "S" && accum.length) {
-        curr = accum[accum.length - 1].concat("'s");
-        accum = accum.slice(0, accum.length - 1);
+    .reduce((accum, word) => {
+      // handle lone S after apostrophes
+      if (word === 'S' && accum.length) {
+        accum[accum.length - 1] = accum[accum.length - 1].concat("'s")
+      } else {
+        accum.push(word)
       }
-      accum.push(curr);
-      return accum;
+      return accum
     }, [])
-    .join(" ");
-};
+    .join(' ')
+}
 
+// Converts string to sentence
 const toSentence = (string) => {
-  return string[0].toUpperCase().concat(string.slice(1));
-};
+  const stringCap = string[0].toUpperCase().concat(string.slice(1))
+  const punctuationRegex = new RegExp(/[.|,|!|\\?]/)
+  return punctuationRegex.test(stringCap.charAt(stringCap.length - 1))
+    ? stringCap
+    : stringCap.concat('.')
+}
 
+// Capitalizes state names
 const formatStateName = (stateName) => {
   return stateName
-    .replace("-", " ")
-    .split(" ")
+    .replace('-', ' ')
+    .split(' ')
     .map((word) => word[0].toUpperCase().concat(word.slice(1)))
-    .join(" ");
-};
+    .join(' ')
+}
 
-// Format inputs for search
-const toQueryString = (query) => {
-  return "query=" + query.toLowerCase().replace(/[ ,-]/g, "_");
-};
-
-const toIngredientsString = (ingredients) => {
-  return ingredients.length
-    ? "&ingredients=" +
-        ingredients
-          .map((item) => item.toLowerCase().replace(/ /g, "_"))
-          .join("%20")
-    : "";
-};
-
-const toTagsString = (tags) => {
-  return tags.length
-    ? "&tags=" + tags.map((tag) => tag.replace(/_/g, "-")).join("%20")
-    : "";
-};
-
-// Truncates recipe card titles if over 2 lines long
+// Truncates recipe card titles if over approx. 2 lines long
 const truncate = (str) => {
-  return str.length > 40 ? str.slice(0, 40) + "..." : str;
-};
+  return str.length > 40 ? str.slice(0, 40) + '...' : str
+}
 
-// returns a suggestion from an array matching the start of string, else ""
+// Returns a suggestion from an array matching the start of string
 const getHints = (str, arr) => {
   if (!str.length) {
-    return "";
+    return ''
   }
-  const suggestions = arr.filter((item) => item.startsWith(str));
-  return suggestions.length ? suggestions[0] : "";
-};
+  const suggestions = arr.filter((item) => item.startsWith(str))
+  return suggestions.length ? suggestions[0] : ''
+}
 
-export {
-  toTitle,
-  toSentence,
-  formatStateName,
-  toQueryString,
-  toIngredientsString,
-  toTagsString,
-  truncate,
-  getHints,
-};
+export { toTitle, toSentence, formatStateName, truncate, getHints }
