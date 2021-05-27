@@ -1,8 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useRecoilState } from "recoil";
+import React, { useState, useRef } from 'react'
+import { useRecoilState } from 'recoil'
 
 // States
-import locationAtom from "recoil/location";
+import locationAtom from 'recoil/location'
+
+// Hooks
+import useClickOutside from 'hooks/useClickOutside'
 
 // Components
 import {
@@ -11,49 +14,36 @@ import {
   TextPillExpanded,
   ExpandIcon,
   ListItem,
-} from "components/atoms";
+} from 'components/atoms'
 
 // Utils
-import { formatStateName } from "utils/dataHelpers";
+import { formatStateName } from 'utils/dataHelpers'
 
 // Data
-import stateNames from "data/stateNames";
+import stateNames from 'data/stateNames'
 
 const LocationSelector = () => {
-  const [location, setLocation] = useRecoilState(locationAtom);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const locationSelectorRef = useRef();
-
-  useEffect(() => {
-    window.addEventListener("click", handleClick);
-    return () => window.removeEventListener("click", handleClick);
-  }, []);
+  const [location, setLocation] = useRecoilState(locationAtom)
+  const [isExpanded, setIsExpanded] = useState(false)
+  const locationSelectorRef = useRef()
+  useClickOutside(locationSelectorRef, () => setIsExpanded(false))
 
   const handleLocationSelection = (value) => {
-    if (value !== "Select A State") {
-      setLocation(value);
-      setIsExpanded(false);
+    if (value !== 'Select A State') {
+      setLocation(value)
+      setIsExpanded(false)
     }
-  };
+  }
 
   const handleExpandSelector = () => {
-    setIsExpanded((prevState) => !prevState);
-  };
-
-  const handleClick = (e) => {
-    if (
-      locationSelectorRef.current &&
-      !locationSelectorRef.current.contains(e.target)
-    ) {
-      setIsExpanded(false);
-    }
-  };
+    setIsExpanded((prevState) => !prevState)
+  }
 
   return (
     <span className="z-40 mr-6 cursor-pointer" ref={locationSelectorRef}>
       <TextPill type="md" onClick={handleExpandSelector}>
         <Text type="xs">
-          {location.length ? formatStateName(location) : "Select A State"}
+          {location.length ? formatStateName(location) : 'Select A State'}
         </Text>
         <ExpandIcon />
       </TextPill>
@@ -68,13 +58,13 @@ const LocationSelector = () => {
                 >
                   <Text type="xs">{formatStateName(name)}</Text>
                 </ListItem>
-              );
+              )
             })}
           </ul>
         </TextPillExpanded>
       )}
     </span>
-  );
-};
+  )
+}
 
-export default LocationSelector;
+export default LocationSelector
