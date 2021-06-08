@@ -1,9 +1,5 @@
 import axios from 'axios'
-import {
-  toTagsString,
-  toQueryString,
-  toIngredientsString,
-} from 'utils/queryHelpers'
+import { paramsBuilder, randomParamsBuilder } from 'utils/queryHelpers'
 
 const baseUrl = `${
   process.env.NODE_ENV === 'development' ? '' : '/backend'
@@ -13,13 +9,10 @@ const randomBaseUrl = `${
   process.env.NODE_ENV === 'development' ? '' : '/backend'
 }/random?`
 
-const getOneRecipe = async (searchTerm, location) => {
+const getOneRecipe = async (query, location) => {
   try {
-    const queryString = toQueryString(searchTerm)
-    const locationString =
-      '&location=' + (location.length ? location : 'california')
-    const response = await axios.get(baseUrl + queryString + locationString)
-
+    const params = paramsBuilder({ query, location })
+    const response = await axios.get(baseUrl, { params })
     // API is returning string for now - do not remove JSON.parse()
     return JSON.parse(response.data)[0]
   } catch (err) {
@@ -28,27 +21,17 @@ const getOneRecipe = async (searchTerm, location) => {
   }
 }
 
-const getRecipeResults = async (
-  searchTerm,
-  searchTags,
-  searchIngredients,
-  location,
-  count
-) => {
+const getRecipeResults = async (query, tags, ingredients, location, count) => {
   try {
-    const locationString =
-      '&location=' + (location.length ? location : 'california')
+    const params = paramsBuilder({
+      query,
+      location,
+      tags,
+      ingredients,
+      count,
+    })
 
-    const countString = '&count=' + count
-
-    const response = await axios.get(
-      baseUrl +
-        toQueryString(searchTerm) +
-        toIngredientsString(searchIngredients) +
-        toTagsString(searchTags) +
-        locationString +
-        countString
-    )
+    const response = await axios.get(baseUrl, { params })
 
     return JSON.parse(response.data)
   } catch (err) {
@@ -61,18 +44,9 @@ const getRecipeResults = async (
 
 const getRandomRecipes = async (count, location, minimum_sus_score = 3) => {
   try {
-    const countString = 'count=' + count
-    const locationString =
-      '&location=' + (location.length ? location : 'california')
-    const minScoreString = '&minimum_sus_score=' + minimum_sus_score
+    const params = randomParamsBuilder({ count, location, minimum_sus_score })
 
-    const response = await axios.get(
-      randomBaseUrl +
-        countString +
-        minScoreString +
-        locationString +
-        '&sorted=true'
-    )
+    const response = await axios.get(randomBaseUrl, { params })
     return JSON.parse(response.data).slice(0, 8)
   } catch (err) {
     console.error(err)
