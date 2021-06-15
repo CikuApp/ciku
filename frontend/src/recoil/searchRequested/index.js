@@ -1,3 +1,3 @@
-import atom from "./atom";
+import atom from './atom';
 
 export default atom;

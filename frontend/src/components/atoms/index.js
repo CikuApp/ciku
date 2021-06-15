@@ -1,15 +1,15 @@
-import Button from "./Button/Button";
-import Text from "./Text/Text";
-import Heading from "./Heading/Heading";
-import ExpandIcon from "./ExpandIcon/ExpandIcon";
-import ListItem from "./ListItem/ListItem";
-import ListItem2 from "./ListItem2/ListItem2";
-import Tooltip from "./Tooltip/Tooltip";
-import TextPill from "./TextPill/TextPill";
-import TextPillExpanded from "./TextPillExpanded/TextPillExpanded";
-import Checkbox from "./Checkbox/Checkbox";
-import DropdownMenu from "./DropdownMenu/DropdownMenu";
-import CloseIcon from "./CloseIcon/CloseIcon";
+import Button from './Button/Button.jsx';
+import Text from './Text/Text.jsx';
+import Heading from './Heading/Heading.jsx';
+import ExpandIcon from './ExpandIcon/ExpandIcon.jsx';
+import ListItem from './ListItem/ListItem.jsx';
+import ListItem2 from './ListItem2/ListItem2.jsx';
+import Tooltip from './Tooltip/Tooltip.jsx';
+import TextPill from './TextPill/TextPill.jsx';
+import TextPillExpanded from './TextPillExpanded/TextPillExpanded.jsx';
+import Checkbox from './Checkbox/Checkbox.jsx';
+import DropdownMenu from './DropdownMenu/DropdownMenu.jsx';
+import CloseIcon from './CloseIcon/CloseIcon.jsx';
 
 export {
   Button,
@@ -23,5 +23,5 @@ export {
   Checkbox,
   Tooltip,
   DropdownMenu,
-  CloseIcon,
+  CloseIcon
 };

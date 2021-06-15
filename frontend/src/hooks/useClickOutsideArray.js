@@ -1,23 +1,23 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 const useClickOutsideArray = (refs, handleClickOutside) => {
   useEffect(() => {
-    const clickOutside = (e) => {
+    const clickOutside = e => {
       if (
         refs.current.length &&
         !refs.current.some(
-          (item) => item.current && item.current.contains(e.target)
+          item => item.current && item.current.contains(e.target)
         )
       ) {
-        handleClickOutside()
+        handleClickOutside();
       }
-    }
+    };
 
-    window.addEventListener('click', clickOutside)
+    window.addEventListener('click', clickOutside);
     return () => {
-      window.removeEventListener('click', clickOutside)
-    }
-  }, [handleClickOutside, refs])
-}
+      window.removeEventListener('click', clickOutside);
+    };
+  }, [handleClickOutside, refs]);
+};
 
-export default useClickOutsideArray
+export default useClickOutsideArray;

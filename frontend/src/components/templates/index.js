@@ -1,5 +1,5 @@
-import PageSectionContainer from "./PageSectionContainer";
-import PageContainer from "./PageContainer";
-import PageBarContainer from "./PageBarContainer";
+import PageSectionContainer from './PageSectionContainer.jsx';
+import PageContainer from './PageContainer.jsx';
+import PageBarContainer from './PageBarContainer.jsx';
 
 export { PageContainer, PageSectionContainer, PageBarContainer };

@@ -1,17 +1,17 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const useGetExpanded = () => {
-  const [currentExpanded, setCurrentExpanded] = useState('')
+  const [currentExpanded, setCurrentExpanded] = useState('');
 
-  const handleExpanded = (name) => {
-    setCurrentExpanded((prevState) => (prevState === name ? '' : name))
-  }
+  const handleExpanded = name => {
+    setCurrentExpanded(prevState => (prevState === name ? '' : name));
+  };
 
   const closeAllExpanded = () => {
-    setCurrentExpanded('')
-  }
+    setCurrentExpanded('');
+  };
 
-  return [currentExpanded, handleExpanded, closeAllExpanded]
-}
+  return [currentExpanded, handleExpanded, closeAllExpanded];
+};
 
-export default useGetExpanded
+export default useGetExpanded;

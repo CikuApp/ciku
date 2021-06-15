@@ -1,50 +1,123 @@
-// Converts a string to title format
-const toTitle = (string) => {
-  return string
+/**
+ * Formats recipe title from API response
+ *
+ * @param   {string} recipeTitle
+ * @returns {string}
+ */
+const toTitle = recipeTitle =>
+  recipeTitle
     .split(' ')
-    .map((word) => word[0] && word[0].toUpperCase().concat(word.slice(1)))
-    .reduce((accum, word) => {
+    .map(word => word[0] && word[0].toUpperCase().concat(word.slice(1)))
+    .reduce((title, word) => {
       // handle lone S after apostrophes
-      if (word === 'S' && accum.length) {
-        accum[accum.length - 1] = accum[accum.length - 1].concat("'s")
+      const newTitle = [...title];
+
+      if (word === 'S' && title.length) {
+        newTitle[newTitle.length - 1] =
+          newTitle[newTitle.length - 1].concat("'s");
       } else {
-        accum.push(word)
+        newTitle.push(word);
       }
-      return accum
+
+      return newTitle;
     }, [])
-    .join(' ')
-}
+    .join(' ');
 
-// Converts string to sentence
-const toSentence = (string) => {
-  const stringCap = string[0].toUpperCase().concat(string.slice(1))
-  const punctuationRegex = new RegExp(/[.|,|!|\\?]/)
-  return punctuationRegex.test(stringCap.charAt(stringCap.length - 1))
-    ? stringCap
-    : stringCap.concat('.')
-}
+/**
+ * Formats recipe directions from API to sentence
+ *
+ * @param   {string} phrase
+ * @returns {string}
+ */
+const toSentence = phrase => {
+  // Capitalize first letter
+  const capitalizedPhrase = phrase[0].toUpperCase().concat(phrase.slice(1));
 
-// Capitalizes state names
-const formatStateName = (stateName) => {
-  return stateName
+  // If last character is not a punctuation, add a '.'
+  const punctuationRegex = new RegExp(/[.|,|!|\\?]/);
+
+  return punctuationRegex.test(
+    capitalizedPhrase.charAt(capitalizedPhrase.length - 1)
+  )
+    ? capitalizedPhrase
+    : capitalizedPhrase.concat('.');
+};
+
+/**
+ * Formats state name (capitalized and remove '-')
+ *
+ * @param   {string} stateName
+ * @returns {string}
+ */
+const formatStateName = stateName =>
+  stateName
     .replace('-', ' ')
     .split(' ')
-    .map((word) => word[0].toUpperCase().concat(word.slice(1)))
-    .join(' ')
-}
+    .map(word => word[0].toUpperCase().concat(word.slice(1)))
+    .join(' ');
 
-// Truncates recipe card titles if over approx. 2 lines long
-const truncate = (str) => {
-  return str.length > 40 ? str.slice(0, 40) + '...' : str
-}
+/**
+ * Truncates a phrase to 40 chars long
+ *
+ * @param {string} phrase
+ * @returns {string}
+ */
+const truncate = phrase =>
+  phrase.length > 40 ? `${phrase.slice(0, 40)}...` : phrase;
 
-// Returns a suggestion from an array matching the start of string
-const getHints = (str, arr) => {
-  if (!str.length) {
-    return ''
+/**
+ * Returns a suggestion from a word list matching the start of a word
+ *
+ * @param   {string}  word
+ * @param   {array}   wordList
+ * @returns {string}
+ */
+const getHints = (word, wordList) => {
+  if (!word.length) {
+    return '';
   }
-  const suggestions = arr.filter((item) => item.startsWith(str))
-  return suggestions.length ? suggestions[0] : ''
-}
+  const suggestions = wordList.filter(item => item.startsWith(word));
+  return suggestions.length ? suggestions[0] : '';
+};
 
-export { toTitle, toSentence, formatStateName, truncate, getHints }
+/**
+ * Convert month index to month name
+ *
+ * @param   {number}  monthIndex
+ * @returns {string}
+ */
+const getMonthName = monthIndex => {
+  const monthNames = [
+    'january',
+    'february',
+    'march',
+    'april',
+    'may',
+    'june',
+    'july',
+    'august',
+    'september',
+    'october',
+    'november',
+    'december'
+  ];
+  return monthNames[monthIndex];
+};
+
+/**
+ * Convert date to month period
+ *
+ * @param   {number}  date
+ * @returns {string}
+ */
+const getMonthPeriod = date => (date > 15 ? 'late' : 'early');
+
+export {
+  toTitle,
+  toSentence,
+  formatStateName,
+  truncate,
+  getHints,
+  getMonthName,
+  getMonthPeriod
+};

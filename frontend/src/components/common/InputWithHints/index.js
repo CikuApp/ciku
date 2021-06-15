@@ -1,3 +1,3 @@
-import InputWithHints from "./InputWithHints";
+import InputWithHints from './InputWithHints.jsx';
 
 export default InputWithHints;

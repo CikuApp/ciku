@@ -1,17 +1,17 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const useExpandable = () => {
-  const [isExpanded, setIsExpanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpanded = () => {
-    setIsExpanded((prevState) => !prevState)
-  }
+    setIsExpanded(prevState => !prevState);
+  };
 
   const closeExpanded = () => {
-    setIsExpanded(false)
-  }
+    setIsExpanded(false);
+  };
 
-  return [isExpanded, toggleExpanded, closeExpanded]
-}
+  return [isExpanded, toggleExpanded, closeExpanded];
+};
 
-export default useExpandable
+export default useExpandable;

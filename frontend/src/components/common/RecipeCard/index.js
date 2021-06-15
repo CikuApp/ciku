@@ -1,3 +1,3 @@
-import RecipeCard from "./RecipeCard";
+import RecipeCard from './RecipeCard.jsx';
 
 export default RecipeCard;

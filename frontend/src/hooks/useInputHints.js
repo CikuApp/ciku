@@ -1,41 +1,41 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 // Utils
-import { getHints } from 'utils/dataHelpers'
+import { getHints } from 'utils/dataHelpers';
 
 /**
  *
  * @param {array} arr - array of data to get hints from
  */
-const useInputHints = (arr) => {
-  const [searchInput, setSearchInput] = useState('')
-  const [inputHint, setInputHint] = useState('')
+const useInputHints = arr => {
+  const [searchInput, setSearchInput] = useState('');
+  const [inputHint, setInputHint] = useState('');
 
-  const updateInput = (e) => {
-    const currentInput = e.target.value
-    setSearchInput(currentInput)
-    setInputHint(getHints(currentInput, arr).slice(currentInput.length))
-  }
-
-  const handleKeyPress = (e) => {
-    if (e.keyCode === 39) {
-      // listen for right arrow key press
-      fillInput()
-    }
-  }
+  const updateInput = e => {
+    const currentInput = e.target.value;
+    setSearchInput(currentInput);
+    setInputHint(getHints(currentInput, arr).slice(currentInput.length));
+  };
 
   const fillInput = () => {
-    setSearchInput((prev) => prev + inputHint)
-    setInputHint('')
-  }
+    setSearchInput(prev => prev + inputHint);
+    setInputHint('');
+  };
+
+  const handleKeyPress = e => {
+    if (e.keyCode === 39) {
+      // listen for right arrow key press
+      fillInput();
+    }
+  };
 
   const clearSearchInput = () => {
-    setSearchInput('')
-  }
+    setSearchInput('');
+  };
 
   useEffect(() => {
-    searchInput === '' && setInputHint('')
-  }, [searchInput])
+    if (searchInput === '') setInputHint('');
+  }, [searchInput]);
 
   return [
     inputHint,
@@ -43,8 +43,8 @@ const useInputHints = (arr) => {
     updateInput,
     clearSearchInput,
     fillInput,
-    handleKeyPress,
-  ]
-}
+    handleKeyPress
+  ];
+};
 
-export default useInputHints
+export default useInputHints;

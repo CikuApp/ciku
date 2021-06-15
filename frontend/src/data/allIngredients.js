@@ -6719,6 +6719,6 @@ jalapeno juice
 ice cream wafer
 fat free feta cheese`;
 
-const ingredients = ingredientsStr.split("\n").sort();
+const ingredients = ingredientsStr.split('\n').sort();
 
 export default ingredients;

@@ -1,3 +1,3 @@
-import RecipeResults from "./RecipeResults";
+import RecipeResults from './RecipeResults.jsx';
 
 export default RecipeResults;

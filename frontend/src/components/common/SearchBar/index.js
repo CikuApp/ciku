@@ -1,3 +1,3 @@
-import SearchBar from "./SearchBar";
+import SearchBar from './SearchBar.jsx';
 
 export default SearchBar;

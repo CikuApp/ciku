@@ -1,3 +1,3 @@
-import RecipeMiniCard from "./RecipeMiniCard";
+import RecipeMiniCard from './RecipeMiniCard.jsx';
 
 export default RecipeMiniCard;
