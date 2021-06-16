@@ -6,6 +6,11 @@ import searchTagsAtom from 'recoil/searchTags';
 // Utils
 import { arrayReducer } from 'utils/reducers';
 
+/**
+ * Hook for setting search tags, determining whether a tag is currently included
+ *
+ * @returns {array}
+ */
 const useSearchTags = () => {
   const [searchTags, setSearchTags] = useRecoilState(searchTagsAtom);
 

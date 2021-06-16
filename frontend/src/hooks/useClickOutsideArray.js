@@ -1,5 +1,12 @@
 import { useEffect } from 'react';
 
+/**
+ * Effect: detects click outside for an array of elements
+ * Unmount: removes effect
+ *
+ * @param {array} refs - list of nodes
+ * @param {function} handleClickOutside - callback for handling the click
+ */
 const useClickOutsideArray = (refs, handleClickOutside) => {
   useEffect(() => {
     const clickOutside = e => {

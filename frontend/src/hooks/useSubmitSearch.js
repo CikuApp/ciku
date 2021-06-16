@@ -8,6 +8,7 @@ import searchTagsAtom from 'recoil/searchTags';
 import locationAtom from 'recoil/location';
 
 /**
+ * Search submit action - for search bar
  *
  * @param {string} searchInput - search input field
  * @param {function} clearSearchInput - callback to clear search input

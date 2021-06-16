@@ -1,5 +1,12 @@
 import { useEffect } from 'react';
 
+/**
+ * Effect: Detects click events outside of an element
+ * Unmount: removes effect
+ *
+ * @param {node} ref
+ * @param {function} handleClickOutside - callback for handling the click
+ */
 const useClickOutside = (ref, handleClickOutside) => {
   useEffect(() => {
     const clickOutside = e => {

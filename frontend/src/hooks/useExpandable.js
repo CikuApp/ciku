@@ -1,5 +1,10 @@
 import { useState } from 'react';
 
+/**
+ * Makes an element expandable/togglable
+ *
+ * @returns {array} isExpanded (bool), toggleExpanded (func), closeExpanded (func)
+ */
 const useExpandable = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
