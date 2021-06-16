@@ -35,9 +35,9 @@ describe('Format ingredients string', () => {
     expect(toIngredientsString(ingredients)).toEqual('apple_juice');
   });
 
-  test('it concatenates the elements with %20', () => {
+  test('it concatenates the elements with " "', () => {
     const ingredients = ['apple', 'banana'];
-    expect(toIngredientsString(ingredients)).toEqual('apple%20banana');
+    expect(toIngredientsString(ingredients)).toEqual('apple banana');
   });
 });
 
@@ -47,9 +47,9 @@ describe('Format tags string', () => {
     expect(toTagsString(tags)).toEqual('low-calorie');
   });
 
-  test('it concatenates the elements with %20', () => {
+  test('it concatenates the elements with " "', () => {
     const tags = ['vegetarian', 'easy'];
-    expect(toTagsString(tags)).toEqual('vegetarian%20easy');
+    expect(toTagsString(tags)).toEqual('vegetarian easy');
   });
 });
 
@@ -83,7 +83,7 @@ describe('Create a params object', () => {
     ).toStrictEqual({
       query: 'spaghetti',
       location: 'california',
-      ingredients: 'canned_tomatoes%20basil'
+      ingredients: 'canned_tomatoes basil'
     });
   });
 
@@ -96,7 +96,7 @@ describe('Create a params object', () => {
     ).toStrictEqual({
       query: 'spaghetti',
       location: 'california',
-      tags: 'low-sodium%20vegetarian'
+      tags: 'low-sodium vegetarian'
     });
   });
 
@@ -135,7 +135,7 @@ describe('Create a params object for random recipes endpoint', () => {
     expect(
       randomParamsBuilder({
         count: 50,
-        minimum_sus_score: 3,
+        minSusScore: 3,
         location: 'arkansas'
       })
     ).toStrictEqual({
@@ -147,9 +147,7 @@ describe('Create a params object for random recipes endpoint', () => {
   });
 
   test('it returns an object with default location california if none supplied', () => {
-    expect(
-      randomParamsBuilder({ count: 50, minimum_sus_score: 3 })
-    ).toStrictEqual({
+    expect(randomParamsBuilder({ count: 50, minSusScore: 3 })).toStrictEqual({
       count: '50',
       minimum_sus_score: '3',
       location: 'california',
